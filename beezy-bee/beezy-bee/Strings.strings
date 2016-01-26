@@ -1,0 +1,11 @@
+/* 
+  Strings.strings
+  beezy-bee
+
+  Created by Hiroshi on 1/26/16.
+  Copyright © 2016 Ideia do Luiz. All rights reserved.
+*/
+
+"new_game" = "New Game";
+"settings" = "Settings";
+"score" = "Score";

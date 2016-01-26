@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "BEESessionHelper.h"
 
 @implementation GameScene
 
@@ -21,7 +22,7 @@
 {
     // Setup Start
     SKLabelNode *newGameLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    newGameLabel.text = @"New Game";
+    newGameLabel.text = [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"new_game"];
     newGameLabel.fontSize = 45;
     newGameLabel.fontColor = [SKColor blackColor];
     newGameLabel.position = CGPointMake(CGRectGetMidX(self.frame),
