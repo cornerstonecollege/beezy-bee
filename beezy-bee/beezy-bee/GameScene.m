@@ -16,6 +16,7 @@
     [self createLabels];
 }
 
+// create label
 - (void) createLabels
 {
     // Setup Start
@@ -45,7 +46,6 @@
                                         CGRectGetMidY(self.frame));
     [self addChild:scoreLabel];
 
-    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
