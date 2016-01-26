@@ -20,6 +20,8 @@
 		1C45456D1C571F7000321192 /* BEEBaseTouchable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C45456C1C571F7000321192 /* BEEBaseTouchable.m */; };
 		1C4545731C571FBE00321192 /* BEEMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4545721C571FBE00321192 /* BEEMonster.m */; };
 		1C4545761C5722AF00321192 /* BEEPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4545751C5722AF00321192 /* BEEPoint.m */; };
+		68A0DAE91C58231A000C7297 /* BEESessionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0DAE81C58231A000C7297 /* BEESessionHelper.m */; };
+		68A0DAEB1C582378000C7297 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68A0DAEA1C582378000C7297 /* Strings.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,9 @@
 		1C4545721C571FBE00321192 /* BEEMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEMonster.m; path = Base/BEEMonster.m; sourceTree = "<group>"; };
 		1C4545741C5722AF00321192 /* BEEPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEPoint.h; path = Base/BEEPoint.h; sourceTree = "<group>"; };
 		1C4545751C5722AF00321192 /* BEEPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEPoint.m; path = Base/BEEPoint.m; sourceTree = "<group>"; };
+		68A0DAE71C58231A000C7297 /* BEESessionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEESessionHelper.h; path = Utilities/BEESessionHelper.h; sourceTree = "<group>"; };
+		68A0DAE81C58231A000C7297 /* BEESessionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEESessionHelper.m; path = Utilities/BEESessionHelper.m; sourceTree = "<group>"; };
+		68A0DAEA1C582378000C7297 /* Strings.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +83,7 @@
 		081205F71C56FA94000CD428 /* beezy-bee */ = {
 			isa = PBXGroup;
 			children = (
+				68A0DAE61C5822E8000C7297 /* Utilities */,
 				1C4545641C571B9B00321192 /* Base */,
 				081205FB1C56FA94000CD428 /* AppDelegate.h */,
 				081205FC1C56FA94000CD428 /* AppDelegate.m */,
@@ -91,6 +97,7 @@
 				0812060B1C56FA94000CD428 /* LaunchScreen.storyboard */,
 				0812060E1C56FA94000CD428 /* Info.plist */,
 				081205F81C56FA94000CD428 /* Supporting Files */,
+				68A0DAEA1C582378000C7297 /* Strings.strings */,
 			);
 			path = "beezy-bee";
 			sourceTree = "<group>";
@@ -118,6 +125,15 @@
 				1C4545751C5722AF00321192 /* BEEPoint.m */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		68A0DAE61C5822E8000C7297 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				68A0DAE71C58231A000C7297 /* BEESessionHelper.h */,
+				68A0DAE81C58231A000C7297 /* BEESessionHelper.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +197,7 @@
 				081206021C56FA94000CD428 /* GameScene.sks in Resources */,
 				0812060D1C56FA94000CD428 /* LaunchScreen.storyboard in Resources */,
 				0812060A1C56FA94000CD428 /* Assets.xcassets in Resources */,
+				68A0DAEB1C582378000C7297 /* Strings.strings in Resources */,
 				081206081C56FA94000CD428 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +214,7 @@
 				081206051C56FA94000CD428 /* GameViewController.m in Sources */,
 				1C4545731C571FBE00321192 /* BEEMonster.m in Sources */,
 				081205FD1C56FA94000CD428 /* AppDelegate.m in Sources */,
+				68A0DAE91C58231A000C7297 /* BEESessionHelper.m in Sources */,
 				1C4545761C5722AF00321192 /* BEEPoint.m in Sources */,
 				081206001C56FA94000CD428 /* GameScene.m in Sources */,
 				1C45456D1C571F7000321192 /* BEEBaseTouchable.m in Sources */,
