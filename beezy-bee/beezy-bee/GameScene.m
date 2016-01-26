@@ -18,15 +18,32 @@
 
 - (void) createLabels
 {
-    /* Setup your scene here */
+    // Setup Start
     SKLabelNode *newGameLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     newGameLabel.text = @"New Game";
     newGameLabel.fontSize = 45;
     newGameLabel.fontColor = [SKColor blackColor];
     newGameLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame) + 100);
-    
+                                        CGRectGetMidY(self.frame) + 100);
     [self addChild:newGameLabel];
+    
+    // Setup Setting
+    SKLabelNode *settingsLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    settingsLabel.text = @"Settings";
+    settingsLabel.fontSize = 45;
+    settingsLabel.fontColor = [SKColor blackColor];
+    settingsLabel.position = CGPointMake(CGRectGetMidX(self.frame),
+                                   CGRectGetMidY(self.frame) - 100);
+    [self addChild:settingsLabel];
+    
+    // Setup Score
+    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    scoreLabel.text = @"Score";
+    scoreLabel.fontSize = 45;
+    scoreLabel.fontColor = [SKColor blackColor];
+    scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame),
+                                        CGRectGetMidY(self.frame));
+    [self addChild:scoreLabel];
 
     
 }
