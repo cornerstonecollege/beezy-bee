@@ -27,8 +27,6 @@
                                    CGRectGetMidY(self.frame) + 100);
     
     [self addChild:newGameLabel];
-
-    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
