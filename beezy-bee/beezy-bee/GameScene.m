@@ -8,12 +8,34 @@
 
 #import "GameScene.h"
 
+@interface GameScene () <SKPhysicsContactDelegate>
+
+@property (nonatomic) NSTimeInterval lastSentTimeInterval;
+@property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+
+@end
+
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view
 {
-    self.backgroundColor = [UIColor whiteColor];
+    [self doInit];
+    [self addPhysicsWorld];
     [self createLabels];
+}
+
+- (void) doInit
+{
+    self.backgroundColor = [UIColor whiteColor];
+    self.timerDelegateArray = [NSMutableArray array];
+    self.collisionDelegateArray = [NSMutableArray array];
+}
+
+- (void) addPhysicsWorld
+{
+    // Adding gravity to the world and making the delegate
+    self.physicsWorld.gravity = CGVectorMake(0,0);
+    self.physicsWorld.contactDelegate = self;
 }
 
 // create label
@@ -47,10 +69,12 @@
     [self addChild:scoreLabel];
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     /* Called when a touch begins */
     
-    for (UITouch *touch in touches) {
+    for (UITouch *touch in touches)
+    {
         __unused CGPoint location = [touch locationInNode:self];
         
         /*SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
@@ -67,8 +91,36 @@
     }
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+- (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast
+{
+    self.lastSentTimeInterval += timeSinceLast;
+    if (self.lastSentTimeInterval > 1)
+    {
+        self.lastSentTimeInterval = 0;
+        for (id<GameSceneTimerDelegate> obj in self.timerDelegateArray)
+        {
+            if ([obj respondsToSelector:@selector(didUpdateTimer)])
+            {
+                [obj didUpdateTimer];
+            }
+        }
+    }
+}
+
+- (void)update:(NSTimeInterval)currentTime {
+    // Handle time delta.
+    // If we drop below 60fps, we still want everything to move the same distance.
+    CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
+    self.lastUpdateTimeInterval = currentTime;
+    // more than a second since last update
+    if (timeSinceLast > 1)
+    {
+        timeSinceLast = 1.0 / 60.0;
+        self.lastUpdateTimeInterval = currentTime;
+    }
+    
+    [self updateWithTimeSinceLastUpdate:timeSinceLast];
+    
 }
 
 @end
