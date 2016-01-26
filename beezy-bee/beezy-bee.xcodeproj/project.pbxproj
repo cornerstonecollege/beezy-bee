@@ -1,0 +1,319 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		081205FA1C56FA94000CD428 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 081205F91C56FA94000CD428 /* main.m */; };
+		081205FD1C56FA94000CD428 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 081205FC1C56FA94000CD428 /* AppDelegate.m */; };
+		081206001C56FA94000CD428 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 081205FF1C56FA94000CD428 /* GameScene.m */; };
+		081206021C56FA94000CD428 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 081206011C56FA94000CD428 /* GameScene.sks */; };
+		081206051C56FA94000CD428 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 081206041C56FA94000CD428 /* GameViewController.m */; };
+		081206081C56FA94000CD428 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081206061C56FA94000CD428 /* Main.storyboard */; };
+		0812060A1C56FA94000CD428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 081206091C56FA94000CD428 /* Assets.xcassets */; };
+		0812060D1C56FA94000CD428 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0812060B1C56FA94000CD428 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		081205F51C56FA94000CD428 /* beezy-bee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "beezy-bee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		081205F91C56FA94000CD428 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		081205FB1C56FA94000CD428 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		081205FC1C56FA94000CD428 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		081205FE1C56FA94000CD428 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		081205FF1C56FA94000CD428 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		081206011C56FA94000CD428 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		081206031C56FA94000CD428 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		081206041C56FA94000CD428 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		081206071C56FA94000CD428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		081206091C56FA94000CD428 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0812060C1C56FA94000CD428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0812060E1C56FA94000CD428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		081205F21C56FA94000CD428 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		081205EC1C56FA93000CD428 = {
+			isa = PBXGroup;
+			children = (
+				081205F71C56FA94000CD428 /* beezy-bee */,
+				081205F61C56FA94000CD428 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		081205F61C56FA94000CD428 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				081205F51C56FA94000CD428 /* beezy-bee.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		081205F71C56FA94000CD428 /* beezy-bee */ = {
+			isa = PBXGroup;
+			children = (
+				081205FB1C56FA94000CD428 /* AppDelegate.h */,
+				081205FC1C56FA94000CD428 /* AppDelegate.m */,
+				081205FE1C56FA94000CD428 /* GameScene.h */,
+				081205FF1C56FA94000CD428 /* GameScene.m */,
+				081206011C56FA94000CD428 /* GameScene.sks */,
+				081206031C56FA94000CD428 /* GameViewController.h */,
+				081206041C56FA94000CD428 /* GameViewController.m */,
+				081206061C56FA94000CD428 /* Main.storyboard */,
+				081206091C56FA94000CD428 /* Assets.xcassets */,
+				0812060B1C56FA94000CD428 /* LaunchScreen.storyboard */,
+				0812060E1C56FA94000CD428 /* Info.plist */,
+				081205F81C56FA94000CD428 /* Supporting Files */,
+			);
+			path = "beezy-bee";
+			sourceTree = "<group>";
+		};
+		081205F81C56FA94000CD428 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				081205F91C56FA94000CD428 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		081205F41C56FA94000CD428 /* beezy-bee */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 081206111C56FA94000CD428 /* Build configuration list for PBXNativeTarget "beezy-bee" */;
+			buildPhases = (
+				081205F11C56FA94000CD428 /* Sources */,
+				081205F21C56FA94000CD428 /* Frameworks */,
+				081205F31C56FA94000CD428 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "beezy-bee";
+			productName = "beezy-bee";
+			productReference = 081205F51C56FA94000CD428 /* beezy-bee.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		081205ED1C56FA93000CD428 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Ideia do Luiz";
+				TargetAttributes = {
+					081205F41C56FA94000CD428 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 081205F01C56FA94000CD428 /* Build configuration list for PBXProject "beezy-bee" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 081205EC1C56FA93000CD428;
+			productRefGroup = 081205F61C56FA94000CD428 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				081205F41C56FA94000CD428 /* beezy-bee */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		081205F31C56FA94000CD428 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				081206021C56FA94000CD428 /* GameScene.sks in Resources */,
+				0812060D1C56FA94000CD428 /* LaunchScreen.storyboard in Resources */,
+				0812060A1C56FA94000CD428 /* Assets.xcassets in Resources */,
+				081206081C56FA94000CD428 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		081205F11C56FA94000CD428 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				081206051C56FA94000CD428 /* GameViewController.m in Sources */,
+				081205FD1C56FA94000CD428 /* AppDelegate.m in Sources */,
+				081206001C56FA94000CD428 /* GameScene.m in Sources */,
+				081205FA1C56FA94000CD428 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		081206061C56FA94000CD428 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				081206071C56FA94000CD428 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0812060B1C56FA94000CD428 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0812060C1C56FA94000CD428 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0812060F1C56FA94000CD428 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		081206101C56FA94000CD428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		081206121C56FA94000CD428 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "beezy-bee/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.beezy-bee";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		081206131C56FA94000CD428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "beezy-bee/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.beezy-bee";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		081205F01C56FA94000CD428 /* Build configuration list for PBXProject "beezy-bee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0812060F1C56FA94000CD428 /* Debug */,
+				081206101C56FA94000CD428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		081206111C56FA94000CD428 /* Build configuration list for PBXNativeTarget "beezy-bee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				081206121C56FA94000CD428 /* Debug */,
+				081206131C56FA94000CD428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 081205ED1C56FA93000CD428 /* Project object */;
+}
