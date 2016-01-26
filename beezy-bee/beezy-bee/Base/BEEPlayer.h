@@ -10,4 +10,6 @@
 
 @interface BEEPlayer : BEEBaseObject
 
+// main character
+
 @end

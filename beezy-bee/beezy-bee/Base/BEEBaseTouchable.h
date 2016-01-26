@@ -10,4 +10,7 @@
 
 @interface BEEBaseTouchable : BEEBaseObject
 
+// all the monsters and items are going to be touchable, because they are sprites that
+// change the app's behavior depending on the touch of the player.
+
 @end
