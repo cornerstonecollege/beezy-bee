@@ -10,25 +10,34 @@
 
 @implementation GameScene
 
--(void)didMoveToView:(SKView *)view {
+-(void)didMoveToView:(SKView *)view
+{
+    self.backgroundColor = [UIColor whiteColor];
+    [self createLabels];
+}
+
+- (void) createLabels
+{
     /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    SKLabelNode *newGameLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    newGameLabel.text = @"New Game";
+    newGameLabel.fontSize = 45;
+    newGameLabel.fontColor = [SKColor blackColor];
+    newGameLabel.position = CGPointMake(CGRectGetMidX(self.frame),
+                                   CGRectGetMidY(self.frame) + 100);
     
-    myLabel.text = @"Settings";
-    myLabel.fontSize = 45;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
+    [self addChild:newGameLabel];
+
     
-    [self addChild:myLabel];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
     for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
+        __unused CGPoint location = [touch locationInNode:self];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+        /*SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
         
         sprite.xScale = 0.5;
         sprite.yScale = 0.5;
@@ -38,7 +47,7 @@
         
         [sprite runAction:[SKAction repeatActionForever:action]];
         
-        [self addChild:sprite];
+        [self addChild:sprite];*/
     }
 }
 
