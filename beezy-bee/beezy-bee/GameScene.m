@@ -7,10 +7,8 @@
 //
 
 #import "GameScene.h"
-#import "BEESessionHelper.h"
 #import "BEEBaseTouchable.h"
-#import "BEEMonster.h"
-#import "BEEPlayer.h"
+#import "BEEMainView.h"
 
 @interface GameScene () <SKPhysicsContactDelegate>
 
@@ -25,7 +23,7 @@
 {
     [self doInit];
     [self addPhysicsWorld];
-    [self createLabels];
+    [[BEEMainView sharedInstance] createMenuWithParentScene:self];
 }
 
 - (void) doInit
@@ -39,46 +37,6 @@
     // Adding gravity to the world and making the delegate
     self.physicsWorld.gravity = CGVectorMake(0,0);
     self.physicsWorld.contactDelegate = self;
-}
-
-// create label
-- (void) createLabels
-{
-    // Setup Start
-    SKLabelNode *newGameLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    newGameLabel.text = [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"new_game"];
-    newGameLabel.fontSize = 45;
-    newGameLabel.fontColor = [SKColor blackColor];
-    newGameLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                        CGRectGetMidY(self.frame) + 100);
-    [self addChild:newGameLabel];
-    
-    // Setup Setting
-    SKLabelNode *settingsLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    settingsLabel.text = @"Settings";
-    settingsLabel.fontSize = 45;
-    settingsLabel.fontColor = [SKColor blackColor];
-    settingsLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame) - 100);
-    [self addChild:settingsLabel];
-    
-    // Setup Score
-    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    scoreLabel.text = @"Score";
-    scoreLabel.fontSize = 45;
-    scoreLabel.fontColor = [SKColor blackColor];
-    scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                        CGRectGetMidY(self.frame));
-    [self addChild:scoreLabel];
-    
-    BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"Spaceship" position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame) - 100) andParentScene:self];
-    player.yScale = 0.3;
-    player.xScale = 0.3;
-    
-    //BEEMonster *monster = [[BEEMonster alloc] initWithImageNamed:@"Spaceship" position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame) - 100) andParentScene:self];
-    //monster.yScale = 0.3;
-    //monster.xScale = 0.3;
-    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
