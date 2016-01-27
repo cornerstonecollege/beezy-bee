@@ -24,6 +24,7 @@
     {
         self.physicsBody.categoryBitMask = BEE_MONSTER_MASK;
         self.physicsBody.contactTestBitMask = BEE_PLAYER_MASK;
+        
     }
     
     return self;

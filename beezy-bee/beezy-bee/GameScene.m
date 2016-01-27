@@ -9,6 +9,8 @@
 #import "GameScene.h"
 #import "BEESessionHelper.h"
 #import "BEEBaseTouchable.h"
+#import "BEEMonster.h"
+#import "BEEPlayer.h"
 
 @interface GameScene () <SKPhysicsContactDelegate>
 
@@ -68,6 +70,15 @@
     scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame),
                                         CGRectGetMidY(self.frame));
     [self addChild:scoreLabel];
+    
+    BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"Spaceship" position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame) - 100) andParentScene:self];
+    player.yScale = 0.3;
+    player.xScale = 0.3;
+    
+    //BEEMonster *monster = [[BEEMonster alloc] initWithImageNamed:@"Spaceship" position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame) - 100) andParentScene:self];
+    //monster.yScale = 0.3;
+    //monster.xScale = 0.3;
+    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -135,7 +146,7 @@
     else if (playerBody && itemBody)
     {
         if (self.collisionDelegate && [self.collisionDelegate respondsToSelector:@selector(player:DidCollideWithItem:)])
-            [self.collisionDelegate player:playerBody DidCollideWithMonster:itemBody];
+            [self.collisionDelegate player:playerBody DidCollideWithItem:itemBody];
     }
     
     // otherwise ignore

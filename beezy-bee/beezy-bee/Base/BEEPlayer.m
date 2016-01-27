@@ -33,7 +33,9 @@
 
 - (void)didTap
 {
-    NSLog(@"tap");
+    SKAction * actionMove = [SKAction moveTo:CGPointMake(self.position.x, self.position.y + 10) duration:0.2];
+    
+    [self runAction:actionMove];
 }
 
 @end
