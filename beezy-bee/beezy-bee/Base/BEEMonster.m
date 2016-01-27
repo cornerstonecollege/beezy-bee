@@ -10,6 +10,12 @@
 
 @implementation BEEMonster
 
+- (instancetype)init
+{
+    [NSException raise:@"Wrong initializer" format:@"Use initWithImageNamed:position:andParentScene:"];
+    return nil;
+}
+
 - (instancetype) initWithImageNamed:(NSString *)imageNamed position:(CGPoint)pos andParentScene:(SKScene *)parent
 {
     self = [super initWithImageNamed:imageNamed position:pos andParentScene:parent];
@@ -18,6 +24,7 @@
     {
         self.physicsBody.categoryBitMask = BEE_MONSTER_MASK;
         self.physicsBody.contactTestBitMask = BEE_PLAYER_MASK;
+        
     }
     
     return self;

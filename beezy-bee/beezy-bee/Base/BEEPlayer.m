@@ -10,15 +10,32 @@
 
 @implementation BEEPlayer
 
+- (instancetype)init
+{
+    [NSException raise:@"Wrong initializer" format:@"Use [BEEPlayer shareInstance]"];
+    return nil;
+}
+
 - (instancetype) initWithImageNamed:(NSString *)imageNamed position:(CGPoint)pos andParentScene:(SKScene *)parent
 {
     self = [super initWithImageNamed:imageNamed position:pos andParentScene:parent];
     
-    //if (self)
-    //{
-    //}
+    if (self)
+    {
+        if ([parent isKindOfClass:[GameScene class]])
+        {
+            ((GameScene *)parent).eventsDelegate = self;
+        }
+    }
     
     return self;
+}
+
+- (void)didTap
+{
+    SKAction * actionMove = [SKAction moveTo:CGPointMake(self.position.x, self.position.y + 10) duration:0.2];
+    
+    [self runAction:actionMove];
 }
 
 @end

@@ -27,6 +27,7 @@
 		5E9E66C61C58332B0054CB3D /* player_special_score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9E66C21C58332B0054CB3D /* player_special_score.mp3 */; };
 		68A0DAE91C58231A000C7297 /* BEESessionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0DAE81C58231A000C7297 /* BEESessionHelper.m */; };
 		68A0DAEB1C582378000C7297 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68A0DAEA1C582378000C7297 /* Strings.strings */; };
+		68A0DAEF1C58620B000C7297 /* BEEMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0DAEE1C58620B000C7297 /* BEEMainView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,8 @@
 		68A0DAE71C58231A000C7297 /* BEESessionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEESessionHelper.h; path = Utilities/BEESessionHelper.h; sourceTree = "<group>"; };
 		68A0DAE81C58231A000C7297 /* BEESessionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEESessionHelper.m; path = Utilities/BEESessionHelper.m; sourceTree = "<group>"; };
 		68A0DAEA1C582378000C7297 /* Strings.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
+		68A0DAED1C58620B000C7297 /* BEEMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEEMainView.h; sourceTree = "<group>"; };
+		68A0DAEE1C58620B000C7297 /* BEEMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEEMainView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,7 @@
 		081205F71C56FA94000CD428 /* beezy-bee */ = {
 			isa = PBXGroup;
 			children = (
+				68A0DAEC1C5861A8000C7297 /* Views */,
 				5E9E66BE1C58322A0054CB3D /* Audio */,
 				68A0DAE61C5822E8000C7297 /* Utilities */,
 				1C4545641C571B9B00321192 /* Base */,
@@ -157,6 +161,15 @@
 				68A0DAE81C58231A000C7297 /* BEESessionHelper.m */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		68A0DAEC1C5861A8000C7297 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				68A0DAED1C58620B000C7297 /* BEEMainView.h */,
+				68A0DAEE1C58620B000C7297 /* BEEMainView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +257,7 @@
 				081205FD1C56FA94000CD428 /* AppDelegate.m in Sources */,
 				68A0DAE91C58231A000C7297 /* BEESessionHelper.m in Sources */,
 				1C4545761C5722AF00321192 /* BEEItem.m in Sources */,
+				68A0DAEF1C58620B000C7297 /* BEEMainView.m in Sources */,
 				081206001C56FA94000CD428 /* GameScene.m in Sources */,
 				1C45456D1C571F7000321192 /* BEEBaseTouchable.m in Sources */,
 				081205FA1C56FA94000CD428 /* main.m in Sources */,

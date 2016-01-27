@@ -7,8 +7,9 @@
 //
 
 #import "BEEBaseTouchable.h"
+#import "GameScene.h"
 
-@interface BEEPlayer : BEEBaseTouchable
+@interface BEEPlayer : BEEBaseTouchable <GameSceneEvents>
 
 
 @end

@@ -10,6 +10,17 @@
 
 @interface BEESessionHelper : NSObject
 
+typedef enum
+{
+    BST_MAIN,
+    BST_GAME,
+    BST_SETTINGS,
+    BST_SCORE,
+}BEE_SCREEN_TYPE;
+
+
+@property (nonatomic) BEE_SCREEN_TYPE currentScreen;
+
 + (instancetype) sharedInstance;
 - (NSString *) getLocalizedStringForName:(NSString *)stringName;
 

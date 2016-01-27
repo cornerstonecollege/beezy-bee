@@ -7,7 +7,8 @@
 //
 
 #import "GameScene.h"
-#import "BEESessionHelper.h"
+#import "BEEBaseTouchable.h"
+#import "BEEMainView.h"
 
 @interface GameScene () <SKPhysicsContactDelegate>
 
@@ -22,14 +23,13 @@
 {
     [self doInit];
     [self addPhysicsWorld];
-    [self createLabels];
+    [[BEEMainView sharedInstance] createMenuWithParentScene:self];
 }
 
 - (void) doInit
 {
     self.backgroundColor = [UIColor whiteColor];
     self.timerDelegateArray = [NSMutableArray array];
-    self.collisionDelegateArray = [NSMutableArray array];
 }
 
 - (void) addPhysicsWorld
@@ -39,57 +39,15 @@
     self.physicsWorld.contactDelegate = self;
 }
 
-// create label
-- (void) createLabels
-{
-    // Setup Start
-    SKLabelNode *newGameLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    newGameLabel.text = [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"new_game"];
-    newGameLabel.fontSize = 45;
-    newGameLabel.fontColor = [SKColor blackColor];
-    newGameLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                        CGRectGetMidY(self.frame) + 100);
-    [self addChild:newGameLabel];
-    
-    // Setup Setting
-    SKLabelNode *settingsLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    settingsLabel.text = @"Settings";
-    settingsLabel.fontSize = 45;
-    settingsLabel.fontColor = [SKColor blackColor];
-    settingsLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame) - 100);
-    [self addChild:settingsLabel];
-    
-    // Setup Score
-    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    scoreLabel.text = @"Score";
-    scoreLabel.fontSize = 45;
-    scoreLabel.fontColor = [SKColor blackColor];
-    scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                        CGRectGetMidY(self.frame));
-    [self addChild:scoreLabel];
-}
-
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     /* Called when a touch begins */
     
-    for (UITouch *touch in touches)
-    {
-        __unused CGPoint location = [touch locationInNode:self];
-        
-        /*SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];*/
-    }
+    //for (UITouch *touch in touches)
+    //{
+    if (self.eventsDelegate && [self.eventsDelegate respondsToSelector:@selector(didTap)])
+        [self.eventsDelegate didTap];
+    //}
 }
 
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast
@@ -122,6 +80,34 @@
     
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
     
+}
+
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
+    SKPhysicsBody *playerBody = nil;
+    playerBody = (contact.bodyA.categoryBitMask & BEE_PLAYER_MASK) != 0 ? contact.bodyA : playerBody;
+    playerBody = (contact.bodyB.categoryBitMask & BEE_PLAYER_MASK) != 0 ? contact.bodyB : playerBody;
+    
+    SKPhysicsBody *monsterBody = nil;
+    monsterBody = (contact.bodyA.categoryBitMask & BEE_MONSTER_MASK) != 0 ? contact.bodyA : monsterBody;
+    monsterBody = (contact.bodyB.categoryBitMask & BEE_MONSTER_MASK) != 0 ? contact.bodyB : monsterBody;
+    
+    SKPhysicsBody *itemBody = nil;
+    itemBody = (contact.bodyA.categoryBitMask & BEE_ITEM_MASK) != 0 ? contact.bodyA : itemBody;
+    itemBody = (contact.bodyB.categoryBitMask & BEE_ITEM_MASK) != 0 ? contact.bodyB : itemBody;
+    
+    if (playerBody && monsterBody)
+    {
+        if (self.collisionDelegate && [self.collisionDelegate respondsToSelector:@selector(player:DidCollideWithMonster:)])
+            [self.collisionDelegate player:playerBody DidCollideWithMonster:monsterBody];
+    }
+    else if (playerBody && itemBody)
+    {
+        if (self.collisionDelegate && [self.collisionDelegate respondsToSelector:@selector(player:DidCollideWithItem:)])
+            [self.collisionDelegate player:playerBody DidCollideWithItem:itemBody];
+    }
+    
+    // otherwise ignore
 }
 
 @end

@@ -28,7 +28,7 @@
 
 - (instancetype) init
 {
-    [NSException raise:@"Singleton" format:@"Use +[SessionHelper sharedInstance]"];
+    [NSException raise:@"Singleton" format:@"Use [BEESessionHelper sharedInstance]"];
     return nil;
 }
 
