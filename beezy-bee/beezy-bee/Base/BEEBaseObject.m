@@ -10,12 +10,6 @@
 
 @implementation BEEBaseObject
 
-- (instancetype) init
-{
-    [NSException raise:@"Wrong initializer" format:@"Use initWithImageNamed:position:andParentScene:"];
-    return nil;
-}
-
 - (instancetype)initWithImageNamed:(NSString *)name
 {
     [NSException raise:@"Wrong initializer" format:@"Use initWithImageNamed:position:andParentScene:"];

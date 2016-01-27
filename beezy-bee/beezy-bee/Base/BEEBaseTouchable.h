@@ -7,8 +7,9 @@
 //
 
 #import "BEEBaseObject.h"
+#import "GameScene.h"
 
-@interface BEEBaseTouchable : BEEBaseObject
+@interface BEEBaseTouchable : BEEBaseObject <GameSceneCollisionDelegate>
 
 #define BEE_PLAYER_MASK 0x1 << 0
 #define BEE_MONSTER_MASK 0x1 << 1

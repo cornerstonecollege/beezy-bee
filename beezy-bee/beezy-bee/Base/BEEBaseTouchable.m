@@ -10,6 +10,20 @@
 
 @implementation BEEBaseTouchable
 
+BOOL hasSharedInstanceBeenCreated;
+
++ (instancetype) sharedInstance
+{
+    static BEEBaseTouchable *sharedStore;
+    
+    if (!sharedStore)
+    {
+        sharedStore = [[self alloc] init];
+        hasSharedInstanceBeenCreated = YES;
+    }
+    
+    return sharedStore;
+}
 
 - (instancetype) initWithImageNamed:(NSString *)imageNamed position:(CGPoint)pos andParentScene:(SKScene *)parent
 {
@@ -24,9 +38,29 @@
         self.physicsBody = [SKPhysicsBody bodyWithTexture:self.texture size:self.size];
         self.physicsBody.dynamic = YES;
         self.physicsBody.collisionBitMask = 0;
+        
+        // set the sharedInstance to the delegate collision
+        if ([parent isKindOfClass:[GameScene class]])
+        {
+            if (!hasSharedInstanceBeenCreated)
+                ((GameScene *)parent).collisionDelegate = [BEEBaseTouchable sharedInstance];
+        }
     }
     
     return self;
+}
+
+- (void)player:(SKPhysicsBody *)player DidCollideWithItem:(SKPhysicsBody *)item
+{
+    // delete them item from the screen
+    [item.node removeFromParent];
+    
+    // make score
+}
+
+- (void)player:(SKPhysicsBody *)player DidCollideWithMonster:(SKPhysicsBody *)monster
+{
+    // game over
 }
 
 @end
