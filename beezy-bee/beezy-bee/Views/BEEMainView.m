@@ -42,7 +42,6 @@
     if (self)
     {
         _objArray = [NSMutableArray array];
-        [BEESessionHelper sharedInstance].currentScreen = BST_MAIN;
     }
     
     return self;
@@ -50,6 +49,8 @@
 
 - (void) createMenuWithParentScene:(SKScene *)parent
 {
+    [BEESessionHelper sharedInstance].currentScreen = BST_MAIN;
+    
     [self createLabelWithParentScene:parent keyForName:@"new_game" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) + 100)];
     
     [self createLabelWithParentScene:parent keyForName:@"settings" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) - 100)];
@@ -58,9 +59,9 @@
     
     
     // That is your player
-    BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"Spaceship" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame) - 100) andParentScene:parent];
+    /*BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"Spaceship" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame) - 100) andParentScene:parent];
     player.yScale = 0.3;
-    player.xScale = 0.3;
+    player.xScale = 0.3;*/
 }
 
 - (void) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName andPosition:(CGPoint)position

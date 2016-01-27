@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "BEEBaseTouchable.h"
 #import "BEEMainView.h"
+#import "BEESessionHelper.h"
 
 @interface GameScene () <SKPhysicsContactDelegate>
 
@@ -43,11 +44,51 @@
 {
     /* Called when a touch begins */
     
-    //for (UITouch *touch in touches)
-    //{
-    if (self.eventsDelegate && [self.eventsDelegate respondsToSelector:@selector(didTap)])
-        [self.eventsDelegate didTap];
-    //}
+    UITouch *touch = [touches anyObject];
+    
+    BEE_SCREEN_TYPE currentScreen = [BEESessionHelper sharedInstance].currentScreen;
+    
+    if (currentScreen == BST_MAIN)
+    {
+        [self handleMain:touch];
+    }
+    else if (currentScreen == BST_SCORE)
+    {
+        
+    }
+    else if (currentScreen == BST_SETTINGS)
+    {
+        
+    }
+    else if (currentScreen == BST_GAME)
+    {
+        if (self.eventsDelegate && [self.eventsDelegate respondsToSelector:@selector(didTap)])
+            [self.eventsDelegate didTap];
+    }
+}
+
+- (void) handleMain:(UITouch *)touch
+{
+    CGPoint pointScr = [touch locationInNode:self];
+    SKNode *nodeTouched = [self nodeAtPoint:pointScr];
+    
+    if ([nodeTouched isKindOfClass:[SKLabelNode class]])
+    {
+        SKLabelNode *label = (SKLabelNode *) nodeTouched;
+        if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"new_game"])
+        {
+            NSLog(@"new game");
+        }
+        else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"score"])
+        {
+            NSLog(@"score");
+        }
+        else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"settings"])
+        {
+            NSLog(@"settings");
+        }
+    }
+
 }
 
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast
