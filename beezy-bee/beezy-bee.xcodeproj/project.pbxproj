@@ -20,6 +20,7 @@
 		1C45456D1C571F7000321192 /* BEEBaseTouchable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C45456C1C571F7000321192 /* BEEBaseTouchable.m */; };
 		1C4545731C571FBE00321192 /* BEEMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4545721C571FBE00321192 /* BEEMonster.m */; };
 		1C4545761C5722AF00321192 /* BEEItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4545751C5722AF00321192 /* BEEItem.m */; };
+		5E6A51F41C596CA700084A0C /* bee_fly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E6A51F31C596CA700084A0C /* bee_fly.mp3 */; };
 		5E9E66C31C58332B0054CB3D /* player_hit_ground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9E66BF1C58332B0054CB3D /* player_hit_ground.mp3 */; };
 		5E9E66C41C58332B0054CB3D /* player_hit_monster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9E66C01C58332B0054CB3D /* player_hit_monster.mp3 */; };
 		5E9E66C51C58332B0054CB3D /* player_score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9E66C11C58332B0054CB3D /* player_score.mp3 */; };
@@ -52,6 +53,7 @@
 		1C4545721C571FBE00321192 /* BEEMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEMonster.m; path = Base/BEEMonster.m; sourceTree = "<group>"; };
 		1C4545741C5722AF00321192 /* BEEItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEItem.h; path = Base/BEEItem.h; sourceTree = "<group>"; };
 		1C4545751C5722AF00321192 /* BEEItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEItem.m; path = Base/BEEItem.m; sourceTree = "<group>"; };
+		5E6A51F31C596CA700084A0C /* bee_fly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bee_fly.mp3; path = Audio/bee_fly.mp3; sourceTree = "<group>"; };
 		5E9E66BF1C58332B0054CB3D /* player_hit_ground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = player_hit_ground.mp3; path = Audio/player_hit_ground.mp3; sourceTree = "<group>"; };
 		5E9E66C01C58332B0054CB3D /* player_hit_monster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = player_hit_monster.mp3; path = Audio/player_hit_monster.mp3; sourceTree = "<group>"; };
 		5E9E66C11C58332B0054CB3D /* player_score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = player_score.mp3; path = Audio/player_score.mp3; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				5E9E66C01C58332B0054CB3D /* player_hit_monster.mp3 */,
 				5E9E66C11C58332B0054CB3D /* player_score.mp3 */,
 				5E9E66C21C58332B0054CB3D /* player_special_score.mp3 */,
+				5E6A51F31C596CA700084A0C /* bee_fly.mp3 */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				68A0DAEB1C582378000C7297 /* Strings.strings in Resources */,
 				5E9E66C61C58332B0054CB3D /* player_special_score.mp3 in Resources */,
 				5E9E66C31C58332B0054CB3D /* player_hit_ground.mp3 in Resources */,
+				5E6A51F41C596CA700084A0C /* bee_fly.mp3 in Resources */,
 				5E9E66C51C58332B0054CB3D /* player_score.mp3 in Resources */,
 				081206081C56FA94000CD428 /* Main.storyboard in Resources */,
 			);
