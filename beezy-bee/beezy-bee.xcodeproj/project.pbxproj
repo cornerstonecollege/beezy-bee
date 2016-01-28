@@ -25,6 +25,7 @@
 		5E9E66C41C58332B0054CB3D /* player_hit_monster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9E66C01C58332B0054CB3D /* player_hit_monster.mp3 */; };
 		5E9E66C51C58332B0054CB3D /* player_score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9E66C11C58332B0054CB3D /* player_score.mp3 */; };
 		5E9E66C61C58332B0054CB3D /* player_special_score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9E66C21C58332B0054CB3D /* player_special_score.mp3 */; };
+		5ED15A191C5AD6AD00641C9E /* background_one.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5ED15A181C5AD6AD00641C9E /* background_one.mp3 */; };
 		68A0DAE91C58231A000C7297 /* BEESessionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0DAE81C58231A000C7297 /* BEESessionHelper.m */; };
 		68A0DAEB1C582378000C7297 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68A0DAEA1C582378000C7297 /* Strings.strings */; };
 		68F7A0921C59758F0099D836 /* BEEMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0911C59758F0099D836 /* BEEMainView.m */; };
@@ -62,6 +63,7 @@
 		5E9E66C01C58332B0054CB3D /* player_hit_monster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = player_hit_monster.mp3; path = Audio/player_hit_monster.mp3; sourceTree = "<group>"; };
 		5E9E66C11C58332B0054CB3D /* player_score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = player_score.mp3; path = Audio/player_score.mp3; sourceTree = "<group>"; };
 		5E9E66C21C58332B0054CB3D /* player_special_score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = player_special_score.mp3; path = Audio/player_special_score.mp3; sourceTree = "<group>"; };
+		5ED15A181C5AD6AD00641C9E /* background_one.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = background_one.mp3; path = Audio/background_one.mp3; sourceTree = "<group>"; };
 		68A0DAE71C58231A000C7297 /* BEESessionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEESessionHelper.h; path = Utilities/BEESessionHelper.h; sourceTree = "<group>"; };
 		68A0DAE81C58231A000C7297 /* BEESessionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEESessionHelper.m; path = Utilities/BEESessionHelper.m; sourceTree = "<group>"; };
 		68A0DAEA1C582378000C7297 /* Strings.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		5E9E66BE1C58322A0054CB3D /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				5ED15A181C5AD6AD00641C9E /* background_one.mp3 */,
 				5E9E66BF1C58332B0054CB3D /* player_hit_ground.mp3 */,
 				5E9E66C01C58332B0054CB3D /* player_hit_monster.mp3 */,
 				5E9E66C11C58332B0054CB3D /* player_score.mp3 */,
@@ -248,6 +251,7 @@
 				081206021C56FA94000CD428 /* GameScene.sks in Resources */,
 				0812060D1C56FA94000CD428 /* LaunchScreen.storyboard in Resources */,
 				0812060A1C56FA94000CD428 /* Assets.xcassets in Resources */,
+				5ED15A191C5AD6AD00641C9E /* background_one.mp3 in Resources */,
 				5E9E66C41C58332B0054CB3D /* player_hit_monster.mp3 in Resources */,
 				68A0DAEB1C582378000C7297 /* Strings.strings in Resources */,
 				5E9E66C61C58332B0054CB3D /* player_special_score.mp3 in Resources */,
