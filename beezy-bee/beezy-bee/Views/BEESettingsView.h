@@ -12,5 +12,6 @@
 
 + (instancetype) sharedInstance;
 - (void) createSettingsWithParentScene:(SKScene *)parent;
+- (void) handleSettings:(UITouch *)touch andParentScene:(SKScene *)parent;
 
 @end

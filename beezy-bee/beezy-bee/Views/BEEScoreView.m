@@ -7,6 +7,7 @@
 //
 
 #import "BEEScoreView.h"
+#import "BEEMainView.h"
 #import "BEESessionHelper.h"
 
 @interface BEEScoreView ()
@@ -48,7 +49,55 @@
 - (void) createScoreWithParentScene:(SKScene *)parent
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_SCORE;
+    SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
+    [self setLabelNode:backLabel position:CGPointMake(backLabel.frame.size.width / 2 + 10, parent.size.height - backLabel.frame.size.height - 10)];
+}
+
+- (SKLabelNode *) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName
+{
+    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"font_style"];
+    label.text = [[BEESessionHelper sharedInstance] getLocalizedStringForName:keyForName];
+    label.fontSize = 25;
+    label.fontColor = [SKColor blackColor];
+    [parent addChild:label];
     
+    __weak SKLabelNode *weakLabel = label;
+    [self.objArray addObject:weakLabel];
+    
+    return label;
+}
+
+- (void) setLabelNode:(SKLabelNode *)label position:(CGPoint)position
+{
+    label.position = position;
+}
+
+- (void) handleScore:(UITouch *)touch andParentScene:(SKScene *)parent
+{
+    CGPoint pointScr = [touch locationInNode:parent];
+    SKNode *nodeTouched = [parent nodeAtPoint:pointScr];
+    
+    if ([nodeTouched isKindOfClass:[SKLabelNode class]])
+    {
+        SKLabelNode *label = (SKLabelNode *) nodeTouched;
+        
+        if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"back"])
+        {
+            [self deleteObjectsFromParent];
+            [[BEEMainView sharedInstance] createMenuWithParentScene:parent];
+        }
+    }
+}
+
+- (void) deleteObjectsFromParent
+{
+    if ([self.objArray count] > 0)
+    {
+        for (SKLabelNode *obj in self.objArray)
+            [obj removeFromParent];
+        
+        self.objArray = [NSMutableArray array];
+    }
 }
 
 @end

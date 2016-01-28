@@ -7,7 +7,9 @@
 //
 
 #import "BEEMainView.h"
+#import "BEESettingsView.h"
 #import "BEESessionHelper.h"
+#import "BEEScoreView.h"
 #import "BEEPlayer.h"
 #import "BEENewGameView.h"
 
@@ -52,24 +54,18 @@
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_MAIN;
     
-    [self createLabelWithParentScene:parent keyForName:@"new_game" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) + 100)];
+    [self createLabelWithParentScene:parent keyForName:@"new_game" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.35)];
     
-    [self createLabelWithParentScene:parent keyForName:@"settings" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) - 100)];
+    [self createLabelWithParentScene:parent keyForName:@"settings" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.65)];
     
     [self createLabelWithParentScene:parent keyForName:@"score" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame))];
-    
-    
-    // That is your player
-    /*BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"Spaceship" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame) - 100) andParentScene:parent];
-    player.yScale = 0.5;
-    player.xScale = 0.5;*/
-}
+    }
 
 - (void) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName andPosition:(CGPoint)position
 {
-    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"font_style"];
     label.text = [[BEESessionHelper sharedInstance] getLocalizedStringForName:keyForName];
-    label.fontSize = 45;
+    label.fontSize = 35;
     label.fontColor = [SKColor blackColor];
     label.position = position;
     [parent addChild:label];
@@ -97,21 +93,25 @@
     if ([nodeTouched isKindOfClass:[SKLabelNode class]])
     {
         SKLabelNode *label = (SKLabelNode *) nodeTouched;
-        if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"new_game"])
-        {
-            [self deleteObjectsFromParent];
-            [[BEENewGameView sharedInstance] createNewGameWithParentScene:parent];
-        }
-        else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"score"])
-        {
-            [self deleteObjectsFromParent];
-            NSLog(@"score");
-        }
-        else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"settings"])
-        {
-            [self deleteObjectsFromParent];
-            NSLog(@"settings");
-        }
+        
+        SKAction * actionMove = [SKAction moveTo:CGPointMake(label.position.x + 1000, label.position.y) duration:0.3];
+        [label runAction:actionMove completion:^{
+            if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"new_game"])
+            {
+                [self deleteObjectsFromParent];
+                [[BEENewGameView sharedInstance] createNewGameWithParentScene:parent];
+            }
+            else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"score"])
+            {
+                [self deleteObjectsFromParent];
+                [[BEEScoreView sharedInstance] createScoreWithParentScene:parent];
+            }
+            else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"settings"])
+            {
+                [self deleteObjectsFromParent];
+                [[BEESettingsView sharedInstance] createSettingsWithParentScene:parent];
+            }
+        }];
     }
     
 }
