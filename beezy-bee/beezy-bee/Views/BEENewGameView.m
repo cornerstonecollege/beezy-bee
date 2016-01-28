@@ -50,9 +50,10 @@
 - (void) createNewGameWithParentScene:(SKScene *)parent
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_GAME;
+    parent.physicsWorld.gravity = CGVectorMake( 0.0, -9.8 );
     
     //That is your player
-    BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"Spaceship" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame) - 100) andParentScene:parent];
+    BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"First-Bee" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame) - 100) andParentScene:parent];
     player.yScale = 0.5;
     player.xScale = 0.5;
     

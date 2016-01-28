@@ -12,5 +12,7 @@
 "back" = "Back";
 "font_style" = "Chalkduster";
 "audio" = "Audio";
+"stage" = "Stage";
+"character" = "Character";
 "on" = "On";
 "off" = "Off";

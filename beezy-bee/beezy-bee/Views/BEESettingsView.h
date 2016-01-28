@@ -10,6 +10,14 @@
 
 @interface BEESettingsView : NSObject
 
+typedef enum
+{
+    STAGE1,
+    STAGE2,
+}BEE_STAGE_TYPE;
+
+@property (nonatomic) BEE_STAGE_TYPE currentStage;
+
 + (instancetype) sharedInstance;
 - (void) createSettingsWithParentScene:(SKScene *)parent;
 - (void) handleSettings:(UITouch *)touch andParentScene:(SKScene *)parent;

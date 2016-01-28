@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GameScene.h"
 
-@interface BEESessionHelper : NSObject
+@interface BEESessionHelper : NSObject <GameSceneTimerDelegate>
 
 typedef enum
 {

@@ -9,6 +9,7 @@
 #import "BEESettingsView.h"
 #import "BEESessionHelper.h"
 #import "BEEMainView.h"
+#import "BEEPlayer.h"
 
 @interface BEESettingsView ()
 
@@ -49,13 +50,28 @@
 - (void) createSettingsWithParentScene:(SKScene *)parent
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_SETTINGS;
+    parent.physicsWorld.gravity = CGVectorMake(0,0);
+    
     SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
+    SKLabelNode *audioLabel = [self createLabelWithParentScene:parent keyForName:@"audio"];
+    SKLabelNode *stageLabel = [self createLabelWithParentScene:parent keyForName:@"stage"];
+    SKLabelNode *characterLabel = [self createLabelWithParentScene:parent keyForName:@"character"];
+    
+    BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"First-Bee" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame) - 100) andParentScene:parent];
+    player.yScale = 0.5;
+    player.xScale = 0.5;
+    
     [self setLabelNode:backLabel position:CGPointMake(backLabel.frame.size.width / 2 + 10, parent.size.height - backLabel.frame.size.height - 10)];
+    [self setLabelNode:audioLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.7)];
+    [self setLabelNode:stageLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.5)];
+    [self setLabelNode:characterLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.2)];
+    
+    [self.objArray addObject:player];
 }
 
 - (SKLabelNode *) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName
 {
-    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"font_style"];
+    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:[[BEESessionHelper sharedInstance] getLocalizedStringForName:@"font_style"]];
     label.text = [[BEESessionHelper sharedInstance] getLocalizedStringForName:keyForName];
     label.fontSize = 25;
     label.fontColor = [SKColor blackColor];

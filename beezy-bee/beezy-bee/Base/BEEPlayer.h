@@ -11,5 +11,12 @@
 
 @interface BEEPlayer : BEEBaseTouchable <GameSceneEvents>
 
+typedef enum
+{
+    PLAYER1,
+    PLAYER2,
+}BEE_PLAYER_TYPE;
+
+@property (nonatomic) BEE_PLAYER_TYPE currentPlayer;
 
 @end

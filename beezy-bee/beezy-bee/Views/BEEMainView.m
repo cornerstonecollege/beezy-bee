@@ -53,6 +53,7 @@
 - (void) createMenuWithParentScene:(SKScene *)parent
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_MAIN;
+    parent.physicsWorld.gravity = CGVectorMake(0,0);
     
     [self createLabelWithParentScene:parent keyForName:@"new_game" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.35)];
     
@@ -63,7 +64,7 @@
 
 - (void) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName andPosition:(CGPoint)position
 {
-    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"font_style"];
+    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:[[BEESessionHelper sharedInstance] getLocalizedStringForName:@"font_style"]];
     label.text = [[BEESessionHelper sharedInstance] getLocalizedStringForName:keyForName];
     label.fontSize = 35;
     label.fontColor = [SKColor blackColor];

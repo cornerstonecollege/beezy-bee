@@ -26,13 +26,13 @@
 @protocol GameSceneTimerDelegate <NSObject>
 
 @required
-- (void) didUpdateTimer;
+- (void) didUpdateTimerWithParentScene:(SKScene *)gameScene;
 
 @end
 
 @interface GameScene : SKScene
 
-@property (nonatomic, weak) NSMutableArray<id<GameSceneTimerDelegate>> *timerDelegateArray;
+@property (nonatomic, strong) id<GameSceneTimerDelegate> timerDelegate;
 @property (nonatomic, weak) id<GameSceneCollisionDelegate> collisionDelegate;
 @property (nonatomic, weak) id<GameSceneEvents> eventsDelegate;
 

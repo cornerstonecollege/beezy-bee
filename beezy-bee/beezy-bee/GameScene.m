@@ -38,13 +38,12 @@
 - (void) doInit
 {
     self.backgroundColor = [UIColor whiteColor];
-    self.timerDelegateArray = [NSMutableArray array];
+    self.timerDelegate = [BEESessionHelper sharedInstance];
 }
 
 - (void) addPhysicsWorld
 {
     // Adding gravity to the world and making the delegate
-    self.physicsWorld.gravity = CGVectorMake(0,0);
     self.physicsWorld.contactDelegate = self;
 }
 
@@ -81,12 +80,9 @@
     if (self.lastSentTimeInterval > 1)
     {
         self.lastSentTimeInterval = 0;
-        for (id<GameSceneTimerDelegate> obj in self.timerDelegateArray)
+        if ([self.timerDelegate respondsToSelector:@selector(didUpdateTimerWithParentScene:)])
         {
-            if ([obj respondsToSelector:@selector(didUpdateTimer)])
-            {
-                [obj didUpdateTimer];
-            }
+            [self.timerDelegate didUpdateTimerWithParentScene:self];
         }
     }
 }

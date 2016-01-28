@@ -7,6 +7,7 @@
 //
 
 #import "BEEBaseTouchable.h"
+#import "GameScene.h"
 
 @interface BEEMonster : BEEBaseTouchable
 
