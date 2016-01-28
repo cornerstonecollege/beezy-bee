@@ -86,7 +86,6 @@
             [self deleteObjectsFromParent];
             [[BEEMainView sharedInstance] createMenuWithParentScene:parent];
         }
-        
     }
     
 }
