@@ -50,7 +50,7 @@
     
     if (currentScreen == BST_MAIN)
     {
-        [self handleMain:touch];
+        [[BEEMainView sharedInstance] handleMain:touch andParentScene:self];
     }
     else if (currentScreen == BST_SCORE)
     {
@@ -65,30 +65,6 @@
         if (self.eventsDelegate && [self.eventsDelegate respondsToSelector:@selector(didTap)])
             [self.eventsDelegate didTap];
     }
-}
-
-- (void) handleMain:(UITouch *)touch
-{
-    CGPoint pointScr = [touch locationInNode:self];
-    SKNode *nodeTouched = [self nodeAtPoint:pointScr];
-    
-    if ([nodeTouched isKindOfClass:[SKLabelNode class]])
-    {
-        SKLabelNode *label = (SKLabelNode *) nodeTouched;
-        if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"new_game"])
-        {
-            NSLog(@"new game");
-        }
-        else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"score"])
-        {
-            NSLog(@"score");
-        }
-        else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"settings"])
-        {
-            NSLog(@"settings");
-        }
-    }
-
 }
 
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast

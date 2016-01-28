@@ -28,6 +28,9 @@
 		68A0DAE91C58231A000C7297 /* BEESessionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0DAE81C58231A000C7297 /* BEESessionHelper.m */; };
 		68A0DAEB1C582378000C7297 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68A0DAEA1C582378000C7297 /* Strings.strings */; };
 		68F7A0921C59758F0099D836 /* BEEMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0911C59758F0099D836 /* BEEMainView.m */; };
+		68F7A0981C5989A00099D836 /* BEEScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0971C5989A00099D836 /* BEEScoreView.m */; };
+		68F7A0A11C598A150099D836 /* BEESettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0A01C598A150099D836 /* BEESettingsView.m */; };
+		68F7A0A41C598A4C0099D836 /* BEENewGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0A31C598A4C0099D836 /* BEENewGameView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,12 @@
 		68A0DAEA1C582378000C7297 /* Strings.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
 		68F7A0901C59758F0099D836 /* BEEMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEMainView.h; path = Views/BEEMainView.h; sourceTree = "<group>"; };
 		68F7A0911C59758F0099D836 /* BEEMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEMainView.m; path = Views/BEEMainView.m; sourceTree = "<group>"; };
+		68F7A0961C5989A00099D836 /* BEEScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEScoreView.h; path = Views/BEEScoreView.h; sourceTree = "<group>"; };
+		68F7A0971C5989A00099D836 /* BEEScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEScoreView.m; path = Views/BEEScoreView.m; sourceTree = "<group>"; };
+		68F7A09F1C598A150099D836 /* BEESettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEESettingsView.h; path = Views/BEESettingsView.h; sourceTree = "<group>"; };
+		68F7A0A01C598A150099D836 /* BEESettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEESettingsView.m; path = Views/BEESettingsView.m; sourceTree = "<group>"; };
+		68F7A0A21C598A4C0099D836 /* BEENewGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEENewGameView.h; path = Views/BEENewGameView.h; sourceTree = "<group>"; };
+		68F7A0A31C598A4C0099D836 /* BEENewGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEENewGameView.m; path = Views/BEENewGameView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +177,12 @@
 			children = (
 				68F7A0901C59758F0099D836 /* BEEMainView.h */,
 				68F7A0911C59758F0099D836 /* BEEMainView.m */,
+				68F7A0961C5989A00099D836 /* BEEScoreView.h */,
+				68F7A0971C5989A00099D836 /* BEEScoreView.m */,
+				68F7A09F1C598A150099D836 /* BEESettingsView.h */,
+				68F7A0A01C598A150099D836 /* BEESettingsView.m */,
+				68F7A0A21C598A4C0099D836 /* BEENewGameView.h */,
+				68F7A0A31C598A4C0099D836 /* BEENewGameView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -258,8 +273,11 @@
 				68A0DAE91C58231A000C7297 /* BEESessionHelper.m in Sources */,
 				1C4545761C5722AF00321192 /* BEEItem.m in Sources */,
 				68F7A0921C59758F0099D836 /* BEEMainView.m in Sources */,
+				68F7A0A11C598A150099D836 /* BEESettingsView.m in Sources */,
 				081206001C56FA94000CD428 /* GameScene.m in Sources */,
+				68F7A0981C5989A00099D836 /* BEEScoreView.m in Sources */,
 				1C45456D1C571F7000321192 /* BEEBaseTouchable.m in Sources */,
+				68F7A0A41C598A4C0099D836 /* BEENewGameView.m in Sources */,
 				081205FA1C56FA94000CD428 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

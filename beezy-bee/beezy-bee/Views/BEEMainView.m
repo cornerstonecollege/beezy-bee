@@ -9,6 +9,7 @@
 #import "BEEMainView.h"
 #import "BEESessionHelper.h"
 #import "BEEPlayer.h"
+#import "BEENewGameView.h"
 
 @interface BEEMainView ()
 
@@ -60,8 +61,8 @@
     
     // That is your player
     /*BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"Spaceship" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame) - 100) andParentScene:parent];
-    player.yScale = 0.3;
-    player.xScale = 0.3;*/
+    player.yScale = 0.5;
+    player.xScale = 0.5;*/
 }
 
 - (void) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName andPosition:(CGPoint)position
@@ -77,7 +78,7 @@
     [self.objArray addObject:weakLabel];
 }
 
-- (void) deleteLabelsFromParent
+- (void) deleteObjectsFromParent
 {
     if ([self.objArray count] > 0)
     {
@@ -86,6 +87,33 @@
     
         self.objArray = [NSMutableArray array];
     }
+}
+
+- (void) handleMain:(UITouch *)touch andParentScene:(SKScene *)parent
+{
+    CGPoint pointScr = [touch locationInNode:parent];
+    SKNode *nodeTouched = [parent nodeAtPoint:pointScr];
+    
+    if ([nodeTouched isKindOfClass:[SKLabelNode class]])
+    {
+        SKLabelNode *label = (SKLabelNode *) nodeTouched;
+        if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"new_game"])
+        {
+            [self deleteObjectsFromParent];
+            [[BEENewGameView sharedInstance] createNewGameWithParentScene:parent];
+        }
+        else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"score"])
+        {
+            [self deleteObjectsFromParent];
+            NSLog(@"score");
+        }
+        else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"settings"])
+        {
+            [self deleteObjectsFromParent];
+            NSLog(@"settings");
+        }
+    }
+    
 }
 
 @end

@@ -12,6 +12,7 @@
 
 + (instancetype) sharedInstance;
 - (void) createMenuWithParentScene:(SKScene *)parent;
-- (void) deleteLabelsFromParent;
+- (void) handleMain:(UITouch *)touch andParentScene:(SKScene *)parent;
+
 
 @end
