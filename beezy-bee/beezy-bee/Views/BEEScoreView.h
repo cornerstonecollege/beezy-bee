@@ -12,5 +12,6 @@
 
 + (instancetype) sharedInstance;
 - (void) createScoreWithParentScene:(SKScene *)parent;
+- (void) handleScore:(UITouch *)touch andParentScene:(SKScene *)parent;
 
 @end

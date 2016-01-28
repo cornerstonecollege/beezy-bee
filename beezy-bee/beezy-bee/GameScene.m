@@ -9,6 +9,8 @@
 #import "GameScene.h"
 #import "BEEBaseTouchable.h"
 #import "BEEMainView.h"
+#import "BEESettingsView.h"
+#import "BEEScoreView.h"
 #import "BEESessionHelper.h"
 
 @interface GameScene () <SKPhysicsContactDelegate>
@@ -19,6 +21,12 @@
 @end
 
 @implementation GameScene
+
+- (instancetype)initWithSize:(CGSize)size
+{
+    self = [super initWithSize:size];
+    return self;
+}
 
 -(void)didMoveToView:(SKView *)view
 {
@@ -54,11 +62,11 @@
     }
     else if (currentScreen == BST_SCORE)
     {
-        
+        [[BEEScoreView sharedInstance] handleScore:touch andParentScene:self];
     }
     else if (currentScreen == BST_SETTINGS)
     {
-        
+        [[BEESettingsView sharedInstance] handleSettings:touch andParentScene:self];
     }
     else if (currentScreen == BST_GAME)
     {

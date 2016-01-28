@@ -51,7 +51,6 @@
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_GAME;
     
-    
     //That is your player
     BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"Spaceship" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame) - 100) andParentScene:parent];
     player.yScale = 0.5;
