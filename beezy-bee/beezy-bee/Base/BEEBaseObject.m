@@ -22,6 +22,7 @@
     if (self)
     {
         self.position = pos;
+        self.name = imageNamed;
         [parent addChild:self];
     }
     

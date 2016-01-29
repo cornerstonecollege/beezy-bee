@@ -8,6 +8,12 @@
 
 #import "BEEPlayer.h"
 
+@interface BEEPlayer ()
+
+@property (nonatomic) NSDictionary *dicStrings;
+
+@end
+
 @implementation BEEPlayer
 
 - (instancetype)init
@@ -31,9 +37,30 @@
     return self;
 }
 
++ (instancetype) sharedInstance
+{
+    static BEEPlayer *sharedStore;
+    
+    if (!sharedStore)
+        sharedStore = [[self alloc] initPrivate];
+    
+    return sharedStore;
+}
+
+- (instancetype) initPrivate
+{
+    self = [super init];
+    if (self)
+    {
+        NSString *fname = [[NSBundle mainBundle] pathForResource:@"" ofType:@"strings"];
+        self.dicStrings = [NSDictionary dictionaryWithContentsOfFile:fname];
+    }
+    return self;
+}
+
 - (void)didTap
 {
-    SKAction * actionMove = [SKAction moveTo:CGPointMake(self.position.x, self.position.y + 50) duration:0.2];
+    SKAction * actionMove = [SKAction moveTo:CGPointMake(self.position.x, self.position.y + 50) duration:0.3];
     
     [self runAction:actionMove];
 }

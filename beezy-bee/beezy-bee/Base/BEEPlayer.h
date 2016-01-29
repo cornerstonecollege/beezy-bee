@@ -19,4 +19,6 @@ typedef enum
 
 @property (nonatomic) BEE_PLAYER_TYPE currentPlayer;
 
++ (instancetype) sharedInstance;
+
 @end

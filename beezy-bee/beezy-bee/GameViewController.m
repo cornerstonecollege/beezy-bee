@@ -19,8 +19,8 @@
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = NO;
     skView.showsNodeCount = NO;
-    /* Sprite Kit applies additional optimizations to improve rendering performance */
-    skView.ignoresSiblingOrder = YES;
+    /* Sprite Kit applies additional optimizations to improve rendering performance if YES */
+    skView.ignoresSiblingOrder = NO;
     
     // Create and configure the scene.
     GameScene *scene = [GameScene sceneWithSize:skView.bounds.size];
