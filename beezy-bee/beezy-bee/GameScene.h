@@ -28,6 +28,9 @@
 @required
 - (void) didUpdateTimerWithParentScene:(SKScene *)gameScene;
 
+@optional
+- (void) didUpdateParentScene:(SKScene *)gameScene;
+
 @end
 
 @interface GameScene : SKScene

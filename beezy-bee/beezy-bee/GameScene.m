@@ -101,6 +101,10 @@
     
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
     
+    if (self.timerDelegate && [self.timerDelegate respondsToSelector:@selector(didUpdateParentScene:)])
+    {
+        [self.timerDelegate didUpdateParentScene:self];
+    }
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
