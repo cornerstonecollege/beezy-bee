@@ -21,6 +21,7 @@ typedef enum
 
 
 @property (nonatomic) BEE_SCREEN_TYPE currentScreen;
+@property (nonatomic) BOOL isAudioEnabled;
 
 + (instancetype) sharedInstance;
 - (NSString *) getLocalizedStringForName:(NSString *)stringName;
