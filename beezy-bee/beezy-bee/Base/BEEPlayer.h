@@ -11,11 +11,11 @@
 
 @interface BEEPlayer : BEEBaseTouchable <GameSceneEvents>
 
-typedef enum
+typedef NS_ENUM(NSUInteger, BEE_PLAYER_TYPE)
 {
-    PLAYER1,
-    PLAYER2,
-}BEE_PLAYER_TYPE;
+    BPT_PLAYER1 = 0,
+    BPT_PLAYER2 = 1,
+};
 
 @property (nonatomic) BEE_PLAYER_TYPE currentPlayer;
 
