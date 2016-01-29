@@ -16,17 +16,22 @@
 
 @property (nonatomic) NSMutableArray *objArray;
 @property (nonatomic) NSArray *playerArray;
+@property (nonatomic) NSArray *stageArray;
 @property (nonatomic) NSInteger playerSelectedIndex;
+@property (nonatomic) NSInteger stageSelectedIndex;
 
 @end
 
 @implementation BEESettingsView
 
+#define STG_SMLX_SCALE 0.3;
+#define STG_LRGX_SCALE 0.5;
+#define STG_SMLY_SCALE 0.1;
+#define STG_LRGY_SCALE 0.2;
 #define PLY_SML_SCALE 0.7;
 #define PLY_LRG_SCALE 1;
 #define ARW_SML_SCALE 0.3;
 #define ARW_LRG_SCALE 0.5;
-
 
 SKLabelNode *audioOnLabel;
 SKLabelNode *audioOffLabel;
@@ -59,6 +64,7 @@ BEEBaseObject *arrowRight2;
     {
         _objArray = [NSMutableArray array];
         _playerArray = @[@"First-Bee", @"Item-Honey"];
+        _stageArray = @[@"Background-1", @"tmp"];
         _playerSelectedIndex = 0;
     }
     
@@ -79,7 +85,7 @@ BEEBaseObject *arrowRight2;
     
     BEEBaseObject *player = [[BEEPlayer alloc] initWithImageNamed:self.playerArray[self.playerSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
     
-    //BEEBaseObject *stage = [[BEEPlayer alloc] initWithImageNamed:self.playerArray[self.playerSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.9) - 120) andParentScene:parent];
+    BEEBaseObject *stage = [[BEEBaseObject alloc] initWithImageNamed:self.stageArray[self.stageSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
     
     arrowLeft1 = [[BEEBaseObject alloc] initWithImageNamed:@"Arrow-Left" position:CGPointMake(CGRectGetMidX(parent.frame) * 0.3,(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
     
@@ -92,6 +98,8 @@ BEEBaseObject *arrowRight2;
     // 4s, iPod
     if (parent.size.height < 500)
     {
+        stage.xScale = STG_SMLX_SCALE;
+        stage.yScale = STG_SMLY_SCALE;
         player.yScale = PLY_SML_SCALE;
         player.xScale = PLY_SML_SCALE;
         arrowLeft1.yScale = ARW_SML_SCALE;
@@ -105,6 +113,8 @@ BEEBaseObject *arrowRight2;
     }
     else
     {
+        stage.xScale = STG_LRGX_SCALE;
+        stage.yScale = STG_LRGY_SCALE;
         player.yScale = PLY_LRG_SCALE;
         player.xScale = PLY_LRG_SCALE;
         arrowLeft1.yScale = ARW_LRG_SCALE;
@@ -124,6 +134,9 @@ BEEBaseObject *arrowRight2;
     [self setLabelNode:audioOffLabel position:CGPointMake(CGRectGetMidX(parent.frame) * 1.5, CGRectGetMidY(parent.frame) * 1.7)];
     [self setLabelNode:stageLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.5)];
     [self setLabelNode:characterLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.75)];
+    
+    __weak BEEBaseObject *weakStage = stage;
+    [self.objArray addObject:weakStage];
     
     __weak BEEBaseObject *weakPlayer = player;
     [self.objArray addObject:weakPlayer];
@@ -184,22 +197,45 @@ BEEBaseObject *arrowRight2;
     }
     else if ([nodeTouched isKindOfClass:[BEEBaseObject class]])
     {
-        __weak BEESettingsView *weakSelf = self;
+        __weak BEESettingsView *weakPlayeSelf = self;
         [self.objArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
         {
             if ([obj isKindOfClass:[BEEBaseObject class]])
             {
                 BEEBaseObject *baseObj = ((BEEBaseObject *)obj);
-                if ([baseObj.name isEqualToString:weakSelf.playerArray[weakSelf.playerSelectedIndex]])
+                if ([baseObj.name isEqualToString:weakPlayeSelf.playerArray[weakPlayeSelf.playerSelectedIndex]])
                 {
-                    [weakSelf.objArray removeObject:baseObj];
+                    [weakPlayeSelf.objArray removeObject:baseObj];
                     [baseObj removeFromParent];
                     *stop = YES;
                 }
             }
         }];
         
-        if (nodeTouched == arrowLeft2)
+        __weak BEESettingsView *weakStageSelf = self;
+        [self.objArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+         {
+             if ([obj isKindOfClass:[BEEBaseObject class]])
+             {
+                 BEEBaseObject *baseObj = ((BEEBaseObject *)obj);
+                 if ([baseObj.name isEqualToString:weakStageSelf.stageArray[weakStageSelf.stageSelectedIndex]])
+                 {
+                     [weakStageSelf.objArray removeObject:baseObj];
+                     [baseObj removeFromParent];
+                     *stop = YES;
+                 }
+             }
+         }];
+        
+        if (nodeTouched == arrowLeft1)
+        {
+            self.stageSelectedIndex = self.stageSelectedIndex == 0 ? [self.stageArray count] - 1 : self.stageSelectedIndex - 1;
+        }
+        else if (nodeTouched == arrowRight1)
+        {
+            self.stageSelectedIndex = self.stageSelectedIndex == [self.stageArray count] - 1 ? 0 : self.stageSelectedIndex + 1;
+        }
+        else if (nodeTouched == arrowLeft2)
         {
             self.playerSelectedIndex = self.playerSelectedIndex == 0 ? [self.playerArray count] - 1 : self.playerSelectedIndex - 1;
         }
@@ -208,16 +244,25 @@ BEEBaseObject *arrowRight2;
             self.playerSelectedIndex = self.playerSelectedIndex == [self.playerArray count] - 1 ? 0 : self.playerSelectedIndex + 1;
         }
         
+        BEEBaseObject *stage = [[BEEBaseObject alloc] initWithImageNamed:self.stageArray[self.stageSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
+        
         BEEBaseObject *player = [[BEEBaseObject alloc] initWithImageNamed:self.playerArray[self.playerSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
+        
         if (parent.size.height < 500){
+            stage.xScale = STG_SMLX_SCALE;
+            stage.yScale = STG_SMLY_SCALE;
             player.xScale = PLY_SML_SCALE;
             player.yScale = PLY_SML_SCALE;
         }
         else{
+            stage.xScale = STG_LRGX_SCALE;
+            stage.yScale = STG_LRGY_SCALE;
             player.xScale = PLY_LRG_SCALE;
             player.yScale = PLY_LRG_SCALE;
         }
         
+        __weak BEEBaseObject *weakStage = stage;
+        [self.objArray addObject:weakStage];
         
         __weak BEEBaseObject *weakPlayer = player;
         [self.objArray addObject:weakPlayer];

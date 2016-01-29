@@ -58,7 +58,7 @@
     [gameScene enumerateChildNodesWithName:self.currentBackgroundName usingBlock:^(SKNode * _Nonnull node, BOOL * _Nonnull stop)
      {
          SKSpriteNode *bg = (SKSpriteNode *)node;
-         bg.position = CGPointMake(bg.position.x - 5, bg.position.y);
+         bg.position = CGPointMake(bg.position.x - 3, bg.position.y);
          
          if (bg.position.x <= -bg.size.width) {
              bg.position = CGPointMake(bg.position.x + bg.size.width * 2, bg.position.y);
