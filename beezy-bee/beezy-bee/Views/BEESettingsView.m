@@ -208,7 +208,7 @@ BEEBaseObject *arrowRight2;
             self.playerSelectedIndex = self.playerSelectedIndex == [self.playerArray count] - 1 ? 0 : self.playerSelectedIndex + 1;
         }
         
-        BEEBaseObject *player = [[BEEBaseObject alloc] initWithImageNamed:self.playerArray[self.playerSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.9) - 120) andParentScene:parent];
+        BEEBaseObject *player = [[BEEBaseObject alloc] initWithImageNamed:self.playerArray[self.playerSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
         if (parent.size.height < 500){
             player.xScale = PLY_SML_SCALE;
             player.yScale = PLY_SML_SCALE;
