@@ -67,8 +67,24 @@
     [parent addChild:player];
     [player runAction:flap];
     
+    SKTexture* birdTexture3 = [SKTexture textureWithImageNamed:@"Monster-Wasp"];
+    birdTexture1.filteringMode = SKTextureFilteringNearest;
+    SKTexture* birdTexture4 = [SKTexture textureWithImageNamed:@"Monster-Wasp-Move"];
+    birdTexture2.filteringMode = SKTextureFilteringNearest;
+    
+    SKSpriteNode *monster = [SKSpriteNode spriteNodeWithTexture:birdTexture1];
+    SKAction* flap1 = [SKAction repeatActionForever:[SKAction animateWithTextures:@[birdTexture3, birdTexture4] timePerFrame:0.2]];
+    monster.yScale = 0.5;
+    monster.xScale = 0.5;
+    monster.position = CGPointMake(CGRectGetMidX(parent.frame)*2 - monster.size.width,CGRectGetMidY(parent.frame));
+    [parent addChild:monster];
+    [monster runAction:flap1];
+    
     __weak SKSpriteNode *weakObj = player;
     [self.objArray addObject:weakObj];
+    
+    __weak SKSpriteNode *weakObj1 = monster;
+    [self.objArray addObject:weakObj1];
 }
 
 - (void) deleteObjectsFromParent
