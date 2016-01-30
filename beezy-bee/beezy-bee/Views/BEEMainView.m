@@ -12,6 +12,7 @@
 #import "BEEScoreView.h"
 #import "BEEPlayer.h"
 #import "BEENewGameView.h"
+#import "BEESharedPreferencesHelper.h"
 
 @interface BEEMainView ()
 
@@ -45,9 +46,16 @@
     if (self)
     {
         _objArray = [NSMutableArray array];
+        [self initSharedPreferences];
     }
     
     return self;
+}
+
+- (void) initSharedPreferences
+{
+    [BEESharedPreferencesHelper sharedInstance];
+    // TODO: set background, player and audio.
 }
 
 - (void) createMenuWithParentScene:(SKScene *)parent

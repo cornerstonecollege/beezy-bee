@@ -50,14 +50,24 @@
 - (void) createNewGameWithParentScene:(SKScene *)parent
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_GAME;
-    parent.physicsWorld.gravity = CGVectorMake( 0.0, -9.8 );
+    parent.physicsWorld.gravity = CGVectorMake( 0.0, -5 );
     
     //That is your player
-    BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"First-Bee" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame) - 100) andParentScene:parent];
-    player.yScale = 0.5;
-    player.xScale = 0.5;
+    //BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:@"First-Bee" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame) - 100) andParentScene:parent];
+    SKTexture* birdTexture1 = [SKTexture textureWithImageNamed:@"First-Bee"];
+    birdTexture1.filteringMode = SKTextureFilteringNearest;
+    SKTexture* birdTexture2 = [SKTexture textureWithImageNamed:@"First-Bee-Move"];
+    birdTexture2.filteringMode = SKTextureFilteringNearest;
     
-    __weak BEEBaseObject *weakObj = player;
+    SKSpriteNode *player = [SKSpriteNode spriteNodeWithTexture:birdTexture1];
+    SKAction* flap = [SKAction repeatActionForever:[SKAction animateWithTextures:@[birdTexture1, birdTexture2] timePerFrame:0.2]];
+    player.yScale = 0.35;
+    player.xScale = 0.35;
+    player.position = CGPointMake(CGRectGetMidX(parent.frame)/2,CGRectGetMidY(parent.frame));
+    [parent addChild:player];
+    [player runAction:flap];
+    
+    __weak SKSpriteNode *weakObj = player;
     [self.objArray addObject:weakObj];
 }
 

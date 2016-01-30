@@ -16,11 +16,11 @@
 - (void) setIsAudioEnabled:(BOOL)isAudioEnabled;
 - (BOOL) getIsAudioEnabled;
 
-- (void) setBackground:(BEE_BACKGROUND_TYPE)background;
-- (BEE_BACKGROUND_TYPE) getBackground;
+- (void) setBackgroundType:(BEE_BACKGROUND_TYPE)background;
+- (BEE_BACKGROUND_TYPE) getBackgroundType;
 
-- (void) setPlayer:(BEE_PLAYER_TYPE)player;
-- (BEE_PLAYER_TYPE) getPlayer;
+- (void) setPlayerType:(BEE_PLAYER_TYPE)player;
+- (BEE_PLAYER_TYPE) getPlayerType;
 
 - (void) setScore:(NSUInteger)score withPlayerType:(BEE_PLAYER_TYPE)playerType;
 - (NSDictionary *) getScores;

@@ -36,7 +36,7 @@ BOOL hasSharedInstanceBeenCreated;
         
         // this way the physics body is applied to the image only, not to the alpha channel = 0
         self.physicsBody = [SKPhysicsBody bodyWithTexture:self.texture size:self.size];
-        self.physicsBody.dynamic = YES;
+        self.physicsBody.dynamic = NO;
         self.physicsBody.collisionBitMask = 0;
         
         // set the sharedInstance to the delegate collision

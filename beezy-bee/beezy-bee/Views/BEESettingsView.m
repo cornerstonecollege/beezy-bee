@@ -11,6 +11,8 @@
 #import "BEEMainView.h"
 #import "BEEPlayer.h"
 #import "BEEBaseObject.h"
+#import "BEESharedPreferencesHelper.h"
+#import "BEEBackground.h"
 
 @interface BEESettingsView ()
 
@@ -18,7 +20,7 @@
 @property (nonatomic) NSArray *playerArray;
 @property (nonatomic) NSArray *stageArray;
 @property (nonatomic) NSInteger playerSelectedIndex;
-@property (nonatomic) NSInteger stageSelectedIndex;
+@property (nonatomic) NSUInteger stageSelectedIndex;
 
 @end
 
@@ -83,9 +85,11 @@ BEEBaseObject *arrowRight2;
     SKLabelNode *stageLabel = [self createLabelWithParentScene:parent keyForName:@"stage"];
     SKLabelNode *characterLabel = [self createLabelWithParentScene:parent keyForName:@"character"];
     
-    BEEBaseObject *player = [[BEEPlayer alloc] initWithImageNamed:self.playerArray[self.playerSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
-    
-    BEEBaseObject *stage = [[BEEBaseObject alloc] initWithImageNamed:self.stageArray[self.stageSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
+    BEE_PLAYER_TYPE playerType = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
+    BEEBaseObject *player = [[BEEPlayer alloc] initWithImageNamed:self.playerArray[playerType] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
+
+    BEE_BACKGROUND_TYPE stageType = [[BEESharedPreferencesHelper sharedInstance] getBackgroundType];
+    BEEBaseObject *stage = [[BEEBaseObject alloc] initWithImageNamed:self.stageArray[stageType] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
     
     arrowLeft1 = [[BEEBaseObject alloc] initWithImageNamed:@"Arrow-Left" position:CGPointMake(CGRectGetMidX(parent.frame) * 0.3,(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
     
@@ -128,12 +132,20 @@ BEEBaseObject *arrowRight2;
     }
     
     [self setLabelNode:backLabel position:CGPointMake(backLabel.frame.size.width / 2 + 10, parent.size.height - backLabel.frame.size.height - 10)];
-    audioOnLabel.fontColor = [SKColor redColor];
     [self setLabelNode:audioLabel position:CGPointMake(CGRectGetMidX(parent.frame) * 0.7, CGRectGetMidY(parent.frame) * 1.7)];
     [self setLabelNode:audioOnLabel position:CGPointMake(CGRectGetMidX(parent.frame) * 1.2, CGRectGetMidY(parent.frame) * 1.7)];
     [self setLabelNode:audioOffLabel position:CGPointMake(CGRectGetMidX(parent.frame) * 1.5, CGRectGetMidY(parent.frame) * 1.7)];
     [self setLabelNode:stageLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.5)];
     [self setLabelNode:characterLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.75)];
+    
+    BOOL audioType = [[BEESharedPreferencesHelper sharedInstance] getIsAudioEnabled];
+    if(audioType){
+        audioOnLabel.fontColor = [SKColor redColor];
+    }
+    else
+    {
+        audioOffLabel.fontColor = [SKColor redColor];
+    }
     
     __weak BEEBaseObject *weakStage = stage;
     [self.objArray addObject:weakStage];
@@ -180,17 +192,18 @@ BEEBaseObject *arrowRight2;
         if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"back"])
         {
             [self deleteObjectsFromParent];
+            [[BEESharedPreferencesHelper sharedInstance] saveChanges];
             [[BEEMainView sharedInstance] createMenuWithParentScene:parent];
         }
         else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"off"])
         {
-            [BEESessionHelper sharedInstance].isAudioEnabled = NO;
+            [[BEESharedPreferencesHelper sharedInstance] setIsAudioEnabled:NO];
             audioOffLabel.fontColor = [SKColor redColor];
             audioOnLabel.fontColor = [SKColor blackColor];
         }
         else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"on"])
         {
-            [BEESessionHelper sharedInstance].isAudioEnabled = YES;
+            [[BEESharedPreferencesHelper sharedInstance] setIsAudioEnabled:YES];
             audioOnLabel.fontColor = [SKColor redColor];
             audioOffLabel.fontColor = [SKColor blackColor];
         }
@@ -243,6 +256,10 @@ BEEBaseObject *arrowRight2;
         {
             self.playerSelectedIndex = self.playerSelectedIndex == [self.playerArray count] - 1 ? 0 : self.playerSelectedIndex + 1;
         }
+        
+        [[BEESharedPreferencesHelper sharedInstance] setBackgroundType:self.stageSelectedIndex];
+        
+        [[BEESharedPreferencesHelper sharedInstance] setPlayerType:self.stageSelectedIndex];
         
         BEEBaseObject *stage = [[BEEBaseObject alloc] initWithImageNamed:self.stageArray[self.stageSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
         

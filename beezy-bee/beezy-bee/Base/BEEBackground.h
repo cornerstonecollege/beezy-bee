@@ -12,8 +12,8 @@
 
 typedef NS_ENUM(NSUInteger, BEE_BACKGROUND_TYPE)
 {
-    BBT_BACKGROUND1 = 1,
-    BBT_BACKGROUND2 = 2,
+    BBT_BACKGROUND1 = 0,
+    BBT_BACKGROUND2 = 1,
 };
 
 @end

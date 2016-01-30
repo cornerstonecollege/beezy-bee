@@ -70,22 +70,22 @@
     return self.sharedPreferences.isAudioEnabled;
 }
 
-- (void)setPlayer:(BEE_PLAYER_TYPE)player
+- (void)setPlayerType:(BEE_PLAYER_TYPE)player
 {
     self.sharedPreferences.thePlayer = player;
 }
 
-- (BEE_PLAYER_TYPE) getPlayer
+- (BEE_PLAYER_TYPE) getPlayerType
 {
     return self.sharedPreferences.thePlayer;
 }
 
-- (void)setBackground:(BEE_BACKGROUND_TYPE)background
+- (void)setBackgroundType:(BEE_BACKGROUND_TYPE)background
 {
     self.sharedPreferences.theBackground = background;
 }
 
-- (BEE_BACKGROUND_TYPE) getBackground
+- (BEE_BACKGROUND_TYPE) getBackgroundType
 {
     return self.sharedPreferences.theBackground;
 }
