@@ -50,7 +50,7 @@
 
 - (void)didUpdateTimerWithParentScene:(SKScene *)gameScene
 {
-    NSLog(@"1 second");
+    //NSLog(@"1 second");
 }
 
 - (void)didUpdateParentScene:(SKScene *)gameScene
