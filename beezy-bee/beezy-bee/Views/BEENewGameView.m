@@ -128,7 +128,6 @@
 
 - (void) handleNewGame:(UITouch *)touch andParentScene:(SKScene *)parent
 {
-    NSLog(@"DEBUG");
     CGPoint pointScr = [touch locationInNode:parent];
     SKNode *nodeTouched = [parent nodeAtPoint:pointScr];
     
