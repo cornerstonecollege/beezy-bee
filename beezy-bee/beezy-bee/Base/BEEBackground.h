@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, BEE_BACKGROUND_TYPE)
 
 @property (nonatomic, readonly) BEE_BACKGROUND_TYPE type;
 
++ (void) backgroundWithType:(BEE_BACKGROUND_TYPE)type andParentScene:(SKScene *)gameScene;
 + (void) background1WithParentScene:(SKScene *)gameScene;
 // + (instancetype) background2;
 // ...

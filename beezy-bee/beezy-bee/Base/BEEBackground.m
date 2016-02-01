@@ -10,19 +10,76 @@
 
 @implementation BEEBackground
 
+NSMutableArray *arrBackground;
+
++ (void)backgroundWithType:(BEE_BACKGROUND_TYPE)type andParentScene:(SKScene *)gameScene
+{
+    switch (type)
+    {
+        case BBT_BACKGROUND1:
+        {
+            [BEEBackground background1WithParentScene:gameScene];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 + (void) background1WithParentScene:(SKScene *)gameScene
 {
-    [[self alloc] getPrivateWithBackgroundImgName:@"Background-1" backgroundMovableImgName:@"Background-1-Move" type:BBT_BACKGROUND1 andParentScene:gameScene];
+    [BEEBackground resetArray];
+    
+    [BEEBackground getPrivateWithBackgroundImgName:@"Background-1" backgroundMovableImgName:@"Background-1-Move" type:BBT_BACKGROUND1 andParentScene:gameScene];
 }
 
 + (void) getPrivateWithBackgroundImgName:(NSString *)imgName backgroundMovableImgName:(NSString *)imgMovableName type:(BEE_BACKGROUND_TYPE)type andParentScene:(SKScene *)gameScene
 {
     SKTexture *background = [SKTexture textureWithImageNamed:imgName];
-    SKAction *moveBackground = [SKAction moveByX:-background.size.width y:0 duration:0.01 * background.size.width];
+    SKAction *moveBackground = [SKAction moveByX:-background.size.width y:0 duration:0.03 * background.size.width];
     SKAction *resetBackground = [SKAction moveByX:background.size.width y:0 duration:0];
     SKAction *moveBackgroundForever = [SKAction repeatActionForever:[SKAction sequence:@[moveBackground, resetBackground]]];
     
+    for (CGFloat i = 0; i < 2 + gameScene.frame.size.width / background.size.width; i++)
+    {
+        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithTexture:background];
+        sprite.position = CGPointMake(i * sprite.size.width, sprite.size.height / 2);
+        [sprite runAction:moveBackgroundForever];
+        [gameScene addChild:sprite];
+        
+        __weak SKSpriteNode *weakBackgroundSprite = sprite;
+        [arrBackground addObject:weakBackgroundSprite];
+    }
     
+    SKTexture *backgroundMovable = [SKTexture textureWithImageNamed:imgMovableName];
+    SKAction *moveBackgroundMovable = [SKAction moveByX:-backgroundMovable.size.width y:0 duration:0.012 * backgroundMovable.size.width / 2];
+    SKAction *resetBackgroundMovable = [SKAction moveByX:backgroundMovable.size.width y:0 duration:0];
+    SKAction *moveBackgroundMovableForever = [SKAction repeatActionForever:[SKAction sequence:@[moveBackgroundMovable, resetBackgroundMovable]]];
+    
+    for (CGFloat i = 0; i < 2 + gameScene.frame.size.width / backgroundMovable.size.width; i++)
+    {
+        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithTexture:backgroundMovable];
+        sprite.position = CGPointMake(i * sprite.size.width, sprite.size.height / 2);
+        [sprite runAction:moveBackgroundMovableForever];
+        [gameScene addChild:sprite];
+        
+        __weak SKSpriteNode *weakBackgroundSprite = sprite;
+        [arrBackground addObject:weakBackgroundSprite];
+    }
+}
+
++ (void) resetArray
+{
+    if (arrBackground && [arrBackground count] > 0)
+    {
+        for (SKSpriteNode *node in arrBackground)
+        {
+            [node removeFromParent];
+        }
+    }
+    
+    arrBackground = [NSMutableArray array];
 }
 
 @end
