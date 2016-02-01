@@ -12,5 +12,6 @@
 
 + (instancetype) sharedInstance;
 - (void) createNewGameWithParentScene:(SKScene *)parent;
+- (void) handleNewGame:(UITouch *)touch andParentScene:(SKScene *)parent;
 
 @end

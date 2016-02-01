@@ -9,7 +9,6 @@
 #import "BEESettingsView.h"
 #import "BEESessionHelper.h"
 #import "BEEMainView.h"
-#import "BEEPlayer.h"
 #import "BEEBaseObject.h"
 #import "BEESharedPreferencesHelper.h"
 #import "BEEBackground.h"
@@ -65,9 +64,9 @@ BEEBaseObject *arrowRight2;
     if (self)
     {
         _objArray = [NSMutableArray array];
-        _playerArray = @[@"First-Bee", @"Item-Honey"];
+        _playerArray = @[@"First-Bee", @"Second-Bee"];
         _stageArray = @[@"Background-1", @"tmp"];
-        _playerSelectedIndex = 0;
+        _playerSelectedIndex = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
     }
     
     return self;
@@ -86,7 +85,7 @@ BEEBaseObject *arrowRight2;
     SKLabelNode *characterLabel = [self createLabelWithParentScene:parent keyForName:@"character"];
     
     BEE_PLAYER_TYPE playerType = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
-    BEEBaseObject *player = [[BEEPlayer alloc] initWithImageNamed:self.playerArray[playerType] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
+    BEEBaseObject *player = [[BEEBaseObject alloc] initWithImageNamed:self.playerArray[playerType] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
 
     BEE_BACKGROUND_TYPE stageType = [[BEESharedPreferencesHelper sharedInstance] getBackgroundType];
     BEEBaseObject *stage = [[BEEBaseObject alloc] initWithImageNamed:self.stageArray[stageType] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
@@ -153,6 +152,12 @@ BEEBaseObject *arrowRight2;
     __weak BEEBaseObject *weakPlayer = player;
     [self.objArray addObject:weakPlayer];
     
+    __weak BEEBaseObject *weakArrowLeft1 = arrowLeft1;
+    [self.objArray addObject:weakArrowLeft1];
+    
+    __weak BEEBaseObject *weakArrowRight1 = arrowRight1;
+    [self.objArray addObject:weakArrowRight1];
+    
     __weak BEEBaseObject *weakArrowLeft2 = arrowLeft2;
     [self.objArray addObject:weakArrowLeft2];
     
@@ -185,6 +190,8 @@ BEEBaseObject *arrowRight2;
     CGPoint pointScr = [touch locationInNode:parent];
     SKNode *nodeTouched = [parent nodeAtPoint:pointScr];
     
+    
+    
     if ([nodeTouched isKindOfClass:[SKLabelNode class]])
     {
         SKLabelNode *label = (SKLabelNode *) nodeTouched;
@@ -210,15 +217,15 @@ BEEBaseObject *arrowRight2;
     }
     else if ([nodeTouched isKindOfClass:[BEEBaseObject class]])
     {
-        __weak BEESettingsView *weakPlayeSelf = self;
+        __weak BEESettingsView *weakPlayerSelf = self;
         [self.objArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
         {
             if ([obj isKindOfClass:[BEEBaseObject class]])
             {
                 BEEBaseObject *baseObj = ((BEEBaseObject *)obj);
-                if ([baseObj.name isEqualToString:weakPlayeSelf.playerArray[weakPlayeSelf.playerSelectedIndex]])
+                if ([baseObj.name isEqualToString:weakPlayerSelf.playerArray[weakPlayerSelf.playerSelectedIndex]])
                 {
-                    [weakPlayeSelf.objArray removeObject:baseObj];
+                    [weakPlayerSelf.objArray removeObject:baseObj];
                     [baseObj removeFromParent];
                     *stop = YES;
                 }
@@ -240,6 +247,9 @@ BEEBaseObject *arrowRight2;
              }
          }];
         
+        self.stageSelectedIndex = [[BEESharedPreferencesHelper sharedInstance] getBackgroundType];
+        self.playerSelectedIndex = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
+        
         if (nodeTouched == arrowLeft1)
         {
             self.stageSelectedIndex = self.stageSelectedIndex == 0 ? [self.stageArray count] - 1 : self.stageSelectedIndex - 1;
@@ -259,11 +269,11 @@ BEEBaseObject *arrowRight2;
         
         [[BEESharedPreferencesHelper sharedInstance] setBackgroundType:self.stageSelectedIndex];
         
-        [[BEESharedPreferencesHelper sharedInstance] setPlayerType:self.stageSelectedIndex];
+        [[BEESharedPreferencesHelper sharedInstance] setPlayerType:self.playerSelectedIndex];
         
-        BEEBaseObject *stage = [[BEEBaseObject alloc] initWithImageNamed:self.stageArray[self.stageSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
+        BEEBaseObject *stage = [[BEEBaseObject alloc] initWithImageNamed:self.stageArray[[[BEESharedPreferencesHelper sharedInstance] getBackgroundType]] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
         
-        BEEBaseObject *player = [[BEEBaseObject alloc] initWithImageNamed:self.playerArray[self.playerSelectedIndex] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
+        BEEBaseObject *player = [[BEEBaseObject alloc] initWithImageNamed:self.playerArray[[[BEESharedPreferencesHelper sharedInstance] getPlayerType]] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
         
         if (parent.size.height < 500){
             stage.xScale = STG_SMLX_SCALE;

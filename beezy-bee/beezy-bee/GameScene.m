@@ -12,6 +12,7 @@
 #import "BEESettingsView.h"
 #import "BEEScoreView.h"
 #import "BEESessionHelper.h"
+#import "BEENewGameView.h"
 
 @interface GameScene () <SKPhysicsContactDelegate>
 
@@ -71,6 +72,8 @@
     {
         if (self.eventsDelegate && [self.eventsDelegate respondsToSelector:@selector(didTap)])
             [self.eventsDelegate didTap];
+        
+        [[BEENewGameView sharedInstance] handleNewGame:touch andParentScene:self];
     }
 }
 
