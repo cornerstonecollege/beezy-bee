@@ -9,10 +9,13 @@
 #import "BEEScoreView.h"
 #import "BEEMainView.h"
 #import "BEESessionHelper.h"
+#import "BEEUtilitiesHelper.h"
+#import "BEESharedPreferencesHelper.h"
 
 @interface BEEScoreView ()
 
 @property (nonatomic) NSMutableArray *objArray;
+@property (nonatomic) NSArray *playerArray;
 
 @end
 
@@ -41,6 +44,8 @@
     if (self)
     {
         _objArray = [NSMutableArray array];
+        _playerArray = @[@"First-Bee", @"Second-Bee"];
+
     }
     
     return self;
@@ -52,7 +57,61 @@
     parent.physicsWorld.gravity = CGVectorMake(0,0);
     
     SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
+    
+    
+    SKSpriteNode *bg1Color = [SKSpriteNode spriteNodeWithColor:[[BEEUtilitiesHelper sharedInstance] goldColor] size:CGSizeMake(parent.size.width, 80)];
+    bg1Color.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.35);
+    
+    SKSpriteNode *bg2Color = [SKSpriteNode spriteNodeWithColor:[[BEEUtilitiesHelper sharedInstance] silverColor] size:CGSizeMake(parent.size.width, 80)];
+    bg2Color.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame));
+
+    SKSpriteNode *bg3Color = [SKSpriteNode spriteNodeWithColor:[[BEEUtilitiesHelper sharedInstance] bronzeColor] size:CGSizeMake(parent.size.width, 80)];
+    bg3Color.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.65);
+    
     [self setLabelNode:backLabel position:CGPointMake(backLabel.frame.size.width / 2 + 10, parent.size.height - backLabel.frame.size.height - 10)];
+    [parent addChild:bg1Color];
+    [parent addChild:bg2Color];
+    [parent addChild:bg3Color];
+    
+    
+    NSDictionary *scores = [[BEESharedPreferencesHelper sharedInstance] getScores];
+    NSArray *keysOrdered = [scores keysSortedByValueUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [obj1 compare:obj2];
+    }];
+    
+    //That is your player
+    float dec = 0;
+    for (NSNumber *type in keysOrdered)
+    {
+        BEE_PLAYER_TYPE playerType = [type unsignedIntegerValue];
+        NSNumber *value = scores[type];
+        
+
+        SKLabelNode *scoreLabel = [self createLabelWithParentScene:parent keyForName:@""];
+        scoreLabel.text = [value stringValue];
+        scoreLabel.fontSize = 70;
+
+        [self setLabelNode:scoreLabel position:CGPointMake(CGRectGetMidX(parent.frame) * 1.5, CGRectGetMidY(parent.frame) * (1.35 - dec) -  scoreLabel.frame.size.height / 2)];
+        
+        SKTexture* birdTexture1 = [SKTexture textureWithImageNamed:self.playerArray[playerType]];
+        birdTexture1.filteringMode = SKTextureFilteringNearest;
+        SKTexture* birdTexture2 = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-Move", self.playerArray[playerType]]];
+        birdTexture2.filteringMode = SKTextureFilteringNearest;
+        
+        SKSpriteNode *player = [SKSpriteNode spriteNodeWithTexture:birdTexture1];
+        SKAction* flap = [SKAction repeatActionForever:[SKAction animateWithTextures:@[birdTexture1, birdTexture2] timePerFrame:0.2]];
+        player.yScale = 0.35;
+        player.xScale = 0.35;
+        player.position = CGPointMake(CGRectGetMidX(parent.frame)/2, CGRectGetMidY(parent.frame) * (1.35 - dec));
+        [parent addChild:player];
+        [player runAction:flap];
+        dec = 0.35;
+        
+        __weak SKSpriteNode *weakObj = player;
+        [self.objArray addObject:weakObj];
+    }
+    
+
 }
 
 - (SKLabelNode *) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName

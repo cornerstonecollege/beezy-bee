@@ -8,7 +8,6 @@
 
 #import "BEENewGameView.h"
 #import "BEESessionHelper.h"
-#import "BEEPlayer.h"
 #import "BEESharedPreferencesHelper.h"
 #import "BEEMainView.h"
 

@@ -33,6 +33,7 @@
 		5ED15A191C5AD6AD00641C9E /* background_one.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5ED15A181C5AD6AD00641C9E /* background_one.mp3 */; };
 		68A0DAE91C58231A000C7297 /* BEESessionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0DAE81C58231A000C7297 /* BEESessionHelper.m */; };
 		68A0DAEB1C582378000C7297 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68A0DAEA1C582378000C7297 /* Strings.strings */; };
+		68BD09171C60265C00997700 /* BEEUtilitiesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BD09161C60265C00997700 /* BEEUtilitiesHelper.m */; };
 		68F7A0921C59758F0099D836 /* BEEMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0911C59758F0099D836 /* BEEMainView.m */; };
 		68F7A0981C5989A00099D836 /* BEEScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0971C5989A00099D836 /* BEEScoreView.m */; };
 		68F7A0A11C598A150099D836 /* BEESettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0A01C598A150099D836 /* BEESettingsView.m */; };
@@ -81,6 +82,8 @@
 		68A0DAE71C58231A000C7297 /* BEESessionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEESessionHelper.h; path = Utilities/BEESessionHelper.h; sourceTree = "<group>"; };
 		68A0DAE81C58231A000C7297 /* BEESessionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEESessionHelper.m; path = Utilities/BEESessionHelper.m; sourceTree = "<group>"; };
 		68A0DAEA1C582378000C7297 /* Strings.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
+		68BD09151C60265C00997700 /* BEEUtilitiesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEUtilitiesHelper.h; path = Utilities/BEEUtilitiesHelper.h; sourceTree = "<group>"; };
+		68BD09161C60265C00997700 /* BEEUtilitiesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEUtilitiesHelper.m; path = Utilities/BEEUtilitiesHelper.m; sourceTree = "<group>"; };
 		68F7A0901C59758F0099D836 /* BEEMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEMainView.h; path = Views/BEEMainView.h; sourceTree = "<group>"; };
 		68F7A0911C59758F0099D836 /* BEEMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEMainView.m; path = Views/BEEMainView.m; sourceTree = "<group>"; };
 		68F7A0961C5989A00099D836 /* BEEScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEScoreView.h; path = Views/BEEScoreView.h; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				1C8C68421C5C1A6E00D10A67 /* BEESharedPreferences.m */,
 				1C8C68471C5C277100D10A67 /* BEESharedPreferencesHelper.h */,
 				1C8C68481C5C277100D10A67 /* BEESharedPreferencesHelper.m */,
+				68BD09151C60265C00997700 /* BEEUtilitiesHelper.h */,
+				68BD09161C60265C00997700 /* BEEUtilitiesHelper.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 				1C338FD81C6021770072DD62 /* BEEBackgroundElements.m in Sources */,
 				68F7A0981C5989A00099D836 /* BEEScoreView.m in Sources */,
 				1C45456D1C571F7000321192 /* BEEBaseTouchable.m in Sources */,
+				68BD09171C60265C00997700 /* BEEUtilitiesHelper.m in Sources */,
 				68F7A0A41C598A4C0099D836 /* BEENewGameView.m in Sources */,
 				081205FA1C56FA94000CD428 /* main.m in Sources */,
 			);
