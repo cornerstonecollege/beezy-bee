@@ -38,7 +38,17 @@
 
 - (UIColor *) goldColor
 {
-    return [UIColor colorWithRed:218.0/255.0 green:165.0/255.0  blue:32.0/255.0 alpha:0.5];
+    return [UIColor colorWithRed:218.0/255.0 green:165.0/255.0  blue:32.0/255.0 alpha:0.7];
+}
+
+- (UIColor *) silverColor
+{
+    return [UIColor colorWithRed:192.0/255.0 green:192.0/255.0  blue:192.0/255.0 alpha:0.7];
+}
+
+- (UIColor *) bronzeColor
+{
+    return [UIColor colorWithRed:205.0/255.0 green:127.0/255.0  blue:50.0/255.0 alpha:0.7];
 }
 
 @end

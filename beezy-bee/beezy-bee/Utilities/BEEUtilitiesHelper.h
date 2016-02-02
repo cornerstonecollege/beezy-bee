@@ -13,5 +13,7 @@
 + (instancetype) sharedInstance;
 
 - (UIColor *) goldColor;
+- (UIColor *) silverColor;
+- (UIColor *) bronzeColor;
 
 @end

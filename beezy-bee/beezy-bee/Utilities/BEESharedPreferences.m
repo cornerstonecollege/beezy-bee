@@ -64,6 +64,12 @@
 
 - (NSDictionary *) scores
 {
+    if ([self.mutScores count] == 0)
+    {
+        [self.mutScores setObject:[NSNumber numberWithUnsignedInteger:0] forKey:[NSNumber numberWithUnsignedInteger:BPT_PLAYER1]];
+        [self.mutScores setObject:[NSNumber numberWithUnsignedInteger:0] forKey:[NSNumber numberWithUnsignedInteger:BPT_PLAYER2]];
+    }
+    
     return [self.mutScores copy];
 }
 

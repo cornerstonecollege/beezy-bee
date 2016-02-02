@@ -14,6 +14,7 @@
 @interface BEEScoreView ()
 
 @property (nonatomic) NSMutableArray *objArray;
+@property (nonatomic) NSArray *playerArray;
 
 @end
 
@@ -42,6 +43,8 @@
     if (self)
     {
         _objArray = [NSMutableArray array];
+        _playerArray = @[@"First-Bee", @"Second-Bee"];
+
     }
     
     return self;
@@ -55,28 +58,45 @@
     SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
     
     
-    SKLabelNode *label = [[SKLabelNode alloc]initWithFontNamed:@"Helvetica"];
-    label.position = CGPointMake(0, -label.frame.size.height/2);
+    SKSpriteNode *bg1Color = [SKSpriteNode spriteNodeWithColor:[[BEEUtilitiesHelper sharedInstance] goldColor] size:CGSizeMake(parent.size.width, 30)];
+    bg1Color.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.35 + 10);
     
-    SKSpriteNode *bg1Color = [SKSpriteNode spriteNodeWithColor:[[BEEUtilitiesHelper sharedInstance] goldColor] size:CGSizeMake(parent.size.width, 70)];
-    bg1Color.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.35);
-    
-    
-    SKLabelNode *background1Label = [self createLabelWithParentScene:parent keyForName:@"1st"];
-    SKLabelNode *background2Label = [self createLabelWithParentScene:parent keyForName:@"2nd"];
-    SKLabelNode *background3Label = [self createLabelWithParentScene:parent keyForName:@"3rd"];
+    SKSpriteNode *bg2Color = [SKSpriteNode spriteNodeWithColor:[[BEEUtilitiesHelper sharedInstance] silverColor] size:CGSizeMake(parent.size.width, 30)];
+    bg2Color.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) + 10);
+
+    SKSpriteNode *bg3Color = [SKSpriteNode spriteNodeWithColor:[[BEEUtilitiesHelper sharedInstance] bronzeColor] size:CGSizeMake(parent.size.width, 30)];
+    bg3Color.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.65 + 10);
     
     [self setLabelNode:backLabel position:CGPointMake(backLabel.frame.size.width / 2 + 10, parent.size.height - backLabel.frame.size.height - 10)];
-    [self setLabelNode:background1Label position:CGPointMake(backLabel.frame.size.width / 2 + 10, CGRectGetMidY(parent.frame) * 1.35)];
-    [self setLabelNode:background2Label position:CGPointMake(backLabel.frame.size.width / 2 + 10, CGRectGetMidY(parent.frame))];
-    [self setLabelNode:background3Label position:CGPointMake(backLabel.frame.size.width / 2 + 10, CGRectGetMidY(parent.frame) * 0.65)];
-    
-    [bg1Color addChild:label];
     [parent addChild:bg1Color];
+    [parent addChild:bg2Color];
+    [parent addChild:bg3Color];
+    
+    //That is your player
+    float dec = 0;
+    for (NSInteger playerType=0; playerType<2; playerType++)
+    {
+        SKTexture* birdTexture1 = [SKTexture textureWithImageNamed:self.playerArray[playerType]];
+        birdTexture1.filteringMode = SKTextureFilteringNearest;
+        SKTexture* birdTexture2 = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-Move", self.playerArray[playerType]]];
+        birdTexture2.filteringMode = SKTextureFilteringNearest;
+        
+        SKSpriteNode *player = [SKSpriteNode spriteNodeWithTexture:birdTexture1];
+        SKAction* flap = [SKAction repeatActionForever:[SKAction animateWithTextures:@[birdTexture1, birdTexture2] timePerFrame:0.2]];
+        player.yScale = 0.35;
+        player.xScale = 0.35;
+        player.position = CGPointMake(CGRectGetMidX(parent.frame)/2, CGRectGetMidY(parent.frame) * (1.35 - dec) + 10);
+        [parent addChild:player];
+        [player runAction:flap];
+        dec = 0.35;
+        
+        
+        
+        __weak SKSpriteNode *weakObj = player;
+        [self.objArray addObject:weakObj];
+    }
+    
 
-    
-    background1Label.fontColor = [SKColor colorWithRed:0.1 green:1 blue:0.1 alpha:1.0];
-    
 }
 
 - (SKLabelNode *) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName
