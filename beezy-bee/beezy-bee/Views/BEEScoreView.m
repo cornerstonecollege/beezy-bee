@@ -9,6 +9,7 @@
 #import "BEEScoreView.h"
 #import "BEEMainView.h"
 #import "BEESessionHelper.h"
+#import "BEEUtilitiesHelper.h"
 
 @interface BEEScoreView ()
 
@@ -52,7 +53,30 @@
     parent.physicsWorld.gravity = CGVectorMake(0,0);
     
     SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
+    
+    
+    SKLabelNode *label = [[SKLabelNode alloc]initWithFontNamed:@"Helvetica"];
+    label.position = CGPointMake(0, -label.frame.size.height/2);
+    
+    SKSpriteNode *bg1Color = [SKSpriteNode spriteNodeWithColor:[[BEEUtilitiesHelper sharedInstance] goldColor] size:CGSizeMake(parent.size.width, 70)];
+    bg1Color.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.35);
+    
+    
+    SKLabelNode *background1Label = [self createLabelWithParentScene:parent keyForName:@"1st"];
+    SKLabelNode *background2Label = [self createLabelWithParentScene:parent keyForName:@"2nd"];
+    SKLabelNode *background3Label = [self createLabelWithParentScene:parent keyForName:@"3rd"];
+    
     [self setLabelNode:backLabel position:CGPointMake(backLabel.frame.size.width / 2 + 10, parent.size.height - backLabel.frame.size.height - 10)];
+    [self setLabelNode:background1Label position:CGPointMake(backLabel.frame.size.width / 2 + 10, CGRectGetMidY(parent.frame) * 1.35)];
+    [self setLabelNode:background2Label position:CGPointMake(backLabel.frame.size.width / 2 + 10, CGRectGetMidY(parent.frame))];
+    [self setLabelNode:background3Label position:CGPointMake(backLabel.frame.size.width / 2 + 10, CGRectGetMidY(parent.frame) * 0.65)];
+    
+    [bg1Color addChild:label];
+    [parent addChild:bg1Color];
+
+    
+    background1Label.fontColor = [SKColor colorWithRed:0.1 green:1 blue:0.1 alpha:1.0];
+    
 }
 
 - (SKLabelNode *) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName
