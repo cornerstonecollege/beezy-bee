@@ -12,11 +12,11 @@
 #import "BEEBaseObject.h"
 #import "BEESharedPreferencesHelper.h"
 #import "BEEBackground.h"
+#import "BEEPlayer.h"
 
 @interface BEESettingsView ()
 
 @property (nonatomic) NSMutableArray *objArray;
-@property (nonatomic) NSArray *playerArray;
 @property (nonatomic) NSArray *stageArray;
 @property (nonatomic) NSInteger playerSelectedIndex;
 @property (nonatomic) NSUInteger stageSelectedIndex;
@@ -64,7 +64,6 @@ BEEBaseObject *arrowRight2;
     if (self)
     {
         _objArray = [NSMutableArray array];
-        _playerArray = @[@"First-Bee", @"Second-Bee", @"Third-Bee"];
         _stageArray = @[@"Background-1", @"tmp"];
         _playerSelectedIndex = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
     }
@@ -75,7 +74,6 @@ BEEBaseObject *arrowRight2;
 - (void) createSettingsWithParentScene:(SKScene *)parent
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_SETTINGS;
-    parent.physicsWorld.gravity = CGVectorMake(0,0);
     
     SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
     SKLabelNode *audioLabel = [self createLabelWithParentScene:parent keyForName:@"audio"];
@@ -85,7 +83,7 @@ BEEBaseObject *arrowRight2;
     SKLabelNode *characterLabel = [self createLabelWithParentScene:parent keyForName:@"character"];
     
     BEE_PLAYER_TYPE playerType = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
-    BEEBaseObject *player = [[BEEBaseObject alloc] initWithImageNamed:self.playerArray[playerType] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
+    BEEBaseObject *player = [[BEEBaseObject alloc] initWithImageNamed:[BEEPlayer sharedInstance].playerArray[playerType] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
 
     BEE_BACKGROUND_TYPE stageType = [[BEESharedPreferencesHelper sharedInstance] getBackgroundType];
     BEEBaseObject *stage = [[BEEBaseObject alloc] initWithImageNamed:self.stageArray[stageType] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
@@ -223,7 +221,7 @@ BEEBaseObject *arrowRight2;
             if ([obj isKindOfClass:[BEEBaseObject class]])
             {
                 BEEBaseObject *baseObj = ((BEEBaseObject *)obj);
-                if ([baseObj.name isEqualToString:weakPlayerSelf.playerArray[weakPlayerSelf.playerSelectedIndex]])
+                if ([baseObj.name isEqualToString:[BEEPlayer sharedInstance].playerArray[weakPlayerSelf.playerSelectedIndex]])
                 {
                     [weakPlayerSelf.objArray removeObject:baseObj];
                     [baseObj removeFromParent];
@@ -260,11 +258,11 @@ BEEBaseObject *arrowRight2;
         }
         else if (nodeTouched == arrowLeft2)
         {
-            self.playerSelectedIndex = self.playerSelectedIndex == 0 ? [self.playerArray count] - 1 : self.playerSelectedIndex - 1;
+            self.playerSelectedIndex = self.playerSelectedIndex == 0 ? [[BEEPlayer sharedInstance].playerArray count] - 1 : self.playerSelectedIndex - 1;
         }
         else if (nodeTouched == arrowRight2)
         {
-            self.playerSelectedIndex = self.playerSelectedIndex == [self.playerArray count] - 1 ? 0 : self.playerSelectedIndex + 1;
+            self.playerSelectedIndex = self.playerSelectedIndex == [[BEEPlayer sharedInstance].playerArray count] - 1 ? 0 : self.playerSelectedIndex + 1;
         }
         
         [[BEESharedPreferencesHelper sharedInstance] setBackgroundType:self.stageSelectedIndex];
@@ -273,7 +271,7 @@ BEEBaseObject *arrowRight2;
         
         BEEBaseObject *stage = [[BEEBaseObject alloc] initWithImageNamed:self.stageArray[[[BEESharedPreferencesHelper sharedInstance] getBackgroundType]] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 1.2)) andParentScene:parent];
         
-        BEEBaseObject *player = [[BEEBaseObject alloc] initWithImageNamed:self.playerArray[[[BEESharedPreferencesHelper sharedInstance] getPlayerType]] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
+        BEEBaseObject *player = [[BEEBaseObject alloc] initWithImageNamed:[BEEPlayer sharedInstance].playerArray[[[BEESharedPreferencesHelper sharedInstance] getPlayerType]] position:CGPointMake(CGRectGetMidX(parent.frame),(CGRectGetMidY(parent.frame) * 0.4)) andParentScene:parent];
         
         if (parent.size.height < 500){
             stage.xScale = STG_SMLX_SCALE;

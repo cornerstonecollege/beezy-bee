@@ -31,6 +31,7 @@
         if ([parent isKindOfClass:[GameScene class]])
         {
             ((GameScene *)parent).eventsDelegate = self;
+            self.physicsBody.dynamic = YES;
         }
     }
     
@@ -45,6 +46,11 @@
         sharedStore = [[self alloc] initPrivate];
     
     return sharedStore;
+}
+
+- (NSArray *)playerArray
+{
+    return @[@"First-Bee", @"Second-Bee", @"Third-Bee"];
 }
 
 - (instancetype) initPrivate

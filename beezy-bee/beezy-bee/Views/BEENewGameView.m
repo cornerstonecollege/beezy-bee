@@ -10,6 +10,7 @@
 #import "BEESessionHelper.h"
 #import "BEESharedPreferencesHelper.h"
 #import "BEEMainView.h"
+#import "BEEPlayer.h"
 
 @interface BEENewGameView ()
 
@@ -44,7 +45,6 @@
     if (self)
     {
         _objArray = [NSMutableArray array];
-        _playerArray = @[@"First-Bee", @"Second-Bee"];
     }
     
     return self;
@@ -53,7 +53,6 @@
 - (void) createNewGameWithParentScene:(SKScene *)parent
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_GAME;
-    parent.physicsWorld.gravity = CGVectorMake( 0.0, -5 );
     
     //That is your player
     BEE_PLAYER_TYPE playerType = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
@@ -61,7 +60,7 @@
     
     SKTexture* birdTexture1 = [SKTexture textureWithImageNamed:self.playerArray[playerType]];
     birdTexture1.filteringMode = SKTextureFilteringNearest;
-    SKTexture* birdTexture2 = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-Move", self.playerArray[playerType]]];
+    SKTexture* birdTexture2 = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-Move", [BEEPlayer sharedInstance].playerArray[playerType]]];
     birdTexture2.filteringMode = SKTextureFilteringNearest;
     
     SKSpriteNode *player = [SKSpriteNode spriteNodeWithTexture:birdTexture1];

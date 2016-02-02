@@ -11,11 +11,11 @@
 #import "BEESessionHelper.h"
 #import "BEEUtilitiesHelper.h"
 #import "BEESharedPreferencesHelper.h"
+#import "BEEPlayer.h"
 
 @interface BEEScoreView ()
 
 @property (nonatomic) NSMutableArray *objArray;
-@property (nonatomic) NSArray *playerArray;
 
 @end
 
@@ -44,8 +44,6 @@
     if (self)
     {
         _objArray = [NSMutableArray array];
-        _playerArray = @[@"First-Bee", @"Second-Bee", @"Third-Bee"];
-
     }
     
     return self;
@@ -54,7 +52,6 @@
 - (void) createScoreWithParentScene:(SKScene *)parent
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_SCORE;
-    parent.physicsWorld.gravity = CGVectorMake(0,0);
     
     SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
     
@@ -93,9 +90,9 @@
 
         [self setLabelNode:scoreLabel position:CGPointMake(CGRectGetMidX(parent.frame) * 1.5, CGRectGetMidY(parent.frame) * (1.35 - dec) -  scoreLabel.frame.size.height / 2)];
         
-        SKTexture* birdTexture1 = [SKTexture textureWithImageNamed:self.playerArray[playerType]];
+        SKTexture* birdTexture1 = [SKTexture textureWithImageNamed:[BEEPlayer sharedInstance].playerArray[playerType]];
         birdTexture1.filteringMode = SKTextureFilteringNearest;
-        SKTexture* birdTexture2 = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-Move", self.playerArray[playerType]]];
+        SKTexture* birdTexture2 = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-Move", [BEEPlayer sharedInstance].playerArray[playerType]]];
         birdTexture2.filteringMode = SKTextureFilteringNearest;
         
         SKSpriteNode *player = [SKSpriteNode spriteNodeWithTexture:birdTexture1];

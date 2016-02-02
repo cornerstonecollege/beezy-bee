@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, BEE_PLAYER_TYPE)
 };
 
 @property (nonatomic) BEE_PLAYER_TYPE currentPlayer;
+@property (nonatomic, readonly) NSArray *playerArray;
 
 + (instancetype) sharedInstance;
 

@@ -45,6 +45,7 @@
 - (void) addPhysicsWorld
 {
     // Adding gravity to the world and making the delegate
+    self.physicsWorld.gravity = CGVectorMake( 0.0, -5.0);
     self.physicsWorld.contactDelegate = self;
 }
 
