@@ -7,6 +7,7 @@
 //
 
 #import "BEEBaseObject.h"
+#import "BEEBackgroundElements.h"
 #import <Foundation/Foundation.h>
 
 @interface BEEBackground : NSObject
@@ -17,11 +18,12 @@ typedef NS_ENUM(NSUInteger, BEE_BACKGROUND_TYPE)
     BBT_BACKGROUND2 = 1,
 };
 
-@property (nonatomic, readonly) BEE_BACKGROUND_TYPE type;
-
 + (void) backgroundWithType:(BEE_BACKGROUND_TYPE)type andParentScene:(SKScene *)gameScene;
++ (BEEBackgroundElements *) getConfigForBackgroundType:(BEE_BACKGROUND_TYPE)type;
+
 + (void) background1WithParentScene:(SKScene *)gameScene;
-// + (instancetype) background2;
+
+// + (void) background2;
 // ...
 
 @end

@@ -11,4 +11,10 @@
 
 @interface BEEMonster : BEEBaseTouchable
 
+typedef NS_ENUM(NSUInteger, BEE_MONSTER_TYPE)
+{
+    BMT_MONSTER1 = 0,
+    BMT_MONSTER2 = 1,
+};
+
 @end

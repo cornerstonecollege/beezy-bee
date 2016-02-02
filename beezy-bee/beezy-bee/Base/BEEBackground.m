@@ -27,6 +27,20 @@ NSMutableArray *arrBackground;
     }
 }
 
++ (BEEBackgroundElements *)getConfigForBackgroundType:(BEE_BACKGROUND_TYPE)type
+{
+    switch (type)
+    {
+        case BBT_BACKGROUND1:
+            return [[BEEBackgroundElements alloc] initWithAudioTrack:@"background_one" andMonsterTypes:@[[NSNumber numberWithUnsignedInteger:BMT_MONSTER1]]];
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
 + (void) background1WithParentScene:(SKScene *)gameScene
 {
     [BEEBackground resetArray];
