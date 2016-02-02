@@ -67,7 +67,7 @@ NSMutableArray *arrBackground;
     }
     
     SKTexture *backgroundMovable = [SKTexture textureWithImageNamed:imgMovableName];
-    SKAction *moveBackgroundMovable = [SKAction moveByX:-backgroundMovable.size.width y:0 duration:0.012 * backgroundMovable.size.width / 2];
+    SKAction *moveBackgroundMovable = [SKAction moveByX:-backgroundMovable.size.width y:0 duration:0.02 * backgroundMovable.size.width / 2];
     SKAction *resetBackgroundMovable = [SKAction moveByX:backgroundMovable.size.width y:0 duration:0];
     SKAction *moveBackgroundMovableForever = [SKAction repeatActionForever:[SKAction sequence:@[moveBackgroundMovable, resetBackgroundMovable]]];
     
