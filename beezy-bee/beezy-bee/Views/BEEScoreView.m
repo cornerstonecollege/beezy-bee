@@ -44,7 +44,7 @@
     if (self)
     {
         _objArray = [NSMutableArray array];
-        _playerArray = @[@"First-Bee", @"Second-Bee"];
+        _playerArray = @[@"First-Bee", @"Second-Bee", @"Third-Bee"];
 
     }
     
@@ -105,7 +105,7 @@
         player.position = CGPointMake(CGRectGetMidX(parent.frame)/2, CGRectGetMidY(parent.frame) * (1.35 - dec));
         [parent addChild:player];
         [player runAction:flap];
-        dec = 0.35;
+        dec += 0.35;
         
         __weak SKSpriteNode *weakObj = player;
         [self.objArray addObject:weakObj];

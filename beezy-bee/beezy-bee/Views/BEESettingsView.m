@@ -64,7 +64,7 @@ BEEBaseObject *arrowRight2;
     if (self)
     {
         _objArray = [NSMutableArray array];
-        _playerArray = @[@"First-Bee", @"Second-Bee"];
+        _playerArray = @[@"First-Bee", @"Second-Bee", @"Third-Bee"];
         _stageArray = @[@"Background-1", @"tmp"];
         _playerSelectedIndex = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
     }

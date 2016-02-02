@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, BEE_PLAYER_TYPE)
 {
     BPT_PLAYER1 = 0,
     BPT_PLAYER2 = 1,
+    BPT_PLAYER3 = 2,
 };
 
 @property (nonatomic) BEE_PLAYER_TYPE currentPlayer;

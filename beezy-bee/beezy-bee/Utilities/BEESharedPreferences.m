@@ -68,6 +68,7 @@
     {
         [self.mutScores setObject:[NSNumber numberWithUnsignedInteger:0] forKey:[NSNumber numberWithUnsignedInteger:BPT_PLAYER1]];
         [self.mutScores setObject:[NSNumber numberWithUnsignedInteger:0] forKey:[NSNumber numberWithUnsignedInteger:BPT_PLAYER2]];
+        [self.mutScores setObject:[NSNumber numberWithUnsignedInteger:0] forKey:[NSNumber numberWithUnsignedInteger:BPT_PLAYER3]];
     }
     
     return [self.mutScores copy];
