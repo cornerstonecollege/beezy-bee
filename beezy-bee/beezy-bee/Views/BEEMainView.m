@@ -128,15 +128,7 @@
 
 - (void) createBackgroundWithParentScene:(SKScene *)parent
 {
-    __unused BEEBaseObject *background = [[BEEBaseObject alloc] initWithImageNamed:@"Background-1" position:CGPointMake(parent.size.width / 2, parent.size.height / 2) andParentScene:parent];
-    
-    BEEBaseObject *backgroundMovable1 = [[BEEBaseObject alloc] initWithImageNamed:@"Background-1-Move" position:CGPointMake(0, - parent.size.height * 0.05) andParentScene:parent];
-    backgroundMovable1.anchorPoint = CGPointZero;
-    
-    BEEBaseObject *backgroundMovable2 = [[BEEBaseObject alloc] initWithImageNamed:@"Background-1-Move" position:CGPointMake(parent.size.width, - parent.size.height * 0.05) andParentScene:parent];
-    backgroundMovable2.anchorPoint = CGPointZero;
-    
-    [BEESessionHelper sharedInstance].currentBackgroundName = backgroundMovable1.name;
+    [BEEBackground background1WithParentScene:parent];
 }
 
 @end

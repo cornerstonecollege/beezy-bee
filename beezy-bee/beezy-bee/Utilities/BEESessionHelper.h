@@ -21,7 +21,6 @@ typedef enum
 
 
 @property (nonatomic) BEE_SCREEN_TYPE currentScreen;
-@property (nonatomic) NSString *currentBackgroundName;
 
 + (instancetype) sharedInstance;
 - (NSString *) getLocalizedStringForName:(NSString *)stringName;
