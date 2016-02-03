@@ -29,4 +29,22 @@
     return self;
 }
 
+- (instancetype) initWithImageNamed:(NSString *)imageNamed imageMovableName:(NSString *)imageMovableName position:(CGPoint)pos andParentScene:(SKScene *)parent
+{
+    SKTexture *firstTexture = [SKTexture textureWithImageNamed:imageNamed];
+    SKTexture *secondTexture = [SKTexture textureWithImageNamed:imageMovableName];
+    
+    self = [super initWithTexture:firstTexture];
+    if (self)
+    {
+        SKAction *move = [SKAction repeatActionForever:[SKAction animateWithTextures:@[firstTexture, secondTexture] timePerFrame:0.2]];
+        self.position = pos;
+        self.name = imageNamed;
+        [self runAction:move];
+        [parent addChild:self];
+    }
+    
+    return self;
+}
+
 @end

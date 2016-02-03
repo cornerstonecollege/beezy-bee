@@ -54,43 +54,25 @@
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_GAME;
     
-    //That is your player
-    BEE_PLAYER_TYPE playerType = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
-    //SKTexture* birdTexture1 = [SKTexture textureWithImageNamed:@"First-Bee"];
-    
-    SKTexture* birdTexture1 = [SKTexture textureWithImageNamed:self.playerArray[playerType]];
-    birdTexture1.filteringMode = SKTextureFilteringNearest;
-    SKTexture* birdTexture2 = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-Move", [BEEPlayer sharedInstance].playerArray[playerType]]];
-    birdTexture2.filteringMode = SKTextureFilteringNearest;
-    
-    SKSpriteNode *player = [SKSpriteNode spriteNodeWithTexture:birdTexture1];
-    SKAction* flap = [SKAction repeatActionForever:[SKAction animateWithTextures:@[birdTexture1, birdTexture2] timePerFrame:0.2]];
-    player.yScale = 0.35;
-    player.xScale = 0.35;
-    player.position = CGPointMake(CGRectGetMidX(parent.frame)/2,CGRectGetMidY(parent.frame));
-    [parent addChild:player];
-    [player runAction:flap];
-    
-    SKTexture* birdTexture3 = [SKTexture textureWithImageNamed:@"Monster-Wasp"];
-    birdTexture1.filteringMode = SKTextureFilteringNearest;
-    SKTexture* birdTexture4 = [SKTexture textureWithImageNamed:@"Monster-Wasp-Move"];
-    birdTexture2.filteringMode = SKTextureFilteringNearest;
-    
-    SKSpriteNode *monster = [SKSpriteNode spriteNodeWithTexture:birdTexture1];
-    SKAction* flap1 = [SKAction repeatActionForever:[SKAction animateWithTextures:@[birdTexture3, birdTexture4] timePerFrame:0.2]];
-    monster.yScale = 0.5;
-    monster.xScale = 0.5;
-    monster.position = CGPointMake(CGRectGetMidX(parent.frame)*2 - monster.size.width,CGRectGetMidY(parent.frame));
-    [parent addChild:monster];
-    [monster runAction:flap1];
     
     SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
     [self setLabelNode:backLabel position:CGPointMake(backLabel.frame.size.width / 2 + 10, parent.size.height - backLabel.frame.size.height - 10)];
     
-    __weak SKSpriteNode *weakObj = player;
+    NSString *strImgPlayer = [BEEPlayer sharedInstance].playerArray[[[BEESharedPreferencesHelper sharedInstance] getPlayerType]];
+    
+    BEEPlayer *player = [[BEEPlayer alloc] initWithImageNamed:strImgPlayer imageMovableName:[NSString stringWithFormat:@"%@-Move", strImgPlayer] position:CGPointMake(CGRectGetMidX(parent.frame)/2,CGRectGetMidY(parent.frame)) andParentScene:parent];
+    player.yScale = 0.35;
+    player.xScale = 0.35;
+    
+    BEEMonster *monster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(CGRectGetMidX(parent.frame)*2 - 100,CGRectGetMidY(parent.frame)) andParentScene:parent];
+    monster.yScale = 0.5;
+    monster.xScale = 0.5;
+    
+    
+    __weak BEEPlayer *weakObj = player;
     [self.objArray addObject:weakObj];
     
-    __weak SKSpriteNode *weakObj1 = monster;
+    __weak BEEMonster *weakObj1 = monster;
     [self.objArray addObject:weakObj1];
 }
 
