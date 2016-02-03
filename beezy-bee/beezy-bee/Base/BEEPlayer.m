@@ -17,6 +17,9 @@
 
 @implementation BEEPlayer
 
+#define MAX_RADIAN 0.5
+#define MIN_RADIAN -1
+
 - (instancetype)init
 {
     [NSException raise:@"Wrong initializer" format:@"Use [BEEPlayer sharedInstance]"];
@@ -50,9 +53,14 @@
 {
     if ([parent isKindOfClass:[GameScene class]])
     {
-        ((GameScene *)parent).eventsDelegate = self;
+        GameScene *gameScene = ((GameScene *)parent);
+        gameScene.eventsDelegate = self;
+        __weak BEEPlayer *weakSelf = self;
+        [gameScene.timerDelegateArr addObject:weakSelf];
+        
         self.physicsBody.categoryBitMask = BEE_PLAYER_MASK;
         self.physicsBody.dynamic = YES;
+        self.physicsBody.allowsRotation = NO;
     }
 }
 
@@ -73,20 +81,39 @@
     return @[@"First-Bee", @"Second-Bee", @"Third-Bee"];
 }
 
-- (instancetype) initPrivate
-{
-    self = [super init];
-    if (self)
-    {
-    }
-    return self;
-}
-
 - (void)didTap
 {
-    SKAction * actionMove = [SKAction moveTo:CGPointMake(self.position.x, self.position.y + 50) duration:0.3];
+    self.physicsBody.velocity = CGVectorMake(0, 0);
+    [self.physicsBody applyImpulse:CGVectorMake(0, 200)];
+}
+
+- (void)didUpdateParentScene:(SKScene *)gameScene
+{
+    self.zRotation = [self clamp:self.physicsBody.velocity.dy * (self.physicsBody.velocity.dy < 0 ? 0.003 : 0.001)];
     
-    [self runAction:actionMove];
+    if (self.position.y < 0)
+        [self die];
+}
+
+- (CGFloat) clamp:(CGFloat) value
+{
+    if( value > MAX_RADIAN)
+    {
+        return MAX_RADIAN;
+    }
+    else if( value < MIN_RADIAN)
+    {
+        return MIN_RADIAN;
+    }
+    else
+    {
+        return value;
+    }
+}
+
+- (void) die
+{
+    NSLog(@"dead");
 }
 
 @end

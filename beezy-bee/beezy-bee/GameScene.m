@@ -26,6 +26,7 @@
 - (instancetype)initWithSize:(CGSize)size
 {
     self = [super initWithSize:size];
+    
     return self;
 }
 
@@ -39,7 +40,9 @@
 - (void) doInit
 {
     self.backgroundColor = [UIColor whiteColor];
-    self.timerDelegate = [BEESessionHelper sharedInstance];
+    self.timerDelegateArr = [NSMutableArray array];
+    __weak BEESessionHelper *weakSession = [BEESessionHelper sharedInstance];
+    [self.timerDelegateArr addObject:weakSession];
 }
 
 - (void) addPhysicsWorld
@@ -84,9 +87,13 @@
     if (self.lastSentTimeInterval > 1)
     {
         self.lastSentTimeInterval = 0;
-        if ([self.timerDelegate respondsToSelector:@selector(didUpdateTimerWithParentScene:)])
+        
+        for (id<GameSceneTimerDelegate> timerDelegate in self.timerDelegateArr)
         {
-            [self.timerDelegate didUpdateTimerWithParentScene:self];
+            if ([timerDelegate respondsToSelector:@selector(didUpdateTimerWithParentScene:)])
+            {
+                [timerDelegate didUpdateTimerWithParentScene:self];
+            }
         }
     }
 }
@@ -105,9 +112,12 @@
     
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
     
-    if (self.timerDelegate && [self.timerDelegate respondsToSelector:@selector(didUpdateParentScene:)])
+    for (id<GameSceneTimerDelegate> timerDelegate in self.timerDelegateArr)
     {
-        [self.timerDelegate didUpdateParentScene:self];
+        if (timerDelegate && [timerDelegate respondsToSelector:@selector(didUpdateParentScene:)])
+        {
+            [timerDelegate didUpdateParentScene:self];
+        }
     }
 }
 

@@ -9,7 +9,7 @@
 #import "BEEBaseTouchable.h"
 #import "GameScene.h"
 
-@interface BEEPlayer : BEEBaseTouchable <GameSceneEvents>
+@interface BEEPlayer : BEEBaseTouchable <GameSceneEvents, GameSceneTimerDelegate>
 
 typedef NS_ENUM(NSUInteger, BEE_PLAYER_TYPE)
 {
@@ -20,5 +20,7 @@ typedef NS_ENUM(NSUInteger, BEE_PLAYER_TYPE)
 
 + (instancetype) playerWithParent:(SKScene *)parent;
 + (NSArray*) playerArray;
+
+- (void) die;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "BEEBaseTouchable.h"
+#import "BEEPlayer.h"
 
 @implementation BEEBaseTouchable
 
@@ -77,7 +78,11 @@ BOOL hasSharedInstanceBeenCreated;
 
 - (void)player:(SKPhysicsBody *)player DidCollideWithMonster:(SKPhysicsBody *)monster
 {
-    // game over
+    if ([player.node isKindOfClass:[BEEPlayer class]])
+    {
+        BEEPlayer *objPlayer = (BEEPlayer *)player.node;
+        [objPlayer die];
+    }
 }
 
 @end

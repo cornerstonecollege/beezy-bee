@@ -61,7 +61,6 @@
     __weak BEEPlayer *player = [BEEPlayer playerWithParent:parent];
     player.yScale = 0.35;
     player.xScale = 0.35;
-    player.position = CGPointMake(CGRectGetMidX(parent.frame)/2,CGRectGetMidY(parent.frame));
     
     BEEMonster *monster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(CGRectGetMidX(parent.frame)*2 - 100,CGRectGetMidY(parent.frame)) andParentScene:parent];
     monster.yScale = 0.5;
@@ -79,8 +78,7 @@
     [monster runAction: move];
     
     
-    __weak BEEPlayer *weakObj = player;
-    [self.objArray addObject:weakObj];
+    [self.objArray addObject:player];
     
     __weak BEEMonster *weakObj1 = monster;
     [self.objArray addObject:weakObj1];
