@@ -90,9 +90,9 @@
 
         [self setLabelNode:scoreLabel position:CGPointMake(CGRectGetMidX(parent.frame) * 1.5, CGRectGetMidY(parent.frame) * (1.35 - dec) -  scoreLabel.frame.size.height / 2)];
         
-        SKTexture* birdTexture1 = [SKTexture textureWithImageNamed:[BEEPlayer sharedInstance].playerArray[playerType]];
+        SKTexture* birdTexture1 = [SKTexture textureWithImageNamed:[[BEEPlayer playerArray] objectAtIndex:playerType]];
         birdTexture1.filteringMode = SKTextureFilteringNearest;
-        SKTexture* birdTexture2 = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-Move", [BEEPlayer sharedInstance].playerArray[playerType]]];
+        SKTexture* birdTexture2 = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-Move", [[BEEPlayer playerArray] objectAtIndex:playerType]]];
         birdTexture2.filteringMode = SKTextureFilteringNearest;
         
         SKSpriteNode *player = [SKSpriteNode spriteNodeWithTexture:birdTexture1];

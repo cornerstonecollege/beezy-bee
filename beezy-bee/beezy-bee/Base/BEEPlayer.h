@@ -18,9 +18,7 @@ typedef NS_ENUM(NSUInteger, BEE_PLAYER_TYPE)
     BPT_PLAYER3 = 2,
 };
 
-@property (nonatomic) BEE_PLAYER_TYPE currentPlayer;
-@property (nonatomic, readonly) NSArray *playerArray;
-
-+ (instancetype) sharedInstance;
++ (instancetype) playerWithParent:(SKScene *)parent;
++ (NSArray*) playerArray;
 
 @end

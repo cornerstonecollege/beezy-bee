@@ -7,10 +7,11 @@
 //
 
 #import "BEEPlayer.h"
+#import "BEESharedPreferencesHelper.h"
 
 @interface BEEPlayer ()
 
-@property (nonatomic) NSDictionary *dicStrings;
+@property (nonatomic) BEE_PLAYER_TYPE playerType;
 
 @end
 
@@ -18,7 +19,7 @@
 
 - (instancetype)init
 {
-    [NSException raise:@"Wrong initializer" format:@"Use [BEEPlayer shareInstance]"];
+    [NSException raise:@"Wrong initializer" format:@"Use [BEEPlayer sharedInstance]"];
     return nil;
 }
 
@@ -28,27 +29,46 @@
     
     if (self)
     {
-        if ([parent isKindOfClass:[GameScene class]])
-        {
-            ((GameScene *)parent).eventsDelegate = self;
-            self.physicsBody.dynamic = YES;
-        }
+        [self initilizePlayerWithParent:parent];
     }
     
     return self;
 }
 
-+ (instancetype) sharedInstance
+- (instancetype)initWithImageNamed:(NSString *)imageNamed imageMovableName:(NSString *)imageMovableName position:(CGPoint)pos andParentScene:(SKScene *)parent
 {
-    static BEEPlayer *sharedStore;
+    self = [super initWithImageNamed:imageNamed imageMovableName:imageMovableName position:pos andParentScene:parent];
+    if (self)
+    {
+        [self initilizePlayerWithParent:parent];
+    }
     
-    if (!sharedStore)
-        sharedStore = [[self alloc] initPrivate];
-    
-    return sharedStore;
+    return self;
 }
 
-- (NSArray *)playerArray
+- (void) initilizePlayerWithParent:(SKScene *)parent
+{
+    if ([parent isKindOfClass:[GameScene class]])
+    {
+        ((GameScene *)parent).eventsDelegate = self;
+        self.physicsBody.categoryBitMask = BEE_PLAYER_MASK;
+        self.physicsBody.dynamic = YES;
+    }
+}
+
++ (instancetype) playerWithParent:(SKScene *)parent
+{
+    BEEPlayer *player;
+    
+    NSString *strImgPlayer = [[BEEPlayer playerArray] objectAtIndex:[[BEESharedPreferencesHelper sharedInstance] getPlayerType]];
+        
+    player = [[BEEPlayer alloc] initWithImageNamed:strImgPlayer imageMovableName:[NSString stringWithFormat:@"%@-Move", strImgPlayer] position:CGPointMake(CGRectGetMidX(parent.frame)/2,CGRectGetMidY(parent.frame)) andParentScene:parent];
+    player.playerType = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
+    
+    return player;
+}
+
++ (NSArray *)playerArray
 {
     return @[@"First-Bee", @"Second-Bee", @"Third-Bee"];
 }
@@ -58,8 +78,6 @@
     self = [super init];
     if (self)
     {
-        NSString *fname = [[NSBundle mainBundle] pathForResource:@"" ofType:@"strings"];
-        self.dicStrings = [NSDictionary dictionaryWithContentsOfFile:fname];
     }
     return self;
 }

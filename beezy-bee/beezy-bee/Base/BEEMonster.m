@@ -22,12 +22,28 @@
     
     if (self)
     {
-        self.physicsBody.categoryBitMask = BEE_MONSTER_MASK;
-        self.physicsBody.contactTestBitMask = BEE_PLAYER_MASK;
-        
+        [self initialize];
     }
     
     return self;
+}
+
+- (instancetype)initWithImageNamed:(NSString *)imageNamed imageMovableName:(NSString *)imageMovableName position:(CGPoint)pos andParentScene:(SKScene *)parent
+{
+    self = [super initWithImageNamed:imageNamed imageMovableName:imageMovableName position:pos andParentScene:parent];
+    
+    if (self)
+    {
+        [self initialize];
+    }
+    
+    return self;
+}
+
+- (void) initialize
+{
+    self.physicsBody.categoryBitMask = BEE_MONSTER_MASK;
+    self.physicsBody.contactTestBitMask = BEE_PLAYER_MASK;
 }
 
 @end
