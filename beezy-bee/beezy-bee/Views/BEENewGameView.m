@@ -124,20 +124,19 @@
 
 - (void)didUpdateTimerWithParentScene:(SKScene *)parent
 {
-    BEEMonster *monster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(CGRectGetMidX(parent.frame)*2 - 100,CGRectGetMidY(parent.frame)) andParentScene:parent];
+    CGFloat y = arc4random() % (NSInteger)(parent.frame.size.height) * 0.9;
+    
+    BEEMonster *monster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
     monster.yScale = 0.5;
     monster.xScale = 0.5;
     
-    
-    //get the distance between the destination position and the node's position
-    double distance = sqrt(pow((100 - monster.position.x), 2.0) + pow((100 - monster.position.y), 2.0));
-    
     //calculate your new duration based on the distance
-    float moveDuration = 0.001*distance;
+    //float moveDuration = 0.001*distance;
     
     //move the node
-    SKAction *move = [SKAction moveTo:CGPointMake(100, 100) duration: moveDuration];
-    [monster runAction: move];
+    SKAction *move = [SKAction moveTo:CGPointMake(-100, y) duration: 2.0];
+    SKAction *removeFromParent = [SKAction removeFromParent];
+    [monster runAction: [SKAction sequence:@[move, removeFromParent]]];
     __weak BEEMonster *weakObj1 = monster;
     [self.objArray addObject:weakObj1];
 }
