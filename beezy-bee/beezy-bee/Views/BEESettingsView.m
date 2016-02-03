@@ -247,13 +247,17 @@ BEEBaseObject *arrowRight2;
         self.stageSelectedIndex = [[BEESharedPreferencesHelper sharedInstance] getBackgroundType];
         self.playerSelectedIndex = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
         
+        BOOL changedBackground = NO;
+        
         if (nodeTouched == arrowLeft1)
         {
             self.stageSelectedIndex = self.stageSelectedIndex == 0 ? [self.stageArray count] - 1 : self.stageSelectedIndex - 1;
+            changedBackground = YES;
         }
         else if (nodeTouched == arrowRight1)
         {
             self.stageSelectedIndex = self.stageSelectedIndex == [self.stageArray count] - 1 ? 0 : self.stageSelectedIndex + 1;
+            changedBackground = YES;
         }
         else if (nodeTouched == arrowLeft2)
         {
@@ -264,8 +268,13 @@ BEEBaseObject *arrowRight2;
             self.playerSelectedIndex = self.playerSelectedIndex == [[BEEPlayer playerArray] count] - 1 ? 0 : self.playerSelectedIndex + 1;
         }
         
-        [[BEESharedPreferencesHelper sharedInstance] setBackgroundType:self.stageSelectedIndex];
-        [BEEBackground backgroundWithType:[[BEESharedPreferencesHelper sharedInstance] getBackgroundType] andParentScene:parent];
+        if (changedBackground)
+        {
+            [[BEESharedPreferencesHelper sharedInstance] setBackgroundType:self.stageSelectedIndex];
+            [self resetBackgroundWithParent:parent];
+            
+            return;
+        }
         
         [[BEESharedPreferencesHelper sharedInstance] setPlayerType:self.playerSelectedIndex];
         
@@ -292,6 +301,13 @@ BEEBaseObject *arrowRight2;
         __weak BEEBaseObject *weakPlayer = player;
         [self.objArray addObject:weakPlayer];
     }
+}
+
+- (void) resetBackgroundWithParent:(SKScene *)parent
+{
+    [self deleteObjectsFromParent];
+    [BEEBackground backgroundWithType:[[BEESharedPreferencesHelper sharedInstance] getBackgroundType] andParentScene:parent];
+    [self createSettingsWithParentScene:parent];
 }
 
 - (void) deleteObjectsFromParent

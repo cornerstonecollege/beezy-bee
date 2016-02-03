@@ -72,7 +72,7 @@ NSMutableArray *arrBackground;
         SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithTexture:background];
         sprite.position = CGPointMake(i * sprite.size.width, sprite.size.height / 2);
         [sprite runAction:moveBackgroundForever];
-        [gameScene insertChild:sprite atIndex:i];
+        [gameScene addChild:sprite];
         
         __weak SKSpriteNode *weakBackgroundSprite = sprite;
         [arrBackground addObject:weakBackgroundSprite];
@@ -88,7 +88,7 @@ NSMutableArray *arrBackground;
         SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithTexture:backgroundMovable];
         sprite.position = CGPointMake(i * sprite.size.width, sprite.size.height / 2);
         [sprite runAction:moveBackgroundMovableForever];
-        [gameScene insertChild:sprite atIndex:i + 2];
+        [gameScene addChild:sprite];
         
         __weak SKSpriteNode *weakBackgroundSprite = sprite;
         [arrBackground addObject:weakBackgroundSprite];
