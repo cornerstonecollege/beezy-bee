@@ -48,9 +48,4 @@
     return [self.dicStrings objectForKey:stringName];
 }
 
-- (void)didUpdateTimerWithParentScene:(SKScene *)gameScene
-{
-    //NSLog(@"1 second");
-}
-
 @end

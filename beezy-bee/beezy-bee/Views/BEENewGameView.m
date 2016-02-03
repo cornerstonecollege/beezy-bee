@@ -16,6 +16,7 @@
 
 @property (nonatomic) NSMutableArray *objArray;
 @property (nonatomic) NSArray *playerArray;
+@property (nonatomic, weak) GameScene *parent;
 
 @end
 
@@ -53,7 +54,13 @@
 - (void) createNewGameWithParentScene:(SKScene *)parent
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_GAME;
-    
+    if ([parent isKindOfClass:[GameScene class]])
+    {
+        self.parent = (GameScene *)parent;
+        __weak BEENewGameView *weakSelf = self;
+        [self.parent resetTimerDelegate];
+        [self.parent.timerDelegateArr addObject:weakSelf];
+    }
     
     SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
     [self setLabelNode:backLabel position:CGPointMake(backLabel.frame.size.width / 2 + 10, parent.size.height - backLabel.frame.size.height - 10)];
@@ -62,26 +69,8 @@
     player.yScale = 0.35;
     player.xScale = 0.35;
     
-    BEEMonster *monster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(CGRectGetMidX(parent.frame)*2 - 100,CGRectGetMidY(parent.frame)) andParentScene:parent];
-    monster.yScale = 0.5;
-    monster.xScale = 0.5;
-    
-    
-    //get the distance between the destination position and the node's position
-    double distance = sqrt(pow((100 - monster.position.x), 2.0) + pow((100 - monster.position.y), 2.0));
-    
-    //calculate your new duration based on the distance
-    float moveDuration = 0.001*distance;
-    
-    //move the node
-    SKAction *move = [SKAction moveTo:CGPointMake(100, 100) duration: moveDuration];
-    [monster runAction: move];
-    
     
     [self.objArray addObject:player];
-    
-    __weak BEEMonster *weakObj1 = monster;
-    [self.objArray addObject:weakObj1];
 }
 
 - (void) deleteObjectsFromParent
@@ -93,6 +82,8 @@
         
         self.objArray = [NSMutableArray array];
     }
+    
+    [self.parent resetTimerDelegate];
 }
 
 - (SKLabelNode *) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName
@@ -129,6 +120,26 @@
             [[BEEMainView sharedInstance] createMenuWithParentScene:parent];
         }
     }
+}
+
+- (void)didUpdateTimerWithParentScene:(SKScene *)parent
+{
+    BEEMonster *monster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(CGRectGetMidX(parent.frame)*2 - 100,CGRectGetMidY(parent.frame)) andParentScene:parent];
+    monster.yScale = 0.5;
+    monster.xScale = 0.5;
+    
+    
+    //get the distance between the destination position and the node's position
+    double distance = sqrt(pow((100 - monster.position.x), 2.0) + pow((100 - monster.position.y), 2.0));
+    
+    //calculate your new duration based on the distance
+    float moveDuration = 0.001*distance;
+    
+    //move the node
+    SKAction *move = [SKAction moveTo:CGPointMake(100, 100) duration: moveDuration];
+    [monster runAction: move];
+    __weak BEEMonster *weakObj1 = monster;
+    [self.objArray addObject:weakObj1];
 }
 
 @end

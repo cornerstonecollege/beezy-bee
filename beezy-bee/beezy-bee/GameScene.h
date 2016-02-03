@@ -37,5 +37,6 @@
 @property (nonatomic, weak) id<GameSceneCollisionDelegate> collisionDelegate;
 @property (nonatomic, weak) id<GameSceneEvents> eventsDelegate;
 
+- (void) resetTimerDelegate;
 
 @end

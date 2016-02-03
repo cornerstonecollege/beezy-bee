@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GameScene.h"
 
-@interface BEESessionHelper : NSObject <GameSceneTimerDelegate>
+@interface BEESessionHelper : NSObject
 
 typedef enum
 {

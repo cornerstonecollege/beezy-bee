@@ -40,9 +40,6 @@
 - (void) doInit
 {
     self.backgroundColor = [UIColor whiteColor];
-    self.timerDelegateArr = [NSMutableArray array];
-    __weak BEESessionHelper *weakSession = [BEESessionHelper sharedInstance];
-    [self.timerDelegateArr addObject:weakSession];
 }
 
 - (void) addPhysicsWorld
@@ -50,6 +47,11 @@
     // Adding gravity to the world and making the delegate
     self.physicsWorld.gravity = CGVectorMake( 0.0, -5.0);
     self.physicsWorld.contactDelegate = self;
+}
+
+- (void)resetTimerDelegate
+{
+    self.timerDelegateArr = [NSMutableArray array];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

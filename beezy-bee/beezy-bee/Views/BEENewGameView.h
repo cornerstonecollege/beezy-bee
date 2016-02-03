@@ -7,8 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "GameScene.h"
 
-@interface BEENewGameView : NSObject
+@interface BEENewGameView : NSObject<GameSceneTimerDelegate>
 
 + (instancetype) sharedInstance;
 - (void) createNewGameWithParentScene:(SKScene *)parent;

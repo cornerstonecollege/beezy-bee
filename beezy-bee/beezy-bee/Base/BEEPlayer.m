@@ -83,8 +83,11 @@
 
 - (void)didTap
 {
-    self.physicsBody.velocity = CGVectorMake(0, 0);
-    [self.physicsBody applyImpulse:CGVectorMake(0, 200)];
+    if (self.position.y < self.parent.frame.size.height)
+    {
+        self.physicsBody.velocity = CGVectorMake(0, 0);
+        [self.physicsBody applyImpulse:CGVectorMake(0, 200)];
+    }
 }
 
 - (void)didUpdateParentScene:(SKScene *)gameScene
