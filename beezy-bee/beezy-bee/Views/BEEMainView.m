@@ -127,7 +127,7 @@
 
 - (void) createBackgroundWithParentScene:(SKScene *)parent
 {
-    [BEEBackground background1WithParentScene:parent];
+    [BEEBackground backgroundWithType:[[BEESharedPreferencesHelper sharedInstance] getBackgroundType] andParentScene:parent];
 }
 
 @end

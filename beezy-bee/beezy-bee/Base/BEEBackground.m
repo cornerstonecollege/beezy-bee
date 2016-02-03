@@ -21,6 +21,11 @@ NSMutableArray *arrBackground;
             [BEEBackground background1WithParentScene:gameScene];
             break;
         }
+        case BBT_BACKGROUND2:
+        {
+            [BEEBackground background2WithParentScene:gameScene];
+            break;
+        }
             
         default:
             break;
@@ -48,6 +53,13 @@ NSMutableArray *arrBackground;
     [BEEBackground getPrivateWithBackgroundImgName:@"Background-1" backgroundMovableImgName:@"Background-1-Move" type:BBT_BACKGROUND1 andParentScene:gameScene];
 }
 
++ (void) background2WithParentScene:(SKScene *)gameScene
+{
+    [BEEBackground resetArray];
+    
+    [BEEBackground getPrivateWithBackgroundImgName:@"Background-2" backgroundMovableImgName:@"Background-2-Move" type:BBT_BACKGROUND2 andParentScene:gameScene];
+}
+
 + (void) getPrivateWithBackgroundImgName:(NSString *)imgName backgroundMovableImgName:(NSString *)imgMovableName type:(BEE_BACKGROUND_TYPE)type andParentScene:(SKScene *)gameScene
 {
     SKTexture *background = [SKTexture textureWithImageNamed:imgName];
@@ -60,7 +72,7 @@ NSMutableArray *arrBackground;
         SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithTexture:background];
         sprite.position = CGPointMake(i * sprite.size.width, sprite.size.height / 2);
         [sprite runAction:moveBackgroundForever];
-        [gameScene addChild:sprite];
+        [gameScene insertChild:sprite atIndex:i];
         
         __weak SKSpriteNode *weakBackgroundSprite = sprite;
         [arrBackground addObject:weakBackgroundSprite];
@@ -76,7 +88,7 @@ NSMutableArray *arrBackground;
         SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithTexture:backgroundMovable];
         sprite.position = CGPointMake(i * sprite.size.width, sprite.size.height / 2);
         [sprite runAction:moveBackgroundMovableForever];
-        [gameScene addChild:sprite];
+        [gameScene insertChild:sprite atIndex:i + 2];
         
         __weak SKSpriteNode *weakBackgroundSprite = sprite;
         [arrBackground addObject:weakBackgroundSprite];

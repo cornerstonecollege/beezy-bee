@@ -64,7 +64,7 @@ BEEBaseObject *arrowRight2;
     if (self)
     {
         _objArray = [NSMutableArray array];
-        _stageArray = @[@"Background-1", @"tmp"];
+        _stageArray = @[@"Background-1", @"Background-2"];
         _playerSelectedIndex = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
     }
     
@@ -189,7 +189,6 @@ BEEBaseObject *arrowRight2;
     SKNode *nodeTouched = [parent nodeAtPoint:pointScr];
     
     
-    
     if ([nodeTouched isKindOfClass:[SKLabelNode class]])
     {
         SKLabelNode *label = (SKLabelNode *) nodeTouched;
@@ -266,6 +265,7 @@ BEEBaseObject *arrowRight2;
         }
         
         [[BEESharedPreferencesHelper sharedInstance] setBackgroundType:self.stageSelectedIndex];
+        [BEEBackground backgroundWithType:[[BEESharedPreferencesHelper sharedInstance] getBackgroundType] andParentScene:parent];
         
         [[BEESharedPreferencesHelper sharedInstance] setPlayerType:self.playerSelectedIndex];
         
