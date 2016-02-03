@@ -124,21 +124,39 @@
 
 - (void)didUpdateTimerWithParentScene:(SKScene *)parent
 {
-    CGFloat y = arc4random() % (NSInteger)(parent.frame.size.height) * 0.9;
+    NSInteger randCnt = arc4random_uniform(2);
     
-    BEEMonster *monster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
-    monster.yScale = 0.5;
-    monster.xScale = 0.5;
+    BEEMonster *object;
+    for (NSInteger cnt = 0; cnt <= randCnt; cnt++){
+        CGFloat y = arc4random() % (NSInteger)(parent.frame.size.height) * 0.9;
+        NSInteger rand = arc4random_uniform(2);
+        switch(rand)
+        {
+            case 0 :
+                 object = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                break;
+            case 1 :
+                 object = [[BEEMonster alloc] initWithImageNamed:@"Item-Honey" imageMovableName:@"Item-Honey" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                break;
+        }
+        object.yScale = 0.5;
+        object.xScale = 0.5;
+        
+        //calculate your new duration based on the distance
+        //float moveDuration = 0.001*distance;
+        
+        //move the node
+        SKAction *move = [SKAction moveTo:CGPointMake(-100, y) duration: 2.0];
+        SKAction *removeFromParent = [SKAction removeFromParent];
+        [object runAction: [SKAction sequence:@[move, removeFromParent]]];
+        __weak BEEMonster *weakObj1 = object;
+        [self.objArray addObject:weakObj1];
+
+        
     
-    //calculate your new duration based on the distance
-    //float moveDuration = 0.001*distance;
+    }
     
-    //move the node
-    SKAction *move = [SKAction moveTo:CGPointMake(-100, y) duration: 2.0];
-    SKAction *removeFromParent = [SKAction removeFromParent];
-    [monster runAction: [SKAction sequence:@[move, removeFromParent]]];
-    __weak BEEMonster *weakObj1 = monster;
-    [self.objArray addObject:weakObj1];
+    
 }
 
 @end
