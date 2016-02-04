@@ -25,10 +25,10 @@
 
 @implementation BEESettingsView
 
-#define STG_SMLX_SCALE 0.3;
-#define STG_LRGX_SCALE 0.5;
-#define STG_SMLY_SCALE 0.1;
-#define STG_LRGY_SCALE 0.2;
+#define STG_SMLX_SCALE 0.5;
+#define STG_LRGX_SCALE 0.7;
+#define STG_SMLY_SCALE 0.5;
+#define STG_LRGY_SCALE 0.7;
 #define PLY_SML_SCALE 0.7;
 #define PLY_LRG_SCALE 1;
 #define ARW_SML_SCALE 0.3;
@@ -64,7 +64,7 @@ BEEBaseObject *arrowRight2;
     if (self)
     {
         _objArray = [NSMutableArray array];
-        _stageArray = @[@"Background-1", @"Background-2"];
+        _stageArray = @[@"Background-1-Icon", @"Background-2-Icon", @"Background-3-Icon"];
         _playerSelectedIndex = [[BEESharedPreferencesHelper sharedInstance] getPlayerType];
     }
     
