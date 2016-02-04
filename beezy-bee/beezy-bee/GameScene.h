@@ -27,6 +27,7 @@
 
 @optional
 - (void) didUpdateTimerWithParentScene:(SKScene *)gameScene;
+- (void) didUpdateTimerDelayWithParentScene:(SKScene *)gameScene;
 - (void) didUpdateParentScene:(SKScene *)gameScene;
 
 @end

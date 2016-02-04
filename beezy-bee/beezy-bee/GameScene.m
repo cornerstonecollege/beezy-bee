@@ -17,6 +17,7 @@
 @interface GameScene () <SKPhysicsContactDelegate>
 
 @property (nonatomic) NSTimeInterval lastSentTimeInterval;
+@property (nonatomic) NSTimeInterval lastSentTimeInterval1Point5;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 
 @end
@@ -86,6 +87,8 @@
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast
 {
     self.lastSentTimeInterval += timeSinceLast;
+    self.lastSentTimeInterval1Point5 += timeSinceLast;
+    
     if (self.lastSentTimeInterval > 1)
     {
         self.lastSentTimeInterval = 0;
@@ -95,6 +98,19 @@
             if ([timerDelegate respondsToSelector:@selector(didUpdateTimerWithParentScene:)])
             {
                 [timerDelegate didUpdateTimerWithParentScene:self];
+            }
+        }
+    }
+    
+    if (self.lastSentTimeInterval1Point5 > 1.3)
+    {
+        self.lastSentTimeInterval1Point5 = 0;
+        
+        for (id<GameSceneTimerDelegate> timerDelegate in self.timerDelegateArr)
+        {
+            if ([timerDelegate respondsToSelector:@selector(didUpdateTimerDelayWithParentScene:)])
+            {
+                [timerDelegate didUpdateTimerDelayWithParentScene:self];
             }
         }
     }

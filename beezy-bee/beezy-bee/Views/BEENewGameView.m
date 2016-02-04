@@ -25,6 +25,7 @@
 @implementation BEENewGameView
 
 SKLabelNode *pointLabel;
+#define DEFAULT_X -100
 
 + (instancetype) sharedInstance
 {
@@ -138,71 +139,86 @@ SKLabelNode *pointLabel;
 {
     NSInteger randCnt = arc4random_uniform(2);
     CGFloat y;
-    CGFloat tmpY = 0;
     BEEMonster *objMonster;
-    for (NSInteger cnt = 0; cnt <= randCnt; cnt++){
-        y = arc4random() % (NSInteger)(parent.frame.size.height) * 0.9;
+    for (NSInteger cnt = 0; cnt <= randCnt; cnt++)
+    {
+        y = arc4random() % (NSInteger)(parent.frame.size.height);
+        
         NSInteger randObj = arc4random_uniform(2);
         switch(randObj)
         {
             case 0 :
-                 objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(parent.frame.size.width + 100, y + tmpY) andParentScene:parent];
+                 objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
             case 1 :
-                 objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Spider" imageMovableName:@"Monster-Spider" position:CGPointMake(parent.frame.size.width + 100, y + tmpY) andParentScene:parent];
+                 objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Spider" imageMovableName:@"Monster-Spider" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
         }
         objMonster.yScale = 0.3;
         objMonster.xScale = 0.3;
         
-        tmpY += 100;
+        y = objMonster.position.y + objMonster.frame.size.height / 2 > parent.frame.size.height ? parent.frame.size.height -  objMonster.frame.size.height / 2 - 10 : objMonster.position.y;
+        
+        y = objMonster.position.y - objMonster.frame.size.height / 2 < 0 ? objMonster.frame.size.height / 2 : objMonster.position.y;
+        
+        objMonster.position = CGPointMake(objMonster.position.x, y);
         
         //calculate your new duration based on the distance
         //float moveDuration = 0.001*distance;
         
         //move the node
-        SKAction *move = [SKAction moveTo:CGPointMake(-100, y) duration: 2.0];
+        SKAction *move = [SKAction moveTo:CGPointMake(DEFAULT_X, y) duration: 2.0];
         SKAction *removeFromParent = [SKAction removeFromParent];
         [objMonster runAction: [SKAction sequence:@[move, removeFromParent]]];
         __weak BEEMonster *weakObj1 = objMonster;
         [self.objArray addObject:weakObj1];
     }
-    
+}
+
+- (void)didUpdateTimerDelayWithParentScene:(SKScene *)parent
+{
     NSInteger randPoint = arc4random_uniform(2);
     BEEItem *objItem;
     if (randPoint == 1) {
-        NSInteger randPoint = arc4random_uniform(3);
-        y = arc4random() % (NSInteger)(parent.frame.size.height) * 0.9;
+        NSInteger randPoint = arc4random_uniform(4);
+        CGFloat y = arc4random() % (NSInteger)(parent.frame.size.height);
+        
         switch(randPoint)
         {
             case 0 :
-                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-Honey" imageMovableName:@"Item-Honey" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-Honey" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 objItem.special = YES;
                 break;
             case 1 :
-                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-GreenFlower" imageMovableName:@"Item-GreenFlower" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-GreenFlower" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
             case 2 :
-                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-RedFlower" imageMovableName:@"Item-RedFlower" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-RedFlower" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
             case 3 :
-                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-BlueFlower" imageMovableName:@"Item-BlueFlower" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-BlueFlower"position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
         }
         objItem.yScale = 0.3;
         objItem.xScale = 0.3;
         
+        y = objItem.position.y + objItem.frame.size.height / 2 > parent.frame.size.height ? parent.frame.size.height -  objItem.frame.size.height / 2 - 10 : objItem.position.y;
+        
+        y = objItem.position.y - objItem.frame.size.height / 2 < 0 ? objItem.frame.size.height / 2 : objItem.position.y;
+        
+        objItem.position = CGPointMake(objItem.position.x, y);
+        
         //calculate your new duration based on the distance
         //float moveDuration = 0.001*distance;
         
         //move the node
-        SKAction *move = [SKAction moveTo:CGPointMake(-100, y) duration: 2.0];
+        SKAction *move = [SKAction moveTo:CGPointMake(DEFAULT_X, y) duration: 2.0];
         SKAction *removeFromParent = [SKAction removeFromParent];
         [objItem runAction: [SKAction sequence:@[move, removeFromParent]]];
         __weak BEEItem *weakObj2 = objItem;
         [self.objArray addObject:weakObj2];
-
     }
+
 }
 
 - (void)didUpdateParentScene:(SKScene *)gameScene
