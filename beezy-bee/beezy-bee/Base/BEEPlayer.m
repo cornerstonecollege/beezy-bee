@@ -117,11 +117,10 @@
 
 - (void) die
 {
-    NSLog(@"dead");
     [[BEESharedPreferencesHelper sharedInstance] setScore:[BEESessionHelper sharedInstance].userScore withPlayerType:self.playerType];
     [[BEESharedPreferencesHelper sharedInstance] saveChanges];
     
-    
+    [BEESessionHelper sharedInstance].isGameOver = YES;
 }
 
 - (void) scoreIsSpecial:(BOOL)isSpecial

@@ -22,6 +22,7 @@ typedef enum
 
 @property (nonatomic) BEE_SCREEN_TYPE currentScreen;
 @property (nonatomic) NSUInteger userScore;
+@property (nonatomic) BOOL isGameOver;
 
 + (instancetype) sharedInstance;
 - (NSString *) getLocalizedStringForName:(NSString *)stringName;
