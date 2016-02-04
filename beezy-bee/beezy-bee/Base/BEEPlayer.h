@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, BEE_PLAYER_TYPE)
 
 + (instancetype) playerWithParent:(SKScene *)parent;
 + (NSArray*) playerArray;
-
+- (void) scoreIsSpecial:(BOOL)isSpecial;
 - (void) die;
 
 @end

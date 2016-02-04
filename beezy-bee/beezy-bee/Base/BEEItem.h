@@ -10,4 +10,6 @@
 
 @interface BEEItem : BEEBaseTouchable
 
+@property (nonatomic) BOOL special;
+
 @end

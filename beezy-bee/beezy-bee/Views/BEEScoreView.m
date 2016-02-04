@@ -73,7 +73,7 @@
     
     NSDictionary *scores = [[BEESharedPreferencesHelper sharedInstance] getScores];
     NSArray *keysOrdered = [scores keysSortedByValueUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        return [obj1 compare:obj2];
+        return [obj2 compare:obj1];
     }];
     
     //That is your player

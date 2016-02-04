@@ -11,6 +11,7 @@
 #import "BEESharedPreferencesHelper.h"
 #import "BEEMainView.h"
 #import "BEEPlayer.h"
+#import "BEEItem.h"
 
 @interface BEENewGameView ()
 
@@ -22,6 +23,8 @@
 
 
 @implementation BEENewGameView
+
+SKLabelNode *pointLabel;
 
 + (instancetype) sharedInstance
 {
@@ -54,6 +57,8 @@
 - (void) createNewGameWithParentScene:(SKScene *)parent
 {
     [BEESessionHelper sharedInstance].currentScreen = BST_GAME;
+    [BEESessionHelper sharedInstance].userScore = 0;
+    
     if ([parent isKindOfClass:[GameScene class]])
     {
         self.parent = (GameScene *)parent;
@@ -64,6 +69,13 @@
     
     SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
     [self setLabelNode:backLabel position:CGPointMake(backLabel.frame.size.width / 2 + 10, parent.size.height - backLabel.frame.size.height - 10)];
+    
+    
+    pointLabel = [SKLabelNode labelNodeWithFontNamed:[[BEESessionHelper sharedInstance] getLocalizedStringForName:@"font_style"]];
+    pointLabel.fontColor = [SKColor blackColor];
+    [parent addChild:pointLabel];
+    [self setLabelNode:pointLabel position:CGPointMake(CGRectGetMidX(parent.frame), parent.size.height - backLabel.frame.size.height - 50)];
+    pointLabel.fontSize = 80;
     
     __weak BEEPlayer *player = [BEEPlayer playerWithParent:parent];
     player.yScale = 0.35;
@@ -125,22 +137,25 @@
 - (void)didUpdateTimerWithParentScene:(SKScene *)parent
 {
     NSInteger randCnt = arc4random_uniform(2);
-    
-    BEEMonster *object;
+    CGFloat y;
+    CGFloat tmpY = 0;
+    BEEMonster *objMonster;
     for (NSInteger cnt = 0; cnt <= randCnt; cnt++){
-        CGFloat y = arc4random() % (NSInteger)(parent.frame.size.height) * 0.9;
-        NSInteger rand = arc4random_uniform(2);
-        switch(rand)
+        y = arc4random() % (NSInteger)(parent.frame.size.height) * 0.9;
+        NSInteger randObj = arc4random_uniform(2);
+        switch(randObj)
         {
             case 0 :
-                 object = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                 objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(parent.frame.size.width + 100, y + tmpY) andParentScene:parent];
                 break;
             case 1 :
-                 object = [[BEEMonster alloc] initWithImageNamed:@"Item-Honey" imageMovableName:@"Item-Honey" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                 objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Spider" imageMovableName:@"Monster-Spider" position:CGPointMake(parent.frame.size.width + 100, y + tmpY) andParentScene:parent];
                 break;
         }
-        object.yScale = 0.5;
-        object.xScale = 0.5;
+        objMonster.yScale = 0.3;
+        objMonster.xScale = 0.3;
+        
+        tmpY += 100;
         
         //calculate your new duration based on the distance
         //float moveDuration = 0.001*distance;
@@ -148,15 +163,51 @@
         //move the node
         SKAction *move = [SKAction moveTo:CGPointMake(-100, y) duration: 2.0];
         SKAction *removeFromParent = [SKAction removeFromParent];
-        [object runAction: [SKAction sequence:@[move, removeFromParent]]];
-        __weak BEEMonster *weakObj1 = object;
+        [objMonster runAction: [SKAction sequence:@[move, removeFromParent]]];
+        __weak BEEMonster *weakObj1 = objMonster;
         [self.objArray addObject:weakObj1];
-
-        
-    
     }
     
-    
+    NSInteger randPoint = arc4random_uniform(2);
+    BEEItem *objItem;
+    if (randPoint == 1) {
+        NSInteger randPoint = arc4random_uniform(3);
+        y = arc4random() % (NSInteger)(parent.frame.size.height) * 0.9;
+        switch(randPoint)
+        {
+            case 0 :
+                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-Honey" imageMovableName:@"Item-Honey" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                objItem.special = YES;
+                break;
+            case 1 :
+                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-GreenFlower" imageMovableName:@"Item-GreenFlower" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                break;
+            case 2 :
+                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-RedFlower" imageMovableName:@"Item-RedFlower" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                break;
+            case 3 :
+                objItem = [[BEEItem alloc] initWithImageNamed:@"Item-BlueFlower" imageMovableName:@"Item-BlueFlower" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                break;
+        }
+        objItem.yScale = 0.3;
+        objItem.xScale = 0.3;
+        
+        //calculate your new duration based on the distance
+        //float moveDuration = 0.001*distance;
+        
+        //move the node
+        SKAction *move = [SKAction moveTo:CGPointMake(-100, y) duration: 2.0];
+        SKAction *removeFromParent = [SKAction removeFromParent];
+        [objItem runAction: [SKAction sequence:@[move, removeFromParent]]];
+        __weak BEEItem *weakObj2 = objItem;
+        [self.objArray addObject:weakObj2];
+
+    }
+}
+
+- (void)didUpdateParentScene:(SKScene *)gameScene
+{
+    pointLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[BEESessionHelper sharedInstance].userScore];
 }
 
 @end

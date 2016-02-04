@@ -8,6 +8,7 @@
 
 #import "BEEPlayer.h"
 #import "BEESharedPreferencesHelper.h"
+#import "BEESessionHelper.h"
 
 @interface BEEPlayer ()
 
@@ -117,6 +118,13 @@
 - (void) die
 {
     NSLog(@"dead");
+    [[BEESharedPreferencesHelper sharedInstance] setScore:[BEESessionHelper sharedInstance].userScore withPlayerType:self.playerType];
+    [[BEESharedPreferencesHelper sharedInstance] saveChanges];
+}
+
+- (void) scoreIsSpecial:(BOOL)isSpecial
+{
+    [BEESessionHelper sharedInstance].userScore += isSpecial ? 2 : 1;
 }
 
 @end

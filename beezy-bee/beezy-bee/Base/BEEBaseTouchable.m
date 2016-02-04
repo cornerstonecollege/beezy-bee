@@ -8,9 +8,13 @@
 
 #import "BEEBaseTouchable.h"
 #import "BEEPlayer.h"
+#import "BEESessionHelper.h"
+#import "BEEItem.h"
 
 @implementation BEEBaseTouchable
 
+BOOL isUpdatingItems;
+BOOL isUpdatingMonsters;
 BOOL hasSharedInstanceBeenCreated;
 
 + (instancetype) sharedInstance
@@ -70,18 +74,42 @@ BOOL hasSharedInstanceBeenCreated;
 
 - (void)player:(SKPhysicsBody *)player DidCollideWithItem:(SKPhysicsBody *)item
 {
-    // delete them item from the screen
-    [item.node removeFromParent];
-    
-    // make score
+    if (!isUpdatingItems)
+    {
+        isUpdatingItems = YES;
+        
+        if([item.node isKindOfClass:[BEEItem class]]){
+            
+            BEEItem * objItem = (BEEItem *) item.node;
+            
+            if ([player.node isKindOfClass:[BEEPlayer class]])
+            {
+                BEEPlayer *objPlayer = (BEEPlayer *)player.node;
+                [objPlayer scoreIsSpecial:objItem.special];
+            }
+            
+        }
+        
+        // delete them item from the screen
+        [item.node removeFromParent];
+        
+        isUpdatingItems = NO;
+    }
 }
 
 - (void)player:(SKPhysicsBody *)player DidCollideWithMonster:(SKPhysicsBody *)monster
 {
-    if ([player.node isKindOfClass:[BEEPlayer class]])
+    if (!isUpdatingMonsters)
     {
-        BEEPlayer *objPlayer = (BEEPlayer *)player.node;
-        [objPlayer die];
+        isUpdatingMonsters = YES;
+        
+        if ([player.node isKindOfClass:[BEEPlayer class]])
+        {
+            BEEPlayer *objPlayer = (BEEPlayer *)player.node;
+            [objPlayer die];
+        }
+        
+        isUpdatingMonsters = NO;
     }
 }
 
