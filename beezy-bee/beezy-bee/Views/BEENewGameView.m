@@ -85,8 +85,17 @@ BEEItem *objItem;
     pointLabel.fontSize = 80;
     
     __weak BEEPlayer *player = [BEEPlayer playerWithParent:parent];
-    player.yScale = 0.35;
-    player.xScale = 0.35;
+    if (parent.size.height < 500)
+    {
+        player.yScale = 0.25;
+        player.xScale = 0.25;
+    }
+    else
+    {
+        player.yScale = 0.35;
+        player.xScale = 0.35;
+    }
+    
     [self.objArray addObject:player];
     
     __weak SKLabelNode *weakScoreLabel = pointLabel;
@@ -183,8 +192,17 @@ BEEItem *objItem;
                  objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Spider" imageMovableName:@"Monster-Spider" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
         }
-        objMonster.yScale = 0.4;
-        objMonster.xScale = 0.4;
+        
+        if (parent.size.height < 500)
+        {
+            objMonster.yScale = 0.3;
+            objMonster.xScale = 0.3;
+        }
+        else
+        {
+            objMonster.yScale = 0.4;
+            objMonster.xScale = 0.4;
+        }
         
         y = objMonster.position.y + objMonster.frame.size.height / 2 > parent.frame.size.height ? parent.frame.size.height -  objMonster.frame.size.height / 2 - 10 : objMonster.position.y;
         
@@ -236,8 +254,17 @@ BEEItem *objItem;
                 objItem = [[BEEItem alloc] initWithImageNamed:@"Item-BlueFlower"position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
         }
-        objItem.yScale = 0.4;
-        objItem.xScale = 0.4;
+        
+        if (parent.size.height < 500)
+        {
+            objItem.yScale = 0.3;
+            objItem.xScale = 0.3;
+        }
+        else
+        {
+            objItem.yScale = 0.4;
+            objItem.xScale = 0.4;
+        }
         
         y = objItem.position.y + objItem.frame.size.height / 2 > parent.frame.size.height ? parent.frame.size.height -  objItem.frame.size.height / 2 - 10 : objItem.position.y;
         
