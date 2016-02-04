@@ -120,6 +120,8 @@
     NSLog(@"dead");
     [[BEESharedPreferencesHelper sharedInstance] setScore:[BEESessionHelper sharedInstance].userScore withPlayerType:self.playerType];
     [[BEESharedPreferencesHelper sharedInstance] saveChanges];
+    
+    
 }
 
 - (void) scoreIsSpecial:(BOOL)isSpecial
