@@ -143,6 +143,12 @@ SKLabelNode *pointLabel;
     for (NSInteger cnt = 0; cnt <= randCnt; cnt++)
     {
         y = arc4random() % (NSInteger)(parent.frame.size.height);
+        NSLog(@"%f", objMonster.position.y);
+        if(cnt != 0){
+            while(objMonster.position.y > y - 50 && objMonster.position.y < y + 50 ){
+                y = arc4random() % (NSInteger)(parent.frame.size.height);
+            }
+        }
         
         NSInteger randObj = arc4random_uniform(2);
         switch(randObj)
