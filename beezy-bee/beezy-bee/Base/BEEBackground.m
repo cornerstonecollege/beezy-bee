@@ -76,7 +76,7 @@ NSMutableArray *arrBackground;
 {
     SKTexture *background = [SKTexture textureWithImageNamed:imgName];
     SKAction *moveBackground = [SKAction moveByX:-background.size.width y:0 duration:0.03 * background.size.width];
-    SKAction *resetBackground = [SKAction moveByX:background.size.width y:0 duration:0];
+    SKAction *resetBackground = [SKAction moveByX:background.size.width + 2 y:0 duration:0];
     SKAction *moveBackgroundForever = [SKAction repeatActionForever:[SKAction sequence:@[moveBackground, resetBackground]]];
     
     for (CGFloat i = 0; i < 2 + gameScene.frame.size.width / background.size.width; i++)
