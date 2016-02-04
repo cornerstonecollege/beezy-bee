@@ -11,5 +11,6 @@
 @interface BEEItem : BEEBaseTouchable
 
 @property (nonatomic) BOOL special;
+@property (nonatomic) BOOL hasBeenTouched;
 
 @end

@@ -17,4 +17,6 @@ typedef NS_ENUM(NSUInteger, BEE_MONSTER_TYPE)
     BMT_MONSTER2 = 1,
 };
 
+@property (nonatomic) BOOL hasBeenTouched;
+
 @end

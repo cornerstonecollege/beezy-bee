@@ -10,11 +10,10 @@
 #import "BEEPlayer.h"
 #import "BEESessionHelper.h"
 #import "BEEItem.h"
+#import "BEEMonster.h"
 
 @implementation BEEBaseTouchable
 
-BOOL isUpdatingItems;
-BOOL isUpdatingMonsters;
 BOOL hasSharedInstanceBeenCreated;
 
 + (instancetype) sharedInstance
@@ -74,42 +73,42 @@ BOOL hasSharedInstanceBeenCreated;
 
 - (void)player:(SKPhysicsBody *)player DidCollideWithItem:(SKPhysicsBody *)item
 {
-    if (!isUpdatingItems)
+    if([item.node isKindOfClass:[BEEItem class]])
     {
-        isUpdatingItems = YES;
+        BEEItem * objItem = (BEEItem *) item.node;
         
-        if([item.node isKindOfClass:[BEEItem class]]){
-            
-            BEEItem * objItem = (BEEItem *) item.node;
-            
-            if ([player.node isKindOfClass:[BEEPlayer class]])
-            {
-                BEEPlayer *objPlayer = (BEEPlayer *)player.node;
-                [objPlayer scoreIsSpecial:objItem.special];
-            }
-            
+        if (objItem.hasBeenTouched)
+            return;
+        
+        objItem.hasBeenTouched = YES;
+        
+        if ([player.node isKindOfClass:[BEEPlayer class]])
+        {
+            BEEPlayer *objPlayer = (BEEPlayer *)player.node;
+            [objPlayer scoreIsSpecial:objItem.special];
         }
-        
-        // delete them item from the screen
-        [item.node removeFromParent];
-        
-        isUpdatingItems = NO;
     }
+    
+    // delete them item from the screen
+    [item.node removeFromParent];
 }
 
 - (void)player:(SKPhysicsBody *)player DidCollideWithMonster:(SKPhysicsBody *)monster
 {
-    if (!isUpdatingMonsters)
+    if([monster.node isKindOfClass:[BEEMonster class]])
     {
-        isUpdatingMonsters = YES;
+        BEEMonster * objMonster = (BEEMonster *) monster.node;
+        
+        if (objMonster.hasBeenTouched)
+            return;
+        
+        objMonster.hasBeenTouched = YES;
         
         if ([player.node isKindOfClass:[BEEPlayer class]])
         {
             BEEPlayer *objPlayer = (BEEPlayer *)player.node;
             [objPlayer die];
         }
-        
-        isUpdatingMonsters = NO;
     }
 }
 
