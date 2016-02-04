@@ -140,7 +140,7 @@ BEEItem *objItem;
             [[BEEMainView sharedInstance] createMenuWithParentScene:parent];
         }
     }
-    else if ([nodeTouched isKindOfClass:[BEEBaseObject class]])
+    else if ([nodeTouched isKindOfClass:[BEEBaseObject class]] && nodeTouched.name == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"restart"])
     {
         [self deleteObjectsFromParent];
         [self createNewGameWithParentScene:self.parent];
@@ -183,8 +183,8 @@ BEEItem *objItem;
                  objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Spider" imageMovableName:@"Monster-Spider" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
         }
-        objMonster.yScale = 0.3;
-        objMonster.xScale = 0.3;
+        objMonster.yScale = 0.4;
+        objMonster.xScale = 0.4;
         
         y = objMonster.position.y + objMonster.frame.size.height / 2 > parent.frame.size.height ? parent.frame.size.height -  objMonster.frame.size.height / 2 - 10 : objMonster.position.y;
         
@@ -236,8 +236,8 @@ BEEItem *objItem;
                 objItem = [[BEEItem alloc] initWithImageNamed:@"Item-BlueFlower"position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
         }
-        objItem.yScale = 0.3;
-        objItem.xScale = 0.3;
+        objItem.yScale = 0.4;
+        objItem.xScale = 0.4;
         
         y = objItem.position.y + objItem.frame.size.height / 2 > parent.frame.size.height ? parent.frame.size.height -  objItem.frame.size.height / 2 - 10 : objItem.position.y;
         
@@ -279,7 +279,7 @@ BEEItem *objItem;
         }
     }
     
-    BEEBaseObject *restart = [[BEEBaseObject alloc] initWithImageNamed:@"Restart" position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame)) andParentScene:parent];
+    BEEBaseObject *restart = [[BEEBaseObject alloc] initWithImageNamed:[[BEESessionHelper sharedInstance] getLocalizedStringForName:@"restart"] position:CGPointMake(CGRectGetMidX(parent.frame),CGRectGetMidY(parent.frame)) andParentScene:parent];
     restart.yScale = 0.5;
     restart.xScale = 0.5;
     
