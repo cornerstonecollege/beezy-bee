@@ -182,7 +182,7 @@ BEEItem *objItem;
             }
         }
         
-        NSInteger randObj = arc4random_uniform(2);
+        NSInteger randObj = arc4random_uniform(4);
         switch(randObj)
         {
             case 0 :
@@ -190,6 +190,12 @@ BEEItem *objItem;
                 break;
             case 1 :
                  objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Spider" imageMovableName:@"Monster-Spider" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                break;
+            case 2 :
+                objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Bat" imageMovableName:@"Monster-Bat-Move" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
+                break;
+            case 3 :
+                objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Bat-2" imageMovableName:@"Monster-Bat-2-Move" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
         }
         
