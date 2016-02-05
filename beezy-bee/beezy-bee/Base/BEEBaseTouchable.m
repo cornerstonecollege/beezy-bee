@@ -107,7 +107,7 @@ BOOL hasSharedInstanceBeenCreated;
         if ([player.node isKindOfClass:[BEEPlayer class]])
         {
             BEEPlayer *objPlayer = (BEEPlayer *)player.node;
-            [objPlayer die];
+            [objPlayer dieWithMonster:YES];
         }
     }
 }

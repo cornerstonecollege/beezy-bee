@@ -84,6 +84,10 @@
 
 - (void)didTap
 {
+    // Too much
+    //SKAction *sound = [SKAction playSoundFileNamed:@"bee_fly.mp3" waitForCompletion:NO];
+    //[self runAction:sound];
+    
     if (self.position.y < self.parent.frame.size.height)
     {
         self.physicsBody.velocity = CGVectorMake(0, 0);
@@ -96,7 +100,7 @@
     self.zRotation = [self clamp:self.physicsBody.velocity.dy * (self.physicsBody.velocity.dy < 0 ? 0.003 : 0.001)];
     
     if (self.position.y < 0)
-        [self die];
+        [self dieWithMonster:NO];
 }
 
 - (CGFloat) clamp:(CGFloat) value
@@ -115,6 +119,22 @@
     }
 }
 
+- (void) dieWithMonster:(BOOL)withMonster
+{
+    if (withMonster && [[BEESharedPreferencesHelper sharedInstance] getIsAudioEnabled])
+    {
+        SKAction *sound = [SKAction playSoundFileNamed:@"player_hit_monster.mp3" waitForCompletion:NO];
+        __weak BEEPlayer *weakSelf = self;
+        [self runAction:sound completion:^{
+            [weakSelf die];
+        }];
+    }
+    else
+    {
+        [self die];
+    }
+}
+
 - (void) die
 {
     [[BEESharedPreferencesHelper sharedInstance] setScore:[BEESessionHelper sharedInstance].userScore withPlayerType:self.playerType];
@@ -125,6 +145,13 @@
 
 - (void) scoreIsSpecial:(BOOL)isSpecial
 {
+    if ([[BEESharedPreferencesHelper sharedInstance] getIsAudioEnabled])
+    {
+        NSString *scoreSound = isSpecial ? @"player_special_score.mp3" : @"player_score.mp3";
+        SKAction *sound = [SKAction playSoundFileNamed:scoreSound waitForCompletion:NO];
+        [self runAction:sound];
+    }
+    
     [BEESessionHelper sharedInstance].userScore += isSpecial ? 2 : 1;
 }
 
