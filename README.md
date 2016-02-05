@@ -4,7 +4,7 @@ That is a small game inspired on "Flappy Bird". That is meant for iOS devices.
 ### How to play
 Collect flowers to win, but do not forget to avoid the monsters!
 
-![Game Play Screenshot](/screenshot/game_screenshot_1.png)
+![Game Play Screenshot](game_screenshot_1.png)
 
 ### Help
 Feel free to help the repository, sending your pull requests.
