@@ -15,7 +15,6 @@
 		081206081C56FA94000CD428 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081206061C56FA94000CD428 /* Main.storyboard */; };
 		0812060A1C56FA94000CD428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 081206091C56FA94000CD428 /* Assets.xcassets */; };
 		0812060D1C56FA94000CD428 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0812060B1C56FA94000CD428 /* LaunchScreen.storyboard */; };
-		1C338FD81C6021770072DD62 /* BEEBackgroundElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C338FD71C6021770072DD62 /* BEEBackgroundElements.m */; };
 		1C4545671C571C8000321192 /* BEEBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4545661C571C8000321192 /* BEEBaseObject.m */; };
 		1C45456A1C571EF300321192 /* BEEPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4545691C571EF300321192 /* BEEPlayer.m */; };
 		1C45456D1C571F7000321192 /* BEEBaseTouchable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C45456C1C571F7000321192 /* BEEBaseTouchable.m */; };
@@ -24,6 +23,7 @@
 		1C8C68431C5C1A6E00D10A67 /* BEESharedPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C68421C5C1A6E00D10A67 /* BEESharedPreferences.m */; };
 		1C8C68461C5C1BC700D10A67 /* BEEBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C68451C5C1BC700D10A67 /* BEEBackground.m */; };
 		1C8C68491C5C277100D10A67 /* BEESharedPreferencesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C68481C5C277100D10A67 /* BEESharedPreferencesHelper.m */; };
+		1CF394631C64279400315B09 /* BEEAudioHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF394621C64279400315B09 /* BEEAudioHelper.m */; };
 		5E6A51F41C596CA700084A0C /* bee_fly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E6A51F31C596CA700084A0C /* bee_fly.mp3 */; };
 		5E9E66C31C58332B0054CB3D /* player_hit_ground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9E66BF1C58332B0054CB3D /* player_hit_ground.mp3 */; };
 		5E9E66C41C58332B0054CB3D /* player_hit_monster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9E66C01C58332B0054CB3D /* player_hit_monster.mp3 */; };
@@ -55,8 +55,6 @@
 		081206091C56FA94000CD428 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0812060C1C56FA94000CD428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0812060E1C56FA94000CD428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C338FD61C6021770072DD62 /* BEEBackgroundElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEBackgroundElements.h; path = Base/BEEBackgroundElements.h; sourceTree = "<group>"; };
-		1C338FD71C6021770072DD62 /* BEEBackgroundElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEBackgroundElements.m; path = Base/BEEBackgroundElements.m; sourceTree = "<group>"; };
 		1C4545651C571C8000321192 /* BEEBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEBaseObject.h; path = Base/BEEBaseObject.h; sourceTree = "<group>"; };
 		1C4545661C571C8000321192 /* BEEBaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEBaseObject.m; path = Base/BEEBaseObject.m; sourceTree = "<group>"; };
 		1C4545681C571EF300321192 /* BEEPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEPlayer.h; path = Base/BEEPlayer.h; sourceTree = "<group>"; };
@@ -73,6 +71,8 @@
 		1C8C68451C5C1BC700D10A67 /* BEEBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEBackground.m; path = Base/BEEBackground.m; sourceTree = "<group>"; };
 		1C8C68471C5C277100D10A67 /* BEESharedPreferencesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEESharedPreferencesHelper.h; path = Utilities/BEESharedPreferencesHelper.h; sourceTree = "<group>"; };
 		1C8C68481C5C277100D10A67 /* BEESharedPreferencesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEESharedPreferencesHelper.m; path = Utilities/BEESharedPreferencesHelper.m; sourceTree = "<group>"; };
+		1CF394611C64279400315B09 /* BEEAudioHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEAudioHelper.h; path = Utilities/BEEAudioHelper.h; sourceTree = "<group>"; };
+		1CF394621C64279400315B09 /* BEEAudioHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEAudioHelper.m; path = Utilities/BEEAudioHelper.m; sourceTree = "<group>"; };
 		5E6A51F31C596CA700084A0C /* bee_fly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bee_fly.mp3; path = Audio/bee_fly.mp3; sourceTree = "<group>"; };
 		5E9E66BF1C58332B0054CB3D /* player_hit_ground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = player_hit_ground.mp3; path = Audio/player_hit_ground.mp3; sourceTree = "<group>"; };
 		5E9E66C01C58332B0054CB3D /* player_hit_monster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = player_hit_monster.mp3; path = Audio/player_hit_monster.mp3; sourceTree = "<group>"; };
@@ -170,8 +170,6 @@
 				1C4545751C5722AF00321192 /* BEEItem.m */,
 				1C8C68441C5C1BC700D10A67 /* BEEBackground.h */,
 				1C8C68451C5C1BC700D10A67 /* BEEBackground.m */,
-				1C338FD61C6021770072DD62 /* BEEBackgroundElements.h */,
-				1C338FD71C6021770072DD62 /* BEEBackgroundElements.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -202,6 +200,8 @@
 				1C8C68481C5C277100D10A67 /* BEESharedPreferencesHelper.m */,
 				68BD09151C60265C00997700 /* BEEUtilitiesHelper.h */,
 				68BD09161C60265C00997700 /* BEEUtilitiesHelper.m */,
+				1CF394611C64279400315B09 /* BEEAudioHelper.h */,
+				1CF394621C64279400315B09 /* BEEAudioHelper.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -311,11 +311,11 @@
 				68A0DAE91C58231A000C7297 /* BEESessionHelper.m in Sources */,
 				1C8C68461C5C1BC700D10A67 /* BEEBackground.m in Sources */,
 				1C4545761C5722AF00321192 /* BEEItem.m in Sources */,
+				1CF394631C64279400315B09 /* BEEAudioHelper.m in Sources */,
 				68F7A0921C59758F0099D836 /* BEEMainView.m in Sources */,
 				68F7A0A11C598A150099D836 /* BEESettingsView.m in Sources */,
 				1C8C68431C5C1A6E00D10A67 /* BEESharedPreferences.m in Sources */,
 				081206001C56FA94000CD428 /* GameScene.m in Sources */,
-				1C338FD81C6021770072DD62 /* BEEBackgroundElements.m in Sources */,
 				68F7A0981C5989A00099D836 /* BEEScoreView.m in Sources */,
 				1C45456D1C571F7000321192 /* BEEBaseTouchable.m in Sources */,
 				68BD09171C60265C00997700 /* BEEUtilitiesHelper.m in Sources */,

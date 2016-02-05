@@ -7,6 +7,8 @@
 //
 
 #import "BEEBackground.h"
+#import "BEEAudioHelper.h"
+#import "BEESharedPreferencesHelper.h"
 
 @implementation BEEBackground
 
@@ -37,17 +39,31 @@ NSMutableArray *arrBackground;
     }
 }
 
-+ (BEEBackgroundElements *)getConfigForBackgroundType:(BEE_BACKGROUND_TYPE)type
++ (void) playAudioWithType:(BEE_BACKGROUND_TYPE)type
 {
-    switch (type)
+    if ([[BEESharedPreferencesHelper sharedInstance] getIsAudioEnabled])
     {
-        case BBT_BACKGROUND1:
-            return [[BEEBackgroundElements alloc] initWithAudioTrack:@"background_one" andMonsterTypes:@[[NSNumber numberWithUnsignedInteger:BMT_MONSTER1]]];
-            break;
-            
-        default:
-            return nil;
-            break;
+        switch (type)
+        {
+            case BBT_BACKGROUND1:
+            {
+                [[BEEAudioHelper sharedInstance] playAudioWithFileName:@"background_one"];
+                break;
+            }
+            case BBT_BACKGROUND2:
+            {
+                [[BEEAudioHelper sharedInstance] playAudioWithFileName:@"background_two"];
+                break;
+            }
+            case BBT_BACKGROUND3:
+            {
+                [[BEEAudioHelper sharedInstance] playAudioWithFileName:@"background_three"];
+                break;
+            }
+                
+            default:
+                break;
+        }
     }
 }
 
@@ -56,6 +72,8 @@ NSMutableArray *arrBackground;
     [BEEBackground resetArray];
     
     [BEEBackground getPrivateWithBackgroundImgName:@"Background-1" backgroundMovableImgName:@"Background-1-Move" type:BBT_BACKGROUND1 andParentScene:gameScene];
+    
+    [BEEBackground playAudioWithType:BBT_BACKGROUND1];
 }
 
 + (void) background2WithParentScene:(SKScene *)gameScene
@@ -63,6 +81,8 @@ NSMutableArray *arrBackground;
     [BEEBackground resetArray];
     
     [BEEBackground getPrivateWithBackgroundImgName:@"Background-2" backgroundMovableImgName:@"Background-2-Move" type:BBT_BACKGROUND2 andParentScene:gameScene];
+    
+    [BEEBackground playAudioWithType:BBT_BACKGROUND2];
 }
 
 + (void) background3WithParentScene:(SKScene *)gameScene
@@ -70,6 +90,8 @@ NSMutableArray *arrBackground;
     [BEEBackground resetArray];
     
     [BEEBackground getPrivateWithBackgroundImgName:@"Background-3" backgroundMovableImgName:nil type:BBT_BACKGROUND3 andParentScene:gameScene];
+    
+    [BEEBackground playAudioWithType:BBT_BACKGROUND3];
 }
 
 + (void) getPrivateWithBackgroundImgName:(NSString *)imgName backgroundMovableImgName:(NSString *)imgMovableName type:(BEE_BACKGROUND_TYPE)type andParentScene:(SKScene *)gameScene

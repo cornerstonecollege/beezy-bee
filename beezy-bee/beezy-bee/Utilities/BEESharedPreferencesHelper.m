@@ -7,6 +7,8 @@
 //
 
 #import "BEESharedPreferencesHelper.h"
+#import "BEEBackground.h"
+#import "BEEAudioHelper.h"
 
 @interface BEESharedPreferencesHelper ()
 
@@ -63,6 +65,14 @@
 - (void) setIsAudioEnabled:(BOOL)isAudioEnabled
 {
     self.sharedPreferences.isAudioEnabled = isAudioEnabled;
+    if (self.sharedPreferences.isAudioEnabled)
+    {
+        [BEEBackground playAudioWithType:[self getBackgroundType]];
+    }
+    else
+    {
+        [[BEEAudioHelper sharedInstance] stop];
+    }
 }
 
 - (BOOL) getIsAudioEnabled

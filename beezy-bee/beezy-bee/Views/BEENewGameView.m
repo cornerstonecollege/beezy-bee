@@ -13,6 +13,7 @@
 #import "BEEPlayer.h"
 #import "BEEItem.h"
 #import "BEEBaseObject.h"
+#import "BEEMonster.h"
 
 @interface BEENewGameView ()
 

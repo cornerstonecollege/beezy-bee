@@ -7,7 +7,6 @@
 //
 
 #import "BEEBaseObject.h"
-#import "BEEBackgroundElements.h"
 #import <Foundation/Foundation.h>
 
 @interface BEEBackground : NSObject
@@ -20,7 +19,7 @@ typedef NS_ENUM(NSUInteger, BEE_BACKGROUND_TYPE)
 };
 
 + (void) backgroundWithType:(BEE_BACKGROUND_TYPE)type andParentScene:(SKScene *)gameScene;
-+ (BEEBackgroundElements *) getConfigForBackgroundType:(BEE_BACKGROUND_TYPE)type;
++ (void) playAudioWithType:(BEE_BACKGROUND_TYPE)type;
 
 + (void) background1WithParentScene:(SKScene *)gameScene;
 + (void) background2WithParentScene:(SKScene *)gameScene;
