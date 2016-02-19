@@ -23,6 +23,7 @@
 		1C8C68431C5C1A6E00D10A67 /* BEESharedPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C68421C5C1A6E00D10A67 /* BEESharedPreferences.m */; };
 		1C8C68461C5C1BC700D10A67 /* BEEBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C68451C5C1BC700D10A67 /* BEEBackground.m */; };
 		1C8C68491C5C277100D10A67 /* BEESharedPreferencesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C68481C5C277100D10A67 /* BEESharedPreferencesHelper.m */; };
+		1CE591D01C77C4E5005F8D77 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE591CF1C77C4E5005F8D77 /* AVFoundation.framework */; };
 		1CF394631C64279400315B09 /* BEEAudioHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF394621C64279400315B09 /* BEEAudioHelper.m */; };
 		5E6A51F41C596CA700084A0C /* bee_fly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E6A51F31C596CA700084A0C /* bee_fly.mp3 */; };
 		5E9E66C31C58332B0054CB3D /* player_hit_ground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9E66BF1C58332B0054CB3D /* player_hit_ground.mp3 */; };
@@ -72,6 +73,7 @@
 		1C8C68451C5C1BC700D10A67 /* BEEBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEBackground.m; path = Base/BEEBackground.m; sourceTree = "<group>"; };
 		1C8C68471C5C277100D10A67 /* BEESharedPreferencesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEESharedPreferencesHelper.h; path = Utilities/BEESharedPreferencesHelper.h; sourceTree = "<group>"; };
 		1C8C68481C5C277100D10A67 /* BEESharedPreferencesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEESharedPreferencesHelper.m; path = Utilities/BEESharedPreferencesHelper.m; sourceTree = "<group>"; };
+		1CE591CF1C77C4E5005F8D77 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1CF394611C64279400315B09 /* BEEAudioHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEAudioHelper.h; path = Utilities/BEEAudioHelper.h; sourceTree = "<group>"; };
 		1CF394621C64279400315B09 /* BEEAudioHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEAudioHelper.m; path = Utilities/BEEAudioHelper.m; sourceTree = "<group>"; };
 		5E6A51F31C596CA700084A0C /* bee_fly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bee_fly.mp3; path = Audio/bee_fly.mp3; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CE591D01C77C4E5005F8D77 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +116,7 @@
 		081205EC1C56FA93000CD428 = {
 			isa = PBXGroup;
 			children = (
+				1CE591CF1C77C4E5005F8D77 /* AVFoundation.framework */,
 				081205F71C56FA94000CD428 /* beezy-bee */,
 				081205F61C56FA94000CD428 /* Products */,
 			);
@@ -440,6 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "beezy-bee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.beezy-bee";
@@ -455,6 +460,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "beezy-bee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.beezy-bee";
