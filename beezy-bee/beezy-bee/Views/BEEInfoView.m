@@ -91,8 +91,8 @@
     [self setLabelNode:copyRightLabel position:CGPointMake((parent.size.width - CGRectGetMidX(parent.frame)), CGRectGetMidY(parent.frame) * 0.05)];
     
     SKLabelNode *createdByLabel = [self createLabelWithParentScene:parent keyForName:@"createdBy"];
-    createdByLabel.fontSize = 20;
-    [self setLabelNode:createdByLabel position:CGPointMake(createdByLabel.frame.size.width / 2 + 10, CGRectGetMidY(parent.frame) * 0.8)];
+    createdByLabel.fontSize = 30;
+    [self setLabelNode:createdByLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.8)];
     
     SKLabelNode *luizLabel = [self createLabelWithParentScene:parent keyForName:@"luiz"];
     luizLabel.fontSize = 20;
