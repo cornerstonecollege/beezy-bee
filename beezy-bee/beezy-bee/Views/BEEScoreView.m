@@ -55,7 +55,6 @@
     
     SKLabelNode *backLabel = [self createLabelWithParentScene:parent keyForName:@"back"];
     
-    
     SKSpriteNode *bg1Color = [SKSpriteNode spriteNodeWithColor:[[BEEUtilitiesHelper sharedInstance] goldColor] size:CGSizeMake(parent.size.width, 80)];
     bg1Color.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.35);
     
@@ -107,8 +106,6 @@
         __weak SKSpriteNode *weakObj = player;
         [self.objArray addObject:weakObj];
     }
-    
-
 }
 
 - (SKLabelNode *) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName

@@ -6,6 +6,7 @@
   Copyright © 2016 Ideia do Luiz. All rights reserved.
 */
 
+"info" = "Info";
 "new_game" = "New Game";
 "settings" = "Settings";
 "score" = "Score";
@@ -20,3 +21,15 @@
 "2nd" = "2nd";
 "3rd" = "3rd";
 "restart" = "Restart";
+"info_mainTitle" = "How to play";
+"info_explain1" = "Collect flowers";
+"info_and" = "and";
+"info_explain2" = " honeycombs to win,";
+"info_but" = "but";
+"info_explain3" = "don't forget to avoid the monsters!";
+"copyright" = "Copyright@2017CICCC All Right Reserved";
+"luiz" = "Luiz";
+"hiroshi" = "Hiroshi";
+"shreekan" = "Shreekan";
+"shawn" = "Shawn";
+"tomoko" = "Tomoko";

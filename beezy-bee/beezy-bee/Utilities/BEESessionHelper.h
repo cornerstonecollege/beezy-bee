@@ -17,6 +17,7 @@ typedef enum
     BST_GAME,
     BST_SETTINGS,
     BST_SCORE,
+    BST_INFO,
 }BEE_SCREEN_TYPE;
 
 

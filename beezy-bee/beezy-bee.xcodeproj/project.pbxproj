@@ -39,6 +39,7 @@
 		68F7A0981C5989A00099D836 /* BEEScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0971C5989A00099D836 /* BEEScoreView.m */; };
 		68F7A0A11C598A150099D836 /* BEESettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0A01C598A150099D836 /* BEESettingsView.m */; };
 		68F7A0A41C598A4C0099D836 /* BEENewGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A0A31C598A4C0099D836 /* BEENewGameView.m */; };
+		68FE95B81C76A3ED00C43665 /* BEEInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FE95B71C76A3ED00C43665 /* BEEInfoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,8 @@
 		68F7A0A01C598A150099D836 /* BEESettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEESettingsView.m; path = Views/BEESettingsView.m; sourceTree = "<group>"; };
 		68F7A0A21C598A4C0099D836 /* BEENewGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEENewGameView.h; path = Views/BEENewGameView.h; sourceTree = "<group>"; };
 		68F7A0A31C598A4C0099D836 /* BEENewGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEENewGameView.m; path = Views/BEENewGameView.m; sourceTree = "<group>"; };
+		68FE95B61C76A3ED00C43665 /* BEEInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEInfoView.h; path = Views/BEEInfoView.h; sourceTree = "<group>"; };
+		68FE95B71C76A3ED00C43665 /* BEEInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEInfoView.m; path = Views/BEEInfoView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +220,8 @@
 				68F7A0A01C598A150099D836 /* BEESettingsView.m */,
 				68F7A0A21C598A4C0099D836 /* BEENewGameView.h */,
 				68F7A0A31C598A4C0099D836 /* BEENewGameView.m */,
+				68FE95B61C76A3ED00C43665 /* BEEInfoView.h */,
+				68FE95B71C76A3ED00C43665 /* BEEInfoView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				1C8C68431C5C1A6E00D10A67 /* BEESharedPreferences.m in Sources */,
 				081206001C56FA94000CD428 /* GameScene.m in Sources */,
 				68F7A0981C5989A00099D836 /* BEEScoreView.m in Sources */,
+				68FE95B81C76A3ED00C43665 /* BEEInfoView.m in Sources */,
 				1C45456D1C571F7000321192 /* BEEBaseTouchable.m in Sources */,
 				68BD09171C60265C00997700 /* BEEUtilitiesHelper.m in Sources */,
 				68F7A0A41C598A4C0099D836 /* BEENewGameView.m in Sources */,

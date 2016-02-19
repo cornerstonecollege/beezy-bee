@@ -13,6 +13,7 @@
 #import "BEEScoreView.h"
 #import "BEESessionHelper.h"
 #import "BEENewGameView.h"
+#import "BEEInfoView.h"
 
 @interface GameScene () <SKPhysicsContactDelegate>
 
@@ -81,6 +82,10 @@
             [self.eventsDelegate didTap];
         
         [[BEENewGameView sharedInstance] handleNewGame:touch andParentScene:self];
+    }
+    else if (currentScreen == BST_INFO)
+    {
+        [[BEEInfoView sharedInstance] handleInfo:touch andParentScene:self];
     }
 }
 

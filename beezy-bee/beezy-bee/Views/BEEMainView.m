@@ -11,6 +11,7 @@
 #import "BEESessionHelper.h"
 #import "BEEScoreView.h"
 #import "BEEPlayer.h"
+#import "BEEInfoView.h"
 #import "BEENewGameView.h"
 #import "BEESharedPreferencesHelper.h"
 
@@ -64,13 +65,35 @@
     
     [BEESessionHelper sharedInstance].currentScreen = BST_MAIN;
     
+    SKLabelNode *infoLabel = [self createLabelWithParentScene:parent keyForName:@"info"];
+    [self setLabelNode:infoLabel position:CGPointMake(parent.size.width - infoLabel.frame.size.width, parent.size.height - infoLabel.frame.size.height - 10)];
+    
     [self createLabelWithParentScene:parent keyForName:@"new_game" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.35)];
     
     [self createLabelWithParentScene:parent keyForName:@"settings" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.65)];
     
     [self createLabelWithParentScene:parent keyForName:@"score" andPosition:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame))];
 }
+ 
+- (SKLabelNode *) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName
+{
+    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:[[BEESessionHelper sharedInstance] getLocalizedStringForName:@"font_style"]];
+    label.text = [[BEESessionHelper sharedInstance] getLocalizedStringForName:keyForName];
+    label.fontSize = 25;
+    label.fontColor = [SKColor blackColor];
+    [parent addChild:label];
+        
+    __weak SKLabelNode *weakLabel = label;
+    [self.objArray addObject:weakLabel];
+        
+    return label;
+}
 
+- (void) setLabelNode:(SKLabelNode *)label position:(CGPoint)position
+{
+    label.position = position;
+}
+                                                                                                                                                                   
 - (void) createLabelWithParentScene:(SKScene *)parent keyForName:(NSString *)keyForName andPosition:(CGPoint)position
 {
     SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:[[BEESessionHelper sharedInstance] getLocalizedStringForName:@"font_style"]];
@@ -120,6 +143,11 @@
             {
                 [self deleteObjectsFromParent];
                 [[BEESettingsView sharedInstance] createSettingsWithParentScene:parent];
+            }
+            else if (label.text == [[BEESessionHelper sharedInstance] getLocalizedStringForName:@"info"])
+            {
+                [self deleteObjectsFromParent];
+                [[BEEInfoView sharedInstance] createInfoWithParentScene:parent];
             }
         }];
     }

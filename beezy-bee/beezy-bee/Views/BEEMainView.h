@@ -14,5 +14,4 @@
 - (void) createMenuWithParentScene:(SKScene *)parent;
 - (void) handleMain:(UITouch *)touch andParentScene:(SKScene *)parent;
 
-
 @end
