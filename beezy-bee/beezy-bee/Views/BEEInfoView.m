@@ -102,7 +102,7 @@
     hiroshiLabel.fontSize = 20;
     [self setLabelNode:hiroshiLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.5)];
     
-    SKLabelNode *shreekanLabel = [self createLabelWithParentScene:parent keyForName:@"shreekanth"];
+    SKLabelNode *shreekanLabel = [self createLabelWithParentScene:parent keyForName:@"sreekanth"];
     shreekanLabel.fontSize = 20;
     [self setLabelNode:shreekanLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.4)];
     
