@@ -64,52 +64,55 @@
     
     SKLabelNode *mainLabel = [self createLabelWithParentScene:parent keyForName:@"info_mainTitle"];
     mainLabel.fontSize = 35;
-    [self setLabelNode:mainLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.5)];
+    [self setLabelNode:mainLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.6)];
     
     SKLabelNode *expLabel1 = [self createLabelWithParentScene:parent keyForName:@"info_explain1"];
     expLabel1.fontSize = 15;
-    [self setLabelNode:expLabel1 position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.2)];
+    [self setLabelNode:expLabel1 position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.4)];
     
     SKLabelNode *andLabel = [self createLabelWithParentScene:parent keyForName:@"info_and"];
     andLabel.fontSize = 15;
-    [self setLabelNode:andLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.1)];
+    [self setLabelNode:andLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.3)];
     
     SKLabelNode *expLabel2 = [self createLabelWithParentScene:parent keyForName:@"info_explain2"];
     expLabel2.fontSize = 15;
-    [self setLabelNode:expLabel2 position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.0)];
+    [self setLabelNode:expLabel2 position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.2)];
     
     SKLabelNode *butLabel = [self createLabelWithParentScene:parent keyForName:@"info_but"];
     butLabel.fontSize = 15;
-    [self setLabelNode:butLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.9)];
+    [self setLabelNode:butLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.1)];
     
     SKLabelNode *expLabel3 = [self createLabelWithParentScene:parent keyForName:@"info_explain3"];
     expLabel3.fontSize = 15;
-    [self setLabelNode:expLabel3 position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.8)];
+    [self setLabelNode:expLabel3 position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 1.0)];
     
     SKLabelNode *copyRightLabel = [self createLabelWithParentScene:parent keyForName:@"copyright"];
     copyRightLabel.fontSize = 10;
-    copyRightLabel.fontColor = [SKColor redColor];
     [self setLabelNode:copyRightLabel position:CGPointMake((parent.size.width - CGRectGetMidX(parent.frame)), CGRectGetMidY(parent.frame) * 0.05)];
+    
+    SKLabelNode *createdByLabel = [self createLabelWithParentScene:parent keyForName:@"createdBy"];
+    createdByLabel.fontSize = 20;
+    [self setLabelNode:createdByLabel position:CGPointMake(createdByLabel.frame.size.width / 2 + 10, CGRectGetMidY(parent.frame) * 0.8)];
     
     SKLabelNode *luizLabel = [self createLabelWithParentScene:parent keyForName:@"luiz"];
     luizLabel.fontSize = 20;
-    [self setLabelNode:luizLabel position:CGPointMake(CGRectGetMidX(parent.frame) + 100, CGRectGetMidY(parent.frame) * 0.6)];
+    [self setLabelNode:luizLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.6)];
     
     SKLabelNode *hiroshiLabel = [self createLabelWithParentScene:parent keyForName:@"hiroshi"];
     hiroshiLabel.fontSize = 20;
-    [self setLabelNode:hiroshiLabel position:CGPointMake(CGRectGetMidX(parent.frame) + 100, CGRectGetMidY(parent.frame) * 0.5)];
+    [self setLabelNode:hiroshiLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.5)];
     
-    SKLabelNode *shreekanLabel = [self createLabelWithParentScene:parent keyForName:@"shreekan"];
+    SKLabelNode *shreekanLabel = [self createLabelWithParentScene:parent keyForName:@"shreekanth"];
     shreekanLabel.fontSize = 20;
-    [self setLabelNode:shreekanLabel position:CGPointMake(CGRectGetMidX(parent.frame) + 100, CGRectGetMidY(parent.frame) * 0.4)];
+    [self setLabelNode:shreekanLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.4)];
     
     SKLabelNode *shawnLabel = [self createLabelWithParentScene:parent keyForName:@"shawn"];
     shawnLabel.fontSize = 20;
-    [self setLabelNode:shawnLabel position:CGPointMake(CGRectGetMidX(parent.frame) + 100, CGRectGetMidY(parent.frame) * 0.3)];
+    [self setLabelNode:shawnLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.3)];
     
     SKLabelNode *tomokoLabel = [self createLabelWithParentScene:parent keyForName:@"tomoko"];
     tomokoLabel.fontSize = 20;
-    [self setLabelNode:tomokoLabel position:CGPointMake(CGRectGetMidX(parent.frame) + 100, CGRectGetMidY(parent.frame) * 0.2)];
+    [self setLabelNode:tomokoLabel position:CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame) * 0.2)];
     
     
 }

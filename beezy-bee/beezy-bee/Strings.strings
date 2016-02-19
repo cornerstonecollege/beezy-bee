@@ -28,8 +28,9 @@
 "info_but" = "but";
 "info_explain3" = "don't forget to avoid the monsters!";
 "copyright" = "Copyright@2017CICCC All Right Reserved";
-"luiz" = "Luiz";
-"hiroshi" = "Hiroshi";
-"shreekan" = "Shreekan";
-"shawn" = "Shawn";
-"tomoko" = "Tomoko";
+"createdBy" = "Created By";
+"luiz" = "Luiz Peres";
+"hiroshi" = "Hiroshi Tokutomi";
+"shreekanth" = "Shreekanth Jagadeesan";
+"shawn" = "Shawn Kyler";
+"tomoko" = "Tomoko Tamura";
