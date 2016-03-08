@@ -1,5 +1,5 @@
 # WebPage
-This is the web page for the (Beezy Bee)[https://github.com/cornerstonecollege/beezy-bee]project.
+This is the web page for the [Beezy Bee](https://github.com/cornerstonecollege/beezy-bee/project).
 
 # Beezy Bee
 __Beezy Bee__ is an arcade-style game inspired on "Flappy Bird". Beezy bee is meant for iOS devices.
