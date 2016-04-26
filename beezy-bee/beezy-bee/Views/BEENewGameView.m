@@ -172,7 +172,7 @@ BEEItem *objItem;
     }
     
     NSInteger randCnt = arc4random_uniform(2);
-    CGFloat y;
+    CGFloat y = 0.0;
     BEEMonster *objMonster;
     for (NSInteger cnt = 0; cnt <= randCnt; cnt++)
     {

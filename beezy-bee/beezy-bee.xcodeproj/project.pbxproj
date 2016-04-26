@@ -261,7 +261,7 @@
 				TargetAttributes = {
 					081205F41C56FA94000CD428 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = SXSRVAX2S3;
+						DevelopmentTeam = 8R6D662874;
 					};
 				};
 			};
@@ -447,7 +447,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "beezy-bee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.beezy-bee";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cornerstonecollege.breezy-bee";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -463,7 +463,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "beezy-bee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.beezy-bee";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cornerstonecollege.breezy-bee";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
