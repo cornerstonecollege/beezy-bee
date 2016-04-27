@@ -183,22 +183,24 @@ BEEItem *objItem;
             }
         }
         
-        NSInteger randObj = arc4random_uniform(4);
-        switch(randObj)
+        NSUInteger monsterType = arc4random_uniform(4);
+        switch(monsterType)
         {
-            case 0 :
+            case BMT_MONSTER1 :
                  objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Wasp" imageMovableName:@"Monster-Wasp-Move" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
-            case 1 :
+            case BMT_MONSTER2 :
                  objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Spider" imageMovableName:@"Monster-Spider" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
-            case 2 :
+            case BMT_MONSTER3 :
                 objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Bat" imageMovableName:@"Monster-Bat-Move" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
-            case 3 :
+            case BMT_MONSTER4 :
                 objMonster = [[BEEMonster alloc] initWithImageNamed:@"Monster-Bat-2" imageMovableName:@"Monster-Bat-2-Move" position:CGPointMake(parent.frame.size.width + 100, y) andParentScene:parent];
                 break;
         }
+        
+        [objMonster setType:(BEE_MONSTER_TYPE)monsterType];
         
         if (parent.size.height < 500)
         {

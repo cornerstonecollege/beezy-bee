@@ -15,8 +15,13 @@ typedef NS_ENUM(NSUInteger, BEE_MONSTER_TYPE)
 {
     BMT_MONSTER1 = 0,
     BMT_MONSTER2 = 1,
+    BMT_MONSTER3 = 2,
+    BMT_MONSTER4 = 3,
 };
 
+@property (nonatomic, readonly) BEE_MONSTER_TYPE type;
 @property (nonatomic) BOOL hasBeenTouched;
+
+- (void) setType:(BEE_MONSTER_TYPE)type;
 
 @end

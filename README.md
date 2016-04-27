@@ -1,6 +1,9 @@
 # Beezy Bee
 That is an arcade-style game inspired on "Flappy Bird". Beezy bee is meant for iOS devices.
 
+### Information 
+For the version release on App Store, please use the [tag 1.0](https://github.com/cornerstonecollege/beezy-bee/tree/1.0). 
+
 ### How to play
 Collect flowers and honeycombs to win, but do not forget to avoid the monsters!
 

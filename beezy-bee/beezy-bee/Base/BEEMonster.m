@@ -46,4 +46,9 @@
     self.physicsBody.contactTestBitMask = BEE_PLAYER_MASK;
 }
 
+- (void) setType:(BEE_MONSTER_TYPE)type
+{
+    _type = type;
+}
+
 @end
